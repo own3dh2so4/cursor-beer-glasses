@@ -1,0 +1,26 @@
+name: Paulaner
+id: paulaner
+from_city: Munich
+from_country: Germany
+website: https://www.paulaner.com
+logo: paulaner/logo200x200.png
+background_logo: true
+name_image: paulaner/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1331.6646013641357!2d11.581190104109526!3d48.12317447290201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf6f853ceab3%3A0xecd7b4d9c10f7a0e!2sPaulaner%20Brauerei!5e0!3m2!1ses!2ses!4v1584275134286!5m2!1ses!2ses
+glasses:
+  - name: Paulaner
+    id: paulaner
+    photo: paulaner/paulaner_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses
+  - name: Paulaner Munich
+    id: paulaner_munich
+    photo: paulaner/paulaner_munich_0.jpg
+    bought_city: Munich
+    bought_country: Germany
+    got: steal
+    got_from: Paulaner am Nockherberg
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.414717309713!2d11.581015515675698!3d48.12152516025781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75e342913839%3A0x540da3ab3b23f3b9!2sPaulaner%20am%20Nockherberg!5e0!3m2!1ses!2ses!4v1584274838633!5m2!1ses!2ses

@@ -1,0 +1,18 @@
+name: La Virgen
+id: la_virgen
+from_city: Madrid
+from_country: Spain
+website: https://www.cervezaslavirgen.com/
+logo: la_virgen/logo.svg
+background_logo: true
+name_image: la_virgen/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31474.863806669586!2d-3.8996466899858424!3d40.501699467408!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe1f1d9d90e8ad8c!2sCervezas%20La%20Virgen!5e0!3m2!1ses!2ses!4v1584266057470!5m2!1ses!2ses
+glasses:
+  - name: La Virgen
+    id: la_virgen
+    photo: la_virgen/la_virgen_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses

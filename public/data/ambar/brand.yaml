@@ -1,0 +1,17 @@
+name: Ambar
+id: ambar
+from_city: Zaragoza
+from_country: Spain
+website: https://ambar.com/
+logo: ambar/logo200x200.png
+name_image: ambar/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d67481.96301991926!2d-0.8950296157464145!3d41.62743885931338!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb13984eeba7e28ff!2sLa%20Zaragozana%20-%20F%C3%A1brica%20de%20Cervezas%20Ambar!5e0!3m2!1ses!2ses!4v1583078936522!5m2!1ses!2ses
+glasses:
+  - name: Ambar
+    id: ambar
+    photo: ambar/ambar_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses

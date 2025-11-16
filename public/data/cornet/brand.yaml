@@ -1,0 +1,20 @@
+name: Cornet
+id: cornet
+from_city: Steenhuffel
+from_country: Belgium
+website: https://www.cornetbier.be/
+logo: cornet/logo200x200.png
+background_logo: true
+name_image: cornet/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6147.2095179763!2d4.26184222498439!3d50.99757461926541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3eba3d45957f5%3A0xf5469a01b08cf1db!2sS-hop%20Cornet%2C%20Rodenbach%20%26%20Palm!5e0!3m2!1ses!2ses!4v1583510597067!5m2!1ses!2ses
+glasses:
+  - name: Cornet
+    id: cornet
+    photo: cornet/cornet_0.jpg
+    bought_city: Belgium
+    bought_country: Brussels
+    got: buy
+    got_from: Duty free
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47882.77499239238!2d4.450976179546233!3d50.895438917583405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3ddbec45275ed%3A0x24514e3e0e7f25e4!2sAeropuerto%20de%20Bruselas!5e0!3m2!1ses!2ses!4v1583180827934!5m2!1ses!2ses
+          
+

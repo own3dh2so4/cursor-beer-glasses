@@ -1,0 +1,21 @@
+name: Grevensteiner
+id: grevensteiner
+from_city: Meschede
+from_country: Germany
+website: https://www.grevensteiner.de/
+logo: grevensteiner/logo200x200.png
+background_logo: true
+name_image: grevensteiner/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10571.161700283039!2d8.123212895449157!3d51.302623428991055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bbe3cf93376de3%3A0x9da944b6b82f2900!2sBrauerei%20C.%20%26%20A.%20VELTINS%20GmbH%20%26%20Co.%20KG!5e0!3m2!1ses!2ses!4v1583957968515!5m2!1ses!2ses
+glasses:
+  - name: Grevensteiner
+    id: grevensteiner
+    photo: grevensteiner/grevensteiner_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Makro
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7226.131561448994!2d-3.716243804231371!3d40.40410838462579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4227c52b28838d%3A0xcfff6ac186596f8!2sMakro%20Paseo%20Imperial!5e0!3m2!1ses!2ses!4v1583508359541!5m2!1ses!2ses
+          
+
+

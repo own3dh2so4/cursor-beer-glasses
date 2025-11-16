@@ -1,0 +1,18 @@
+name: Brew dog
+id: brew_dog
+from_city: scotland
+from_country: United Kingdom
+website: https://www.brewdog.com/
+logo: brew_dog/logo200x200.png
+background_logo: true
+name_image: brew_dog/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2151.305906593154!2d-2.0564092837861856!3d57.370874481016926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4884716920aeb86d%3A0xd6dd4d6ceebf0820!2sBrewDog%20DogTap!5e0!3m2!1ses!2ses!4v1583179328848!5m2!1ses!2ses
+glasses:
+  - name: Brew dog
+    id: brew_dog
+    photo: brew_dog/brew_dog_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses

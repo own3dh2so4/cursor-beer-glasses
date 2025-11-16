@@ -1,0 +1,18 @@
+name: Septem
+id: septem
+from_city: Central Greece
+from_country: Greece
+website: http://septem.gr
+logo: septem/logo200x200.png
+background_logo: true
+name_image: septem/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12486.358487822488!2d24.1075203!3d38.5201745!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x38bac46c537cb731!2sSeptem%20Microbrewery!5e0!3m2!1ses!2ses!4v1584290979264!5m2!1ses!2ses
+glasses:
+  - name: Septem
+    id: septem
+    photo: septem/septem_0.jpg
+    bought_city: Athens
+    bought_country: Greece
+    got: present
+    got_from: Cellar Matsoukas
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.1011975932206!2d23.730339315644645!3d37.97476757972343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd3dcf170b11%3A0x79d89ce43cabf297!2sCellar%20Matsoukas!5e0!3m2!1ses!2ses!4v1584273438562!5m2!1ses!2ses

@@ -1,0 +1,18 @@
+name: Abbaye D'Aulne
+id: abbaye_daulne
+from_city: Lieja
+from_country: Belgium
+website: http://abbayedaulne.com/
+logo: abbaye_daulne/logo200x200.png
+name_image: abbaye_daulne/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.0453858248734!2d4.329639415988305!3d50.36570817946372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c23b4c9e363b89%3A0x98eba2ea4abb71c7!2sAbad%C3%ADa%20de%20Aulne%2C%206534%20Thuin%2C%20B%C3%A9lgica!5e0!3m2!1ses!2ses!4v1583077220086!5m2!1ses!2ses
+glasses:
+  - name: Abbaye D'Aulne
+    id: abbaye_daulne
+    photo: abbaye_daulne/abbaye_daulne_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses
+          

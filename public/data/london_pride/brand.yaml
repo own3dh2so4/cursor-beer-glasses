@@ -1,0 +1,17 @@
+name: London Pride
+id: london_prinde
+from_city: London
+from_country: United Kingdom
+website: https://www.fullers.co.uk
+logo: london_pride/logo200x200.png
+name_image: london_pride/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11817.861375007742!2d-0.24580099179510487!3d51.48753931741935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e442cc8216f%3A0xf4b0b59fdb641c71!2sFuller&#39;s%20Brewery!5e0!3m2!1ses!2ses!4v1584267797865!5m2!1ses!2ses
+glasses:
+  - name: London Pride
+    id: london_prinde
+    photo: london_pride/london_pride_0.jpg
+    bought_city: London
+    bought_country: United Kingdom
+    got: steal
+    got_from: Montagu Pyke
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1476.4149178495115!2d-0.12974502943841235!3d51.51277525155593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x32a7e36f40aac955!2sMontagu%20Pyke!5e0!3m2!1ses!2sus!4v1584267479718!5m2!1ses!2sus

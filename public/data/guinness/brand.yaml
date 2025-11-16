@@ -1,0 +1,17 @@
+name: Guinness
+id: guinness
+from_city: Dublin
+from_country: Ireland
+website: https://www.guinness.com/
+logo: guinness/logo200x200.png
+name_image: guinness/name.svg
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13091.82998617481!2d-6.29360110277232!3d53.34065102320598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e8440c5056b%3A0xb31933927505e7a2!2sGuinness%20Storehouse!5e0!3m2!1ses!2ses!4v1584035323567!5m2!1ses!2ses
+glasses:
+  - name: Guinness
+    id: guinness
+    photo: guinness/guinness_0.jpg
+    bought_city: Dublin
+    bought_country: Ireland
+    got: buy
+    got_from: Guinness Storehouse
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13091.82998617481!2d-6.29360110277232!3d53.34065102320598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e8440c5056b%3A0xb31933927505e7a2!2sGuinness%20Storehouse!5e0!3m2!1ses!2ses!4v1584035323567!5m2!1ses!2ses

@@ -1,0 +1,26 @@
+name: Brooklyn
+id: brooklyn
+from_city: New York
+from_country: United States
+website: https://brooklynbrewery.com/
+logo: brooklyn/logo200x200.png
+name_image: brooklyn/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12095.544676354722!2d-73.9570233!3d40.7205223!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x45e51659594a28fa!2sBrooklyn%20Brewery!5e0!3m2!1ses!2ses!4v1583179982717!5m2!1ses!2ses
+glasses:
+  - name: Brooklyn classic
+    id: brooklyn_classic
+    photo: brooklyn/brooklyn_classic_0.jpg
+    bought_city: New York
+    bought_country: United States
+    got: buy
+    got_from: Brooklyn Brewery
+    map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12095.544676354722!2d-73.9570233!3d40.7205223!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x45e51659594a28fa!2sBrooklyn%20Brewery!5e0!3m2!1ses!2ses!4v1583179982717!5m2!1ses!2ses
+  - name: Brooklyn transparent
+    id: brooklyn_transp
+    photo: brooklyn/brooklyn_transp_0.jpg
+    bought_city: New York
+    bought_country: United States
+    got: buy
+    got_from: Brooklyn Brewery
+    map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12095.544676354722!2d-73.9570233!3d40.7205223!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x45e51659594a28fa!2sBrooklyn%20Brewery!5e0!3m2!1ses!2ses!4v1583179982717!5m2!1ses!2ses
+ 

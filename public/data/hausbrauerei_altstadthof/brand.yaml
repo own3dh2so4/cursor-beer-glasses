@@ -1,0 +1,20 @@
+name: Hausbrauerei Altstadthof
+id: hausbrauerei_altstadthof
+from_city: Nuremberg
+from_country: Germany
+website: https://www.hausbrauerei-altstadthof.de/
+logo: hausbrauerei_altstadthof/logo200x200.png
+name_image: hausbrauerei_altstadthof/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10373.810325630315!2d11.0748976!3d49.4570626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8959463b2fd7bb52!2sHausbrauerei%20Altstadthof!5e0!3m2!1ses!2ses!4v1584044163296!5m2!1ses!2ses
+glasses:
+  - name: Hausbrauerei Altstadthof
+    id: hausbrauerei_altstadthof
+    photo: hausbrauerei_altstadthof/hausbrauerei_altstadthof_0.jpg
+    bought_city: Nuremberg
+    bought_country: Germany
+    got: buy
+    got_from: Hausbrauerei Altstadthof
+    map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10373.810325630315!2d11.0748976!3d49.4570626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8959463b2fd7bb52!2sHausbrauerei%20Altstadthof!5e0!3m2!1ses!2ses!4v1584044163296!5m2!1ses!2ses
+          
+
+

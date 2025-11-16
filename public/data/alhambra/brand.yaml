@@ -1,0 +1,18 @@
+name: Alhambra
+id: alhambra
+from_city: Granada
+from_country: Spain
+website: https://www.cervezasalhambra.com/
+logo: alhambra/logo200x200.png
+name_image: alhambra/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12714.04997390774!2d-3.6028294!3d37.188055!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb5b22c8467215b0f!2sCervezas%20Alhambra!5e0!3m2!1ses!2ses!4v1583078092561!5m2!1ses!2ses
+glasses:
+  - name: Alhambra 1925
+    id: alhambra_1925
+    photo: alhambra/alhambra_1925_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Super Sol
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d638.7555680334494!2d-3.696593265972589!3d40.39886611706477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226314787a177%3A0xa9395dd8b5fc537c!2sSupersol%20Supermercados!5e0!3m2!1ses!2ses!4v1583078304041!5m2!1ses!2ses
+          

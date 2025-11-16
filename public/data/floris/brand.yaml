@@ -1,0 +1,21 @@
+name: Floris
+id: floris
+from_city: Melle
+from_country: Belgium
+website: https://www.brouwerijhuyghe.be/
+logo: floris/logo200x200.png
+name_image: floris/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7524.2392433058285!2d3.803081062458076!3d50.99926801496198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf46be04d4d3fe685!2sHuyghe%20Brewery!5e0!3m2!1ses!2ses!4v1583512635647!5m2!1ses!2ses
+glasses:
+  - name: Floris
+    id: floris
+    photo: floris/floris_0.jpg
+    bought_city: Brussels
+    bought_country: Belgium
+    got: steal
+    got_from: Delirium Cafe
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.0655569623827!2d4.351701815745867!3d50.84847027953235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c380bd32d907%3A0x26e1f42d7ed8d292!2sDelirium%20Caf%C3%A9!5e0!3m2!1ses!2ses!4v1583778087963!5m2!1ses!2ses
+          
+
+ 
+

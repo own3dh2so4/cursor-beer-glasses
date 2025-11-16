@@ -1,0 +1,17 @@
+name: Kondaira
+id: kondaira
+from_city: Navarra
+from_country: Spain
+website: http://www.cervezaskondaira.beer/
+logo: kondaira/logo200x200.png
+name_image: kondaira/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23554.303025905658!2d-2.2148712167384037!3d42.442890591568144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5aa3dd6e24847d%3A0x7f6ac3b3f58d666d!2s31587%20Mendavia%2C%20Navarra!5e0!3m2!1ses!2ses!4v1584189591099!5m2!1ses!2ses
+glasses:
+  - name: Kondaira
+    id: kondaira
+    photo: kondaira/kondaira_0.jpg
+    bought_city: Spain
+    bought_country: La Rioja
+    got: buy
+    got_from: Medieval Market
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4387.001160025954!2d-2.7370907944290783!3d42.41809724735092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDI1JzAxLjAiTiAywrA0NCcwNy4wIlc!5e1!3m2!1ses!2ses!4v1584189039918!5m2!1ses!2ses

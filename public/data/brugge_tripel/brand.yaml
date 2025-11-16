@@ -1,0 +1,19 @@
+name: Brugge Triple
+id: brugge_tripel
+from_city: Bruges
+from_country: Belgium
+website: https://www.palm.be/
+logo: brugge_tripel/logo200x200.png
+background_logo: true
+name_image: brugge_tripel/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2499.4729309207232!2d3.231573716014397!3d51.21036297958741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c350c8e497b2c5%3A0x326d681ae7fdb1da!2sDe%20Gouden%20Boom!5e0!3m2!1ses!2ses!4v1583510823864!5m2!1ses!2ses
+glasses:
+  - name: Brugge Triple
+    id: brugge_tripel
+    photo: brugge_tripel/brugge_tripel_0.jpg
+    bought_city: Belgium
+    bought_country: Brussels
+    got: buy
+    got_from: Duty free
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47882.77499239238!2d4.450976179546233!3d50.895438917583405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3ddbec45275ed%3A0x24514e3e0e7f25e4!2sAeropuerto%20de%20Bruselas!5e0!3m2!1ses!2ses!4v1583180827934!5m2!1ses!2ses
+          

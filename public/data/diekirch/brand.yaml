@@ -1,0 +1,17 @@
+name: Diekirch
+id: diekirch
+from_city: Diekirch
+from_country: Luxembourg
+website: https://brasseriedeluxembourg.lu/
+logo: diekirch/logo200x200.png
+name_image: diekirch/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d138599.89492614375!2d6.04132005992323!3d49.79773075497975!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1e60ccd6b7449a2!2sBrasserie%20de%20Luxembourg%20Mousel-Diekirch%20S.A!5e0!3m2!1ses!2ses!4v1583672895018!5m2!1ses!2ses
+glasses:
+  - name: Diekirch
+    id: diekirch
+    photo: diekirch/diekirch_0.jpg
+    bought_city: Luxembourg
+    bought_country: Luxembourg
+    got: steal
+    got_from: Winter Market
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1345.7306035261395!2d6.12847076623662!3d49.60925147722932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479548d35dfb9687%3A0x3ba1048e14e6a7c9!2sMonumento%20del%20Recuerdo!5e1!3m2!1ses!2ses!4v1583672701167!5m2!1ses!2ses

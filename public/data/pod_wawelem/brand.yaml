@@ -1,0 +1,17 @@
+name: Pod Wawelem
+id: pod_wawelem
+from_city: Krakow
+from_country: Poland
+website: podwawelem.eu
+logo: pod_wawelem/logo200x200.png
+name_image: pod_wawelem/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6092.791160222732!2d19.93315665420908!3d50.05439244827227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b6c9618fef1%3A0x399a036e4389595b!2sPod%20Wawelem%20Kompania%20Kuflowa!5e0!3m2!1ses!2ses!4v1584276500494!5m2!1ses!2ses
+glasses:
+  - name: Pod Wawelem
+    id: pod_wawelem
+    photo: pod_wawelem/pod_wawelem_0.jpg
+    bought_city: Krakow
+    bought_country: Poland
+    got: buy
+    got_from: Pod Wawelem Kompania Kuflowa
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6092.791160222732!2d19.93315665420908!3d50.05439244827227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b6c9618fef1%3A0x399a036e4389595b!2sPod%20Wawelem%20Kompania%20Kuflowa!5e0!3m2!1ses!2ses!4v1584276500494!5m2!1ses!2ses

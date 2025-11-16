@@ -1,0 +1,17 @@
+name: Konig Ludwig
+id: konig_ludwig
+from_city: Fürstenfeldbruck
+from_country: Germany
+website: https://www.koenig-ludwig-brauerei.com
+logo: konig_ludwig/logo200x200.png
+name_image: konig_ludwig/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.4746961651226!2d11.251173783924683!3d48.18222579471372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e7fe1fa14d34b%3A0xeabbddb3acfaa9d9!2sK%C3%B6nig%20Ludwig%20Schlossbrauerei%20Kaltenberg!5e0!3m2!1ses!2ses!4v1584190978027!5m2!1ses!2ses
+glasses:
+  - name: Konig Ludwig
+    id: konig_ludwig
+    photo: konig_ludwig/konig_ludwig_0.jpg
+    bought_city: Cuenca
+    bought_country: Spain
+    got: buy
+    got_from: La Despensa
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1767.5798033978222!2d-2.1346171130332814!3d40.07243611131262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5d676faf88bdbf%3A0x42ecb26b477f1c9d!2sLa%20Despensa%20Las%20Torres!5e0!3m2!1ses!2ses!4v1584190423509!5m2!1ses!2ses

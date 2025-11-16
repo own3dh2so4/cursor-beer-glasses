@@ -1,0 +1,18 @@
+name: Grimbergen
+id: grimbergen
+from_city: Grimbergen
+from_country: Belgium
+website: https://www.grimbergenbeer.com/
+logo: grimbergen/logo200x200.png
+background_logo: true
+name_image: grimbergen/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.474283627256!2d4.368919415748949!3d50.93344127954484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3e9d4d8326d99%3A0xaaf4410ff44a7f32!2sAbad%C3%ADa%20de%20Grimbergen!5e0!3m2!1ses!2ses!4v1583958537677!5m2!1ses!2ses
+glasses:
+  - name: Grimbergen
+    id: grimbergen
+    photo: grimbergen/grimbergen_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Carrefour
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2554.725067465926!2d-3.7004654266318733!3d40.40669685173613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd70f13c12d3417a2!2sCarrefour%20Market!5e0!3m2!1ses!2ses!4v1583079499728!5m2!1ses!2ses

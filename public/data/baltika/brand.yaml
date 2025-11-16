@@ -1,0 +1,18 @@
+name: Baltika
+id: baltika
+from_city: Saint Petersburg
+from_country: Russian
+website: https://eng.baltika.ru/
+logo: baltika/logo200x200.png
+background_logo: true
+name_image: baltika/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d90208.0947833175!2d30.241929011369283!3d60.02614831598559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7677b5d61affd9a6!2sBaltika%20Breweries!5e0!3m2!1ses!2ses!4v1583092437100!5m2!1ses!2ses
+glasses:
+  - name: Baltika
+    id: baltika
+    photo: baltika/baltika_0.jpg
+    bought_city: Wroclaw
+    bought_country: Poland
+    got: buy
+    got_from: Supermarket Piotr i Paweł
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.7762789401127!2d17.018063906490124!3d51.09413617531722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc26adfc5d07d%3A0x4a24183d4998d4c4!2sSupermarket%20Piotr%20i%20Pawe%C5%82!5e0!3m2!1ses!2ses!4v1583092589049!5m2!1ses!2ses

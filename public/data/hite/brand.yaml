@@ -1,0 +1,17 @@
+name: Hite
+id: hite
+from_city: Seul
+from_country: South Korea
+website: https://en.hitejinro.com/
+logo: hite/logo200x200.png
+name_image: hite/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d302322.2223253389!2d127.27178740693422!3d37.74075502882598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356302f1c53632a5%3A0xa03d201bd29969a3!2s49%20Dodun-gil%2C%20Bukbang-myeon%2C%20Hongcheon%2C%20Gangwon-do%2C%20Corea%20del%20Sur!5e0!3m2!1ses!2ses!4v1584045981719!5m2!1ses!2ses
+glasses:
+  - name: Hite
+    id: hite
+    photo: hite/hite_0.jpg
+    bought_city: New York
+    bought_country: United States
+    got: buy
+    got_from: mŏkbar
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1308.2151617376276!2d-74.00635012219817!3d40.74222915652809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf42f2f0a7%3A0x243535f388851750!2zbcWPa2Jhcg!5e0!3m2!1ses!2ses!4v1584045388007!5m2!1ses!2ses

@@ -1,0 +1,17 @@
+name: El Águila
+id: el_agila
+from_city: Madrid
+from_country: Spain
+website: https://www.heinekenespana.es/
+logo: el_aguila/logo200x200.png
+name_image: el_aguila/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d270.0051178687718!2d-3.690498701709428!3d40.39979985062208!2m3!1f348.18750000000006!2f6.9649599918790015!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x0%3A0xff5cdb826a8cec64!2sEl%20%C3%81guila!5e1!3m2!1ses!2ses!4v1583673873693!5m2!1ses!2ses
+glasses:
+  - name: El Águila
+    id: el_aguila
+    photo: el_aguila/el_aguila_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Super Sol
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d638.7555680334494!2d-3.696593265972589!3d40.39886611706477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226314787a177%3A0xa9395dd8b5fc537c!2sSupersol%20Supermercados!5e0!3m2!1ses!2ses!4v1583078304041!5m2!1ses!2ses

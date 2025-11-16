@@ -1,0 +1,17 @@
+name: Kaiserdom
+id: kaiserdom
+from_city: Bamberg
+from_country: Germany
+website: https://kaiserdom.de/
+logo: kaiserdom/logo200x200.png
+name_image: kaiserdom/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4448.367871773289!2d10.849898734253301!3d49.90411757964049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a23cb42b7a03b3%3A0x48255ed795d0cdea!2sKaiserdom%20Specialit%C3%A4ten%20Brauerei%20GmbH%20Bamberg!5e0!3m2!1ses!2ses!4v1584187622593!5m2!1ses!2ses
+glasses:
+  - name: Kaiserdom
+    id: kaiserdom
+    photo: kaiserdom/kaiserdom_0.jpg
+    bought_city: Nuremberg
+    bought_country: Germany
+    got: buy
+    got_from: Duty Free
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32764.8778396647!2d11.052439457388564!3d49.49688665519118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1fd7875cb0627%3A0x72cafc6bb89cfa2f!2sAeropuerto%20de%20N%C3%BAremberg!5e0!3m2!1ses!2ses!4v1584187333267!5m2!1ses!2ses

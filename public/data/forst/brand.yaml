@@ -1,0 +1,17 @@
+name: Forst
+id: forst
+from_city: 	South Tyrol
+from_country: Italy
+website: https://www.forst.it/
+logo: forst/logo200x200.png
+name_image: forst/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117366.14949856425!2d11.011987127957214!3d46.56732378604381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfca9e5aef4f86a1b!2zQnLDpHVzdMO8YmVybCBGb3JzdA!5e0!3m2!1ses!2ses!4v1583679159107!5m2!1ses!2ses
+glasses:
+  - name: Felsenkeller
+    id: felsenkeller
+    photo: forst/felsenkeller_0.jpg
+    bought_city: Genoa
+    bought_country: Italy
+    got: buy
+    got_from: Beershop Maddalena
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d599.1603771501241!2d8.931446779119067!3d44.410529346284484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d343e6ee2c626b%3A0x25219efd8d5720d!2sBeershop%20Maddalena!5e0!3m2!1ses!2ses!4v1583679365202!5m2!1ses!2ses

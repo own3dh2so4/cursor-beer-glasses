@@ -1,0 +1,18 @@
+name: Monyo Budapest
+id: monyo_budapest
+from_city: Budapest
+from_country: Hungary
+website: https://www.monyobrewing.com/
+logo: monyo_budapest/logo200x200.png
+background_logo: true
+name_image: monyo_budapest/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.3569498620996!2d19.153280515626182!3d47.48295927917664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c341a64280db%3A0xddd67d7771cf9f60!2sMONYO%20Brewing%20Co.!5e0!3m2!1ses!2ses!4v1584272925977!5m2!1ses!2ses
+glasses:
+  - name: Monyo Budapest
+    id: monyo_budapest
+    photo: monyo_budapest/monyo_budapest_0.jpg
+    bought_city: Budapest
+    bought_country: Hungary
+    got: buy
+    got_from: Beerselection.hu Minőségi Sörbolt
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d801.4540232860006!2d19.070928782216345!3d47.4946030046227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc5fb32b5ad5%3A0x2e39e28bb67590ad!2sBeerselection.hu%20Min%C5%91s%C3%A9gi%20S%C3%B6rbolt!5e0!3m2!1ses!2ses!4v1584272745719!5m2!1ses!2ses

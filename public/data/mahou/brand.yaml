@@ -1,0 +1,25 @@
+name: Mahou
+id: mahou
+from_city: Madrid
+from_country: Spain
+website: https://www.mahou.es
+logo: mahou/logo200x200.png
+name_image: mahou/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d115332.1537517447!2d-3.3600370563000803!3d40.57030543251832!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5c8cf4b226147c2!2sF%C3%A1brica%20de%20Mahou%20SA!5e0!3m2!1ses!2ses!4v1584269851745!5m2!1ses!2ses
+glasses:
+  - name: Mahou Barrica
+    id: mahou_barrica
+    photo: mahou/mahou_barrica_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Super Sol
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4461.898940063981!2d-3.6960865063057344!3d40.401774238159526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa9395dd8b5fc537c!2sSupersol%20Supermercados!5e0!3m2!1ses!2ses!4v1584269635557!5m2!1ses!2ses
+  - name: Mahou Maestra
+    id: mahou_maestra
+    photo: mahou/mahou_maestra_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El Corte Ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2577.7783140098472!2d-3.678374764264496!3d40.395380068451296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1584269723980!5m2!1ses!2ses

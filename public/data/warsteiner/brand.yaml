@@ -1,0 +1,18 @@
+name: Warsteiner
+id: warsteiner
+from_city: Warstein
+from_country: Germany
+website: https://www.warsteiner.com/
+logo: warsteiner/logo.svg
+background_logo: true
+name_image: warsteiner/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.902010698096!2d8.349122015782603!3d51.441593423333586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bbc316dc280f75%3A0x3b70d2b7001484b!2sAdministrative%20center%20of%20the%20Warsteiner%20Brewery!5e0!3m2!1ses!2ses!4v1584388311479!5m2!1ses!2ses
+glasses:
+  - name: Warsteiner
+    id: warsteiner
+    photo: warsteiner/warsteiner_0.jpg
+    bought_city: Cuenca
+    bought_country: Spain
+    got: buy
+    got_from: La Despensa
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1767.5798033978222!2d-2.1346171130332814!3d40.07243611131262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5d676faf88bdbf%3A0x42ecb26b477f1c9d!2sLa%20Despensa%20Las%20Torres!5e0!3m2!1ses!2ses!4v1584190423509!5m2!1ses!2ses

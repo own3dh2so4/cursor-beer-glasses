@@ -1,0 +1,17 @@
+name: Mythos
+id: mythos
+from_city: Thessaloniki
+from_country: Greece
+website: https://mythosbeer.gr
+logo: mythos/logo200x200.png
+name_image: mythos/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24200.749965838673!2d22.79685243192334!3d40.693932969770934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a8254c00000001%3A0xc5c5519758d63279!2sMythos%20Brewery%20S.A.!5e0!3m2!1ses!2ses!4v1584273673972!5m2!1ses!2ses
+glasses:
+  - name: Mythos
+    id: mythos
+    photo: mythos/mythos_0.jpg
+    bought_city: Athens
+    bought_country: Greece
+    got: present
+    got_from: Cellar Matsoukas
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.1011975932206!2d23.730339315644645!3d37.97476757972343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd3dcf170b11%3A0x79d89ce43cabf297!2sCellar%20Matsoukas!5e0!3m2!1ses!2ses!4v1584273438562!5m2!1ses!2ses

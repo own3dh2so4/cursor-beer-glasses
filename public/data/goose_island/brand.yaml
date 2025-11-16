@@ -1,0 +1,18 @@
+name: Gose Island
+id: goose_island
+from_city: Philadelphia
+from_country: United States
+website: https://www.gooseisland.com/
+logo: goose_island/logo200x200.png
+background_logo: true
+name_image: goose_island/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5142.853359269671!2d-75.13922437446477!3d39.964671534975565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8663a5f9bed%3A0x61cd6a7d00bbc9f9!2sGoose%20Island%20Brewhouse!5e0!3m2!1ses!2ses!4v1583957465670!5m2!1ses!2ses
+glasses:
+  - name: Goose Island
+    id: goose_island
+    photo: goose_island/goose_island_0.jpg
+    bought_city: New York
+    bought_country: United States
+    got: steal
+    got_from: 230 Fifth
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7400.118688963177!2d-73.99327126875089!3d40.744600156627925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a665325aff%3A0x3ac777522187cfd5!2s230%20Fifth!5e0!3m2!1ses!2ses!4v1583957243199!5m2!1ses!2ses

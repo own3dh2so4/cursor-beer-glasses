@@ -1,0 +1,17 @@
+name: Gastro
+id: gastro
+from_city: Toledo
+from_country: Spain
+website: http://www.cervezagastro.com/
+logo: gastro/logo200x200.png
+name_image: gastro/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29250.32931016636!2d-3.042503184811514!3d39.59201775403597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6849888e069d13%3A0x22f47bc140ee583a!2sCerveza%20Gastro!5e0!3m2!1ses!2ses!4v1583949666202!5m2!1ses!2ses
+glasses:
+  - name: Gastro
+    id: gastro
+    photo: gastro/gastro_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d379.68964931751634!2d-3.705351389654045!3d40.419545271026934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287db2da1d89%3A0x5daa536f42d13497!2sTerraza%20de%20El%20Corte%20Ingl%C3%A9s!5e0!3m2!1ses!2ses!4v1583949470658!5m2!1ses!2ses

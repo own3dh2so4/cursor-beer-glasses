@@ -1,0 +1,17 @@
+name: Szent András
+id: szent_andras
+from_city: Békésszentandrás
+from_country: Hungary
+website: https://szentandrassorfozde.hu
+logo: szent_andras/logo200x200.png
+name_image: szent_andras/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1363.8138138013958!2d20.4896!3d46.8707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4746a9f192400969%3A0x2a7aba0c4d8b13f5!2zU3plbnQgQW5kcsOhcyBTw7ZyZsWRemRl!5e0!3m2!1ses!2sus!4v1584340403981!5m2!1ses!2sus
+glasses:
+  - name: Szent András
+    id: szent_andras
+    photo: szent_andras/szent_andras_0.jpg
+    bought_city: Budapest
+    bought_country: Hungary
+    got: buy
+    got_from: Beerselection.hu Minőségi Sörbolt
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d801.4540232860006!2d19.070928782216345!3d47.4946030046227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc5fb32b5ad5%3A0x2e39e28bb67590ad!2sBeerselection.hu%20Min%C5%91s%C3%A9gi%20S%C3%B6rbolt!5e0!3m2!1ses!2ses!4v1584272745719!5m2!1ses!2ses

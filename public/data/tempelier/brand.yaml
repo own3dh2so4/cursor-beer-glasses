@@ -1,0 +1,17 @@
+name: Tempelier
+id: tempelier
+from_city: Antwerp Province
+from_country: Belgium
+website: https://www.corsendonk.com
+logo: tempelier/logo200x200.png
+name_image: tempelier/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6286.087676090645!2d4.918298399964104!3d51.29942999989158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6b2447dd73a11%3A0x51aa9c2e7026955c!2sSlachthuisstraat%2027%2C%202300%20Turnhout%2C%20B%C3%A9lgica!5e0!3m2!1ses!2ses!4v1584341060829!5m2!1ses!2ses
+glasses:
+  - name: Tempelier
+    id: tempelier
+    photo: tempelier/tempelier_0.jpg
+    bought_city: Belgium
+    bought_country: Brussels
+    got: buy
+    got_from: Duty free
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47882.77499239238!2d4.450976179546233!3d50.895438917583405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3ddbec45275ed%3A0x24514e3e0e7f25e4!2sAeropuerto%20de%20Bruselas!5e0!3m2!1ses!2ses!4v1583180827934!5m2!1ses!2ses

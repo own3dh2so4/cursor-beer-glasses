@@ -1,0 +1,17 @@
+name: Messina
+id: messina
+from_city: Sicily
+from_country: Italy
+website: https://www.birramessina.it/
+logo: messina/logo200x200.png
+name_image: messina/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d345959.02733478084!2d17.111657472798566!3d40.50181840906685!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf20a86cbbb6adedf!2sHeineken%20Italia!5e0!3m2!1ses!2ses!4v1584296581696!5m2!1ses!2ses
+glasses:
+  - name: Messina
+    id: messina
+    photo: messina/messina_0.jpg
+    bought_city: Sicily
+    bought_country: Italy
+    got: steal
+    got_from: Gammazita
+    map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1253.15288253461!2d15.084514503543692!3d37.500620183774195!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x56eb18032482c74b!2sGammazita!5e0!3m2!1ses!2ses!4v1584296665582!5m2!1ses!2ses

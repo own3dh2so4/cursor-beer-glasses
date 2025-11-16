@@ -1,0 +1,18 @@
+name: Spaten
+id: spaten
+from_city: Munich
+from_country: Germany
+website: https://spatenbraeu.de/
+logo: spaten/logo200x200.png
+background_logo: true
+name_image: spaten/name.png
+map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10648.785896810346!2d11.5540654!3d48.1450173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x374c0dc2deddf400!2sSpaten-Franziskaner-Br%C3%A4u!5e0!3m2!1ses!2ses!4v1584292219129!5m2!1ses!2ses
+glasses:
+  - name: Spaten
+    id: spaten
+    photo: spaten/spaten_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Cervecería L'Europe
+    map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12148.069601556977!2d-3.701887!3d40.4306136!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x764112a0b65a51cc!2sCervecer%C3%ADa%20L&#39;Europe!5e0!3m2!1ses!2ses!4v1584291932102!5m2!1ses!2ses

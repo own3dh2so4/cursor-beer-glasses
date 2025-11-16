@@ -1,0 +1,25 @@
+name: Estella Galicia
+id: estrella_galicia
+from_city: 	Galicia
+from_country: Spain
+website: https://estrellagalicia.es/
+logo: estrella_galicia/logo200x200.png
+name_image: estrella_galicia/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.1558801198644!2d-8.42153868421564!3d43.35284987913283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7cecb9869c47%3A0xb2bf8b2a95f9258e!2sF%C3%A1brica%20Estrella%20Galicia!5e0!3m2!1ses!2ses!4v1583678436058!5m2!1ses!2ses
+glasses:
+  - name: Estella Galicia 1906
+    id: estrella_galicia_1906
+    photo: estrella_galicia/estrella_galicia_1906_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: El corte ingles
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.626657355686!2d-3.67767748460475!3d40.39496637936768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4226133bb8aebb%3A0x44e5e3c849f0954c!2sHipercor%20M%C3%A9ndez%20%C3%81lvaro!5e0!3m2!1ses!2ses!4v1583076467865!5m2!1ses!2ses
+  - name: Estrella Galicia 1906 Red Vintage
+    id: estrella_galicia_1906_red_vintage
+    photo: estrella_galicia/estrella_galicia_1906_red_vintage_0.jpg
+    bought_city: Madrid
+    bought_country: Spain
+    got: buy
+    got_from: Carrefour
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1859.3529419443198!2d-3.701367507158732!3d40.408285305457156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd70f13c12d3417a2!2sCarrefour%20Market!5e0!3m2!1ses!2ses!4v1583678607154!5m2!1ses!2ses

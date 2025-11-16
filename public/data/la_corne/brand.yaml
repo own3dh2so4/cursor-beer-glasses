@@ -1,0 +1,18 @@
+name: La Corne
+id: la_corne
+from_city: Ath
+from_country: Belgium
+website: http://www.lacorneduboisdespendus.be/
+logo: la_corne/logo200x200.png
+background_logo: true
+name_image: la_corne/name.png
+map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.1474791392025!2d3.7582278477471966!3d50.620684496494036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3001e576d0fa1%3A0x3d05651ed15e48ef!2sBrasserie%20des%20legendes!5e0!3m2!1ses!2ses!4v1584208216429!5m2!1ses!2ses
+glasses:
+  - name: La Corne
+    id: la_corne
+    photo: la_corne/la_corne_0.jpg
+    bought_city: Brussels
+    bought_country: Belgium
+    got: buy
+    got_from: Carrefour Market
+    map: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d965.447787322843!2d4.350448924987735!3d50.84819629861285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c3875b2b27e9%3A0xc482a05f5c0f4668!2sCarrefour%20Market!5e0!3m2!1ses!2ses!4v1584208013242!5m2!1ses!2ses
