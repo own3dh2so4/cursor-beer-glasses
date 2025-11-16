@@ -140,6 +140,221 @@ body {
 }
 
 /* ========================================
+   Filter Bar Styles
+   ======================================== */
+
+.filter-bar {
+  background: rgba(240, 240, 245, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  margin: 0 1rem 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.filter-header:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.filter-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+  flex: 1;
+}
+
+.toggle-button {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid rgba(44, 62, 80, 0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-button:hover {
+  background: rgba(44, 62, 80, 0.1);
+  border-color: var(--primary-color);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+}
+
+.reset-button {
+  background: var(--accent-color);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reset-button:hover:not(:disabled) {
+  background: #d35400;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.reset-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--text-secondary);
+  box-shadow: none;
+}
+
+.filter-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+}
+
+.filter-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.filter-content.expanded {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: 1.5rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  display: block;
+}
+
+.filter-input,
+.filter-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(44, 62, 80, 0.15);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.05);
+}
+
+.filter-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.filter-stats {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 2px solid rgba(44, 62, 80, 0.1);
+}
+
+.stat-badge {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(44, 62, 80, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.stat-badge strong {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent-color);
+}
+
+/* No Results Message */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(240, 240, 245, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: var(--border-radius);
+  margin: 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.no-results-text {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.no-results-button {
+  background: rgba(44, 62, 80, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(44, 62, 80, 0.2);
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.no-results-button:hover {
+  background: rgba(44, 62, 80, 0.15);
+  border-color: var(--primary-color);
+}
+
+/* ========================================
    Gallery Card Styles
    ======================================== */
 
@@ -513,6 +728,16 @@ body {
     font-size: 1.25rem;
   }
 
+  /* Filter Bar - Tablet */
+  .filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .filter-bar {
+    padding: 2rem;
+  }
+
   .info-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -552,6 +777,16 @@ body {
 
   .gallery-container {
     padding: 3rem 2rem;
+  }
+
+  /* Filter Bar - Desktop */
+  .filter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .filter-bar {
+    padding: 2.5rem;
   }
 
   .brand-detail {

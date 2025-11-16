@@ -1,7 +1,7 @@
 name: Brew dog
 id: brew_dog
 from_city: scotland
-from_country: United Kingdom
+from_country: UK
 website: https://www.brewdog.com/
 logo: brew_dog/logo200x200.png
 background_logo: true

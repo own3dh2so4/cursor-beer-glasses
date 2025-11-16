@@ -5,6 +5,14 @@ A modern, responsive single-page application showcasing a collection of beer gla
 ## Features
 
 - **Responsive Gallery**: Browse through a beautiful grid of beer brand logos
+- **Advanced Filtering System**: 7 combinable filters to explore your collection:
+  - 🔍 Search by name
+  - 📍 Filter by origin country
+  - 🌍 Filter by continent
+  - 🍺 Filter by glass count (single/multiple)
+  - 🎁 Filter by acquisition method (bought/gift)
+  - 🛍️ Filter by purchase location
+  - 📊 Sort by name, country, or glass count
 - **Interactive Cards**: Hover effects reveal brand names with smooth transitions
 - **Adaptive Backgrounds**: Intelligent color detection automatically adjusts backgrounds based on logo brightness for optimal contrast
 - **Parallax Effects**: Fixed background images create depth and visual interest

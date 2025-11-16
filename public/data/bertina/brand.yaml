@@ -1,7 +1,7 @@
 name: Bertina
 id: bertina
 from_city: Thrace
-from_country: Greek
+from_country: Greece
 website: https://www.verginabeer.com/
 logo: bertina/logo200x200.png
 name_image: bertina/name.png
@@ -11,7 +11,7 @@ glasses:
     id: bertina
     photo: bertina/bertina_0.jpg
     bought_city: Athens
-    bought_country: Greek
+    bought_country: Greece
     got: present
     got_from: Karamanlidika
     map: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12579.484722924903!2d23.7256565!3d37.9801355!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x53427c892f9c3c25!2zS2FyYW1hbmxpZGlrYSAtIM6kzrEgzprOsc-BzrHOvM6xzr3Ou86vzrTOuc66zrEgz4TOv8-FIM6mzqzOvc63LCDOnM61zrbOtc-EzrbOr860zrnOus6_LCDOo8-JzrrPgc6sz4TOv8-Fz4IgMQ!5e0!3m2!1ses!2ses!4v1583172517781!5m2!1ses!2ses
