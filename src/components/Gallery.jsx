@@ -9,7 +9,6 @@ function Gallery() {
   const [filters, setFilters] = useState({
     search: '',
     country: '',
-    continent: '',
     glassCount: '',
     gotMethod: '',
     boughtCountry: '',
@@ -26,27 +25,6 @@ function Gallery() {
     fetchBrands()
   }, [])
 
-  // Continent mapping
-  const continentMap = useMemo(() => ({
-    'Belgium': 'Western Europe',
-    'Spain': 'Southern Europe',
-    'Germany': 'Western Europe',
-    'Ireland': 'Western Europe',
-    'Holland': 'Western Europe',
-    'Poland': 'Eastern Europe',
-    'Czech Republic': 'Central Europe',
-    'Russia': 'Eastern Europe',
-    'Hungary': 'Central Europe',
-    'Portugal': 'Southern Europe',
-    'UK': 'Western Europe',
-    'Italy': 'Southern Europe',
-    'Greece': 'Southern Europe',
-    'Luxembourg': 'Western Europe',
-    'South Korea': 'Asia',
-    'Japan': 'Asia',
-    'USA': 'North America'
-  }), [])
-
   // Apply all filters
   const filteredAndSortedBrands = useMemo(() => {
     let result = [...allBrands]
@@ -62,13 +40,6 @@ function Gallery() {
     // Filter by country
     if (filters.country) {
       result = result.filter(brand => brand.from_country === filters.country)
-    }
-
-    // Filter by continent
-    if (filters.continent) {
-      result = result.filter(brand => 
-        (continentMap[brand.from_country] || 'Other') === filters.continent
-      )
     }
 
     // Filter by glass count
@@ -114,7 +85,7 @@ function Gallery() {
     }
 
     return result
-  }, [allBrands, filters, continentMap])
+  }, [allBrands, filters])
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters)
@@ -124,7 +95,6 @@ function Gallery() {
     setFilters({
       search: '',
       country: '',
-      continent: '',
       glassCount: '',
       gotMethod: '',
       boughtCountry: '',
