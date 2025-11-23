@@ -21,6 +21,7 @@ A modern, responsive single-page application showcasing a collection of beer gla
   - Glass photos with carousel navigation
   - Acquisition details
 - **Mobile-First Design**: Optimized for all screen sizes (mobile, tablet, desktop)
+- **Progressive Web App (PWA)**: Installable on mobile and desktop devices, works offline
 - **Fast & Modern**: Built with React and Vite for optimal performance
 - **Comprehensive Testing**: Full unit test coverage with Vitest
 
@@ -152,6 +153,55 @@ make docker-down
 - ✅ **Isolated testing** - Tests run in clean environment
 - ✅ **Hot-reload works** - Edit locally, see changes instantly
 - ✅ **CI/CD ready** - Same Docker setup for pipelines
+
+## Progressive Web App (PWA)
+
+The application is a fully functional Progressive Web App that can be installed on mobile and desktop devices.
+
+### PWA Features
+
+- 📱 **Installable** - Add to home screen on mobile devices
+- 🔌 **Works Offline** - Access your collection without internet connection
+- ⚡ **Fast Loading** - Resources cached for instant access
+- 🎨 **Native Feel** - Runs in standalone mode without browser UI
+- 🔄 **Auto-Updates** - Service worker automatically updates content
+
+### Installing the PWA
+
+**On Mobile (iOS/Android):**
+1. Visit the app in your mobile browser
+2. Look for "Add to Home Screen" or "Install" prompt
+3. Tap "Add" or "Install"
+4. Launch from your home screen
+
+**On Desktop (Chrome/Edge):**
+1. Visit the app in your browser
+2. Look for the install icon (⊕) in the address bar
+3. Click "Install"
+4. Launch from your apps menu or desktop
+
+**On Desktop (Safari):**
+1. Visit the app in Safari
+2. Click "Share" → "Add to Dock"
+3. Launch from your dock
+
+### Offline Capabilities
+
+Once installed, the PWA caches:
+- All app code (HTML, CSS, JavaScript)
+- All brand data and images
+- Gallery and detail views
+- Filters and search functionality
+
+You can browse your entire collection without an internet connection!
+
+### PWA Technical Details
+
+- **Service Worker**: Workbox-based caching strategy
+- **Cache Size**: ~20MB (all collection data)
+- **Update Strategy**: Auto-update on new deployments
+- **Icons**: Optimized 192x192 and 512x512 icons
+- **Manifest**: Full Web App Manifest specification
 
 ## Testing
 

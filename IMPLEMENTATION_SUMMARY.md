@@ -82,11 +82,13 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 7. **postcss.config.cjs** - PostCSS for Tailwind
 8. **eslint.config.js** - ESLint 9 with TypeScript rules
 9. **.nvmrc** - Node version specification (24.11.1)
-10. **index.html** - HTML entry point with SPA routing script
+10. **index.html** - HTML entry point with SPA routing script and PWA meta tags
 11. **Dockerfile** - Multi-stage Docker build (development & test)
 12. **docker-compose.yaml** - Docker services configuration
 13. **.dockerignore** - Docker build exclusions
 14. **Makefile** - Task automation including Docker commands
+15. **public/pwa-*.png** - PWA icons (192x192, 512x512)
+16. **public/apple-touch-icon.png** - iOS home screen icon
 
 ### Deployment
 
@@ -130,6 +132,7 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 - **Node.js 22+** - Runtime requirement (24 LTS recommended)
 - **Docker & Docker Compose** - Containerized development environment
 - **Makefile** - Task automation for Docker and local workflows
+- **PWA (vite-plugin-pwa 1.1.0)** - Progressive Web App with offline support
 
 ## Key Features
 
@@ -198,6 +201,25 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
   - CI/CD ready
   - Easy onboarding for new developers
 
+### Progressive Web App (PWA)
+- **Installable** - Can be installed on mobile and desktop devices
+  - Add to home screen on iOS/Android
+  - Install as app on desktop browsers
+  - Standalone mode without browser UI
+- **Offline Support** - Full functionality without internet
+  - Service Worker with Workbox
+  - ~20MB cache size (all collection data)
+  - Auto-update strategy on new deployments
+- **Performance** - Optimized caching and loading
+  - Instant resource access from cache
+  - Background updates
+  - Google Fonts cached locally
+- **App-like Experience**
+  - Custom app icons (192x192, 512x512)
+  - Theme color integration (#e67e22)
+  - Splash screen support
+  - Native feel on mobile devices
+
 ## File Structure
 
 ```
@@ -212,6 +234,9 @@ cursor-beer-glasses/
 │   │       ├── logo200x200.png     # Brand logo
 │   │       ├── name.png/svg        # Brand name image
 │   │       └── *.jpg               # Glass photos
+│   ├── pwa-192x192.png             # PWA icon 192x192
+│   ├── pwa-512x512.png             # PWA icon 512x512
+│   ├── apple-touch-icon.png        # iOS home screen icon
 │   ├── 404.html                    # SPA routing fallback
 │   └── .nojekyll                   # GitHub Pages config
 ├── src/
@@ -350,6 +375,7 @@ glasses:
 - ✅ Docker development setup
 - ✅ Docker testing environment
 - ✅ Makefile task automation
+- ✅ PWA support (installable, offline capable)
 
 ## Future Enhancements (Optional)
 
@@ -358,7 +384,6 @@ glasses:
 - [ ] Export to PDF
 - [ ] Print-friendly styles
 - [ ] Dark mode toggle
-- [ ] PWA support
 - [ ] Image optimization
 - [ ] i18n support
 
