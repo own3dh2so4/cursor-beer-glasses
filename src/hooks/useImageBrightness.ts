@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
+import type { BrightnessResult } from '../types'
 
 /**
  * Custom hook to analyze image brightness and determine appropriate background and text colors
- * @param {string} imageSrc - The image source URL
- * @returns {object} - { backgroundColor, textColor, isAnalyzing }
+ * @param imageSrc - The image source URL
+ * @returns Object containing backgroundColor, textColor, and isAnalyzing state
  */
-const useImageBrightness = (imageSrc) => {
-  const [backgroundColor, setBackgroundColor] = useState('rgba(255, 255, 255, 0.85)')
-  const [textColor, setTextColor] = useState('#1a202c')
-  const [isAnalyzing, setIsAnalyzing] = useState(true)
+const useImageBrightness = (imageSrc: string): BrightnessResult => {
+  const [backgroundColor, setBackgroundColor] = useState<string>('rgba(255, 255, 255, 0.85)')
+  const [textColor, setTextColor] = useState<string>('#1a202c')
+  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(true)
 
   useEffect(() => {
     if (!imageSrc) {
@@ -24,6 +25,10 @@ const useImageBrightness = (imageSrc) => {
         try {
           const canvas = document.createElement('canvas')
           const ctx = canvas.getContext('2d')
+          
+          if (!ctx) {
+            throw new Error('Could not get canvas context')
+          }
           
           // Reduce image size for faster analysis
           const maxSize = 100
@@ -47,7 +52,7 @@ const useImageBrightness = (imageSrc) => {
             const a = data[i + 3]
             
             // Only count non-transparent pixels
-            if (a > 50) {
+            if (a && a > 50) {
               // Calculate perceived brightness (using luminance formula)
               const brightness = (0.299 * r + 0.587 * g + 0.114 * b)
               totalBrightness += brightness

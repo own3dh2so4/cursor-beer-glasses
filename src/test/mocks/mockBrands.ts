@@ -2,7 +2,9 @@
  * Mock data for testing
  */
 
-export const mockBrand1 = {
+import type { Brand } from '../../types'
+
+export const mockBrand1: Brand = {
   name: 'Test Beer 1',
   id: 'test_beer_1',
   from_city: 'Madrid',
@@ -25,7 +27,7 @@ export const mockBrand1 = {
   ]
 }
 
-export const mockBrand2 = {
+export const mockBrand2: Brand = {
   name: 'Test Beer 2',
   id: 'test_beer_2',
   from_city: 'Dublin',
@@ -41,7 +43,7 @@ export const mockBrand2 = {
       photo: 'test_beer_2/glass_0.jpg',
       bought_city: 'Dublin',
       bought_country: 'Ireland',
-      got: 'gift',
+      got: 'present',
       got_from: 'Friend',
       map: 'https://maps.google.com/embed?glass2a'
     },
@@ -58,5 +60,5 @@ export const mockBrand2 = {
   ]
 }
 
-export const mockBrands = [mockBrand1, mockBrand2]
+export const mockBrands: Brand[] = [mockBrand1, mockBrand2]
 

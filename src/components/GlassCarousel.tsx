@@ -1,6 +1,13 @@
 import { getAssetPath } from '../utils/dataLoader'
+import type { Glass } from '../types'
 
-function GlassCarousel({ glasses, currentIndex, onIndexChange }) {
+interface GlassCarouselProps {
+  glasses: Glass[]
+  currentIndex: number
+  onIndexChange: (index: number) => void
+}
+
+function GlassCarousel({ glasses, currentIndex, onIndexChange }: GlassCarouselProps) {
   const handlePrevious = () => {
     onIndexChange(currentIndex > 0 ? currentIndex - 1 : glasses.length - 1)
   }
@@ -10,6 +17,10 @@ function GlassCarousel({ glasses, currentIndex, onIndexChange }) {
   }
 
   const currentGlass = glasses[currentIndex]
+
+  if (!currentGlass) {
+    return null
+  }
 
   return (
     <div className="glass-carousel">
@@ -26,7 +37,7 @@ function GlassCarousel({ glasses, currentIndex, onIndexChange }) {
         
         <div className="carousel-image-container">
           <img 
-            src={getAssetPath(currentGlass.photo)} 
+            src={getAssetPath(currentGlass.photo || '')} 
             alt={currentGlass.name}
             className="carousel-image"
           />

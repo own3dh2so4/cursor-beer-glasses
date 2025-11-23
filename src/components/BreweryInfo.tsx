@@ -1,4 +1,11 @@
-function BreweryInfo({ brand, textColor }) {
+import type { Brand } from '../types'
+
+interface BreweryInfoProps {
+  brand: Brand
+  textColor: string
+}
+
+function BreweryInfo({ brand, textColor }: BreweryInfoProps) {
   return (
     <div className="brewery-info">
       <h2 className="section-title" style={{ color: textColor }}>Brewery Information</h2>
@@ -39,7 +46,7 @@ function BreweryInfo({ brand, textColor }) {
             src={brand.map}
             width="100%"
             style={{ border: 0 }}
-            allowFullScreen=""
+            allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title={`Map of ${brand.name}`}

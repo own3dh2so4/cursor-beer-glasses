@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { getAssetPath } from '../utils/dataLoader'
+import type { Brand } from '../types'
 
-function GalleryCard({ brand }) {
+interface GalleryCardProps {
+  brand: Brand
+}
+
+function GalleryCard({ brand }: GalleryCardProps) {
   const navigate = useNavigate()
 
   const handleClick = () => {

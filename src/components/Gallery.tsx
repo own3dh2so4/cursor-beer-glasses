@@ -2,11 +2,12 @@ import { useState, useEffect, useMemo } from 'react'
 import { loadAllBrands } from '../utils/dataLoader'
 import GalleryCard from './GalleryCard'
 import FilterBar from './FilterBar'
+import type { Brand, Filters } from '../types'
 
 function Gallery() {
-  const [allBrands, setAllBrands] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [filters, setFilters] = useState({
+  const [allBrands, setAllBrands] = useState<Brand[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [filters, setFilters] = useState<Filters>({
     search: '',
     country: '',
     glassCount: '',
@@ -87,7 +88,7 @@ function Gallery() {
     return result
   }, [allBrands, filters])
 
-  const handleFilterChange = (newFilters) => {
+  const handleFilterChange = (newFilters: Filters) => {
     setFilters(newFilters)
   }
 

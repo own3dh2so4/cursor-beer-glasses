@@ -1,10 +1,19 @@
 import { useMemo, useState } from 'react'
+import type { Brand, Filters, FilterOptions } from '../types'
 
-function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }) {
-  const [isExpanded, setIsExpanded] = useState(false)
+interface FilterBarProps {
+  brands: Brand[]
+  allBrands: Brand[]
+  filters: Filters
+  onFilterChange: (filters: Filters) => void
+  onReset: () => void
+}
+
+function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: FilterBarProps) {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
   
   // Map countries to flag emojis
-  const countryFlags = useMemo(() => ({
+  const countryFlags = useMemo<Record<string, string>>(() => ({
     'Belgium': '🇧🇪',
     'Spain': '🇪🇸',
     'Germany': '🇩🇪',
@@ -26,13 +35,7 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }) {
 
   // Calculate available options based on current filters
   // This ensures only options with results are shown
-  const filterOptions = useMemo(() => {
-    // Start with all brands and progressively filter
-    let availableBrands = [...allBrands]
-
-    // Apply each filter except the one we're calculating options for
-    // This way each dropdown shows only values that have results with current filters
-
+  const filterOptions = useMemo<FilterOptions>(() => {
     // For country filter - apply all except country
     let brandsForCountry = [...allBrands]
     if (filters.search) {
@@ -102,13 +105,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }) {
     )].filter(Boolean).sort()
 
     const boughtCountries = [...new Set(
-      brandsForBoughtCountry.flatMap(b => b.glasses.map(g => g.bought_country))
-    )].filter(Boolean).sort()
+      brandsForBoughtCountry.flatMap(b => b.glasses.map(g => g.bought_country).filter((c): c is string => Boolean(c)))
+    )].sort()
     
     return { countries, gotMethods, boughtCountries }
   }, [allBrands, filters])
 
-  const handleChange = (field, value) => {
+  const handleChange = (field: keyof Filters, value: string) => {
     onFilterChange({ ...filters, [field]: value })
   }
 
@@ -200,7 +203,7 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }) {
             id="glassCount"
             className="filter-select"
             value={filters.glassCount}
-            onChange={(e) => handleChange('glassCount', e.target.value)}
+            onChange={(e) => handleChange('glassCount', e.target.value as '' | 'single' | 'multiple')}
           >
             <option value="">All</option>
             <option value="single">Single Glass</option>
@@ -255,7 +258,7 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }) {
             id="sort"
             className="filter-select"
             value={filters.sort}
-            onChange={(e) => handleChange('sort', e.target.value)}
+            onChange={(e) => handleChange('sort', e.target.value as Filters['sort'])}
           >
             <option value="name-asc">A → Z (Name)</option>
             <option value="name-desc">Z → A (Name)</option>

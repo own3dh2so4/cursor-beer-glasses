@@ -27,6 +27,7 @@ A modern, responsive single-page application showcasing a collection of beer gla
 ## Tech Stack
 
 - **React 18**: Modern UI library
+- **TypeScript**: Static typing for enhanced code quality and developer experience
 - **Vite**: Lightning-fast build tool
 - **React Router v6**: Client-side routing
 - **js-yaml**: YAML data parsing

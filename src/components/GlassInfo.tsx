@@ -1,4 +1,11 @@
-function GlassInfo({ glass, textColor }) {
+import type { Glass } from '../types'
+
+interface GlassInfoProps {
+  glass: Glass
+  textColor: string
+}
+
+function GlassInfo({ glass, textColor }: GlassInfoProps) {
   return (
     <div className="glass-info">
       <h2 className="section-title" style={{ color: textColor }}>Glass Details</h2>
@@ -36,7 +43,7 @@ function GlassInfo({ glass, textColor }) {
             src={glass.map}
             width="100%"
             style={{ border: 0 }}
-            allowFullScreen=""
+            allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title={`Map of ${glass.bought_city}`}

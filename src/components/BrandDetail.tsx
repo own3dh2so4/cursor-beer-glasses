@@ -5,20 +5,26 @@ import useImageBrightness from '../hooks/useImageBrightness'
 import BreweryInfo from './BreweryInfo'
 import GlassCarousel from './GlassCarousel'
 import GlassInfo from './GlassInfo'
+import type { Brand } from '../types'
 
 function BrandDetail() {
-  const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const [brand, setBrand] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [currentGlassIndex, setCurrentGlassIndex] = useState(0)
+  const [brand, setBrand] = useState<Brand | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
+  const [currentGlassIndex, setCurrentGlassIndex] = useState<number>(0)
   
   // Analyze image brightness to determine background and text colors
-  const imageUrl = brand ? getAssetPath(brand.name_image) : null
+  const imageUrl = brand?.name_image ? getAssetPath(brand.name_image) : ''
   const { backgroundColor, textColor } = useImageBrightness(imageUrl)
 
   useEffect(() => {
     async function fetchBrand() {
+      if (!id) {
+        navigate('/')
+        return
+      }
+
       setLoading(true)
       const data = await loadBrandById(id)
       
@@ -49,6 +55,10 @@ function BrandDetail() {
 
   const currentGlass = brand.glasses[currentGlassIndex]
 
+  if (!currentGlass) {
+    return null
+  }
+
   return (
     <div className="brand-detail-wrapper">
       <div className="brand-detail-background" />
@@ -70,11 +80,13 @@ function BrandDetail() {
             className="brand-name-link"
             style={{ backgroundColor }}
           >
-            <img 
-              src={getAssetPath(brand.name_image)} 
-              alt={brand.name}
-              className="brand-name-image"
-            />
+            {brand.name_image && (
+              <img 
+                src={getAssetPath(brand.name_image)} 
+                alt={brand.name}
+                className="brand-name-image"
+              />
+            )}
           </a>
         </header>
 
