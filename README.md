@@ -5,10 +5,9 @@ A modern, responsive single-page application showcasing a collection of beer gla
 ## Features
 
 - **Responsive Gallery**: Browse through a beautiful grid of beer brand logos
-- **Advanced Filtering System**: 7 combinable filters to explore your collection:
+- **Advanced Filtering System**: 6 combinable filters to explore your collection:
   - 🔍 Search by name
   - 📍 Filter by origin country
-  - 🌍 Filter by continent
   - 🍺 Filter by glass count (single/multiple)
   - 🎁 Filter by acquisition method (bought/gift)
   - 🛍️ Filter by purchase location
@@ -124,17 +123,37 @@ Test coverage: **92%+ passing** (48/52 tests)
 
 This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
 
-### Manual Deployment
+### GitHub Pages SPA Routing
 
-```bash
-# Build and deploy
-npm run build
-npm run deploy
-```
+This app includes a special routing configuration to handle direct URL access (deep linking) on GitHub Pages.
+
+**How it works:**
+
+When you access a URL like `https://own3dh2so4.github.io/cursor-beer-glasses/heineken` directly:
+
+1. GitHub Pages doesn't find that specific file and serves `404.html`
+2. The `404.html` script saves the requested URL in `sessionStorage` and redirects to the root
+3. The `index.html` loads and restores the original URL using `history.replaceState()`
+4. React Router sees the correct URL and renders the appropriate page
+
+**Benefits:**
+- ✅ Direct links to brand pages work correctly
+- ✅ Browser back/forward buttons work as expected  
+- ✅ Bookmarks and shared links function properly
+- ✅ Page refreshes maintain the current route
 
 ### Automatic Deployment
 
-Push to the `main` branch to trigger automatic deployment via GitHub Actions.
+Push to the `master` branch to trigger automatic deployment via GitHub Actions.
+
+### Manual Build
+
+```bash
+# Build for production
+npm run build
+
+# Output will be in ./dist directory
+```
 
 ## Adding New Beers
 
