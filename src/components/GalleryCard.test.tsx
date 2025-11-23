@@ -42,10 +42,12 @@ describe('GalleryCard', () => {
 
   it('should navigate to brand detail page on click', async () => {
     const user = userEvent.setup()
-    renderGalleryCard()
+    const { container } = renderGalleryCard()
     
-    const card = screen.getByRole('generic').parentElement
-    await user.click(card)
+    const card = container.querySelector('.gallery-card')
+    if (card) {
+      await user.click(card)
+    }
     
     expect(mockNavigate).toHaveBeenCalledWith('/test_beer_1')
   })

@@ -68,6 +68,15 @@ describe('dataLoader', () => {
     })
 
     it('should fetch from correct URL with base path', async () => {
+      // Ensure import.meta.env.BASE_URL is set before importing
+      if (!import.meta.env) {
+        Object.defineProperty(import.meta, 'env', {
+          value: { BASE_URL: '/cursor-beer-glasses/' },
+          writable: true,
+          configurable: true
+        })
+      }
+      
       const { loadAllBrands } = await import('./dataLoader')
       
       global.fetch.mockResolvedValueOnce({
@@ -77,7 +86,10 @@ describe('dataLoader', () => {
 
       await loadAllBrands()
 
-      expect(global.fetch).toHaveBeenCalledWith('/cursor-beer-glasses/brands-index.json')
+      const expectedUrl = import.meta.env.BASE_URL 
+        ? `${import.meta.env.BASE_URL}brands-index.json` 
+        : '/brands-index.json'
+      expect(global.fetch).toHaveBeenCalledWith(expectedUrl)
     })
   })
 

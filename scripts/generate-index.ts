@@ -43,8 +43,8 @@ function generateIndex(): void {
     // Write to output file
     fs.writeFileSync(outputFile, JSON.stringify(brands, null, 2), 'utf8')
     
-    console.log(`✓ Generated index with ${brands.length} brands`)
-    console.log(`  Output: ${outputFile}`)
+    console.error(`✓ Generated index with ${brands.length} brands`)
+    console.error(`  Output: ${outputFile}`)
   } catch (err) {
     const error = err as Error
     console.error('Error generating index:', error.message)

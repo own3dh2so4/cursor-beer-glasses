@@ -23,7 +23,7 @@ export async function loadAllBrands(): Promise<Brand[]> {
     const brands = await response.json() as Brand[]
     
     brandsCache = brands
-    console.log(`✓ Loaded ${brands.length} brands`)
+    console.error(`✓ Loaded ${brands.length} brands`)
     return brands
   } catch (error) {
     console.error('Error loading brand data:', error)

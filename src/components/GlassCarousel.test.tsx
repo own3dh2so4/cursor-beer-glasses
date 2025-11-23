@@ -22,10 +22,14 @@ describe('GlassCarousel', () => {
     vi.clearAllMocks()
   })
 
-  it('should render section title', () => {
-    renderCarousel()
+  it('should render carousel with glass image', () => {
+    const { container } = renderCarousel()
     
-    expect(screen.getByText('Glass Photo')).toBeInTheDocument()
+    const carousel = container.querySelector('.glass-carousel')
+    expect(carousel).toBeInTheDocument()
+    
+    const image = container.querySelector('.carousel-image')
+    expect(image).toBeInTheDocument()
   })
 
   it('should render current glass image', () => {

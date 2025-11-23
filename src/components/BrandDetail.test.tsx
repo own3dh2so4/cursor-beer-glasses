@@ -1,17 +1,19 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import BrandDetail from './BrandDetail'
 import { mockBrand1, mockBrand2 } from '../test/mocks/mockBrands'
 
 const mockNavigate = vi.fn()
+let mockParams = { id: 'test_beer_1' }
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom')
   return {
     ...actual,
-    useNavigate: () => mockNavigate
+    useNavigate: () => mockNavigate,
+    useParams: () => mockParams
   }
 })
 
@@ -25,11 +27,13 @@ describe('BrandDetail', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks()
+    mockParams = { id: 'test_beer_1' }
     const dataLoader = await import('../utils/dataLoader')
     loadBrandById = dataLoader.loadBrandById
   })
 
   const renderBrandDetail = (brandId = 'test_beer_1') => {
+    mockParams = { id: brandId }
     return render(
       <MemoryRouter initialEntries={[`/${brandId}`]}>
         <BrandDetail />
@@ -70,10 +74,10 @@ describe('BrandDetail', () => {
 
   it('should render brand name image as clickable link', async () => {
     loadBrandById.mockResolvedValue(mockBrand1)
-    renderBrandDetail()
+    const { container } = renderBrandDetail()
     
     await waitFor(() => {
-      const link = screen.getByRole('link')
+      const link = container.querySelector('.brand-name-link')
       expect(link).toHaveAttribute('href', mockBrand1.website)
       expect(link).toHaveAttribute('target', '_blank')
       
@@ -95,10 +99,14 @@ describe('BrandDetail', () => {
 
   it('should render glass carousel section', async () => {
     loadBrandById.mockResolvedValue(mockBrand1)
-    renderBrandDetail()
+    const { container } = renderBrandDetail()
     
     await waitFor(() => {
-      expect(screen.getByText('Glass Photo')).toBeInTheDocument()
+      const carousel = container.querySelector('.glass-carousel')
+      expect(carousel).toBeInTheDocument()
+      
+      const carouselImage = container.querySelector('.carousel-image')
+      expect(carouselImage).toBeInTheDocument()
     })
   })
 

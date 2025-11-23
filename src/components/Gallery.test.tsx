@@ -39,9 +39,10 @@ describe('Gallery', () => {
     
     await waitFor(() => {
       expect(screen.getByText('Own3dh2so4 Beer Glasses Collection')).toBeInTheDocument()
+      expect(screen.getByText((content, element) => {
+        return element?.textContent === 'Showing 2 of 2 brands'
+      })).toBeInTheDocument()
     })
-    
-    expect(screen.getByText(/2 unique glasses from around the world/)).toBeInTheDocument()
   })
 
   it('should render all brands from data loader', async () => {
@@ -69,7 +70,9 @@ describe('Gallery', () => {
     renderGallery()
     
     await waitFor(() => {
-      expect(screen.getByText(/0 unique glasses from around the world/)).toBeInTheDocument()
+      expect(screen.getByText((content, element) => {
+        return element?.textContent === 'Showing 0 of 0 brands'
+      })).toBeInTheDocument()
     })
   })
 

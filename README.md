@@ -34,13 +34,14 @@ A modern, responsive single-page application showcasing a collection of beer gla
 - **CSS3**: Responsive, mobile-first styling
 - **Vitest**: Fast unit test framework
 - **React Testing Library**: Component testing utilities
+- **ESLint 9**: Code linting with TypeScript and React rules
 
 ## Setup and Development
 
 ### Prerequisites
 
-- Node.js 16 or higher
-- npm 8 or higher
+- Node.js 18 or higher (recommended: Node 24 LTS)
+- npm 9 or higher
 
 ### Installation
 
@@ -87,9 +88,15 @@ npm run test:watch
 
 # Coverage report
 npm run test:coverage
+
+# Linting
+npm run lint
+
+# Auto-fix linting errors
+npm run lint:fix
 ```
 
-Test coverage: **92%+ passing** (48/52 tests)
+Test coverage: **100% passing** (80/80 tests)
 
 ## Project Structure
 
@@ -155,6 +162,38 @@ npm run build
 
 # Output will be in ./dist directory
 ```
+
+## Code Quality & Linting
+
+This project uses **ESLint 9** with strict TypeScript rules to maintain code quality.
+
+### Linting Commands
+
+```bash
+# Check for linting errors
+npm run lint
+
+# Auto-fix linting errors where possible
+npm run lint:fix
+```
+
+### ESLint Configuration
+
+The project uses:
+- **@typescript-eslint/eslint-plugin**: TypeScript-specific linting rules
+- **eslint-plugin-react-hooks**: Enforces Rules of Hooks
+- **eslint-plugin-react-refresh**: Vite HMR compatibility
+- **Strict mode enabled**: Catches potential bugs early
+
+Key rules:
+- TypeScript strict null checks
+- No unused variables (except those prefixed with `_`)
+- React Hooks rules enforced
+- Console statements limited to `console.warn` and `console.error`
+
+### IDE Integration
+
+Most modern IDEs (VS Code, WebStorm, etc.) will automatically detect the ESLint configuration and show linting errors inline as you code.
 
 ## Adding New Beers
 
