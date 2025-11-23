@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  # Development service with hot-reload
+  dev:
+    build:
+      context: .
+      target: development
+    container_name: beer-glasses-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount source files for hot-reload
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./tailwind.config.js:/app/tailwind.config.js
+      - ./postcss.config.cjs:/app/postcss.config.cjs
+      - ./vite.config.ts:/app/vite.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./tsconfig.node.json:/app/tsconfig.node.json
+      - ./src/index.css:/app/src/index.css
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=5173
+    stdin_open: true
+    tty: true
+
+  # Test service
+  test:
+    build:
+      context: .
+      target: test
+    container_name: beer-glasses-test
+    volumes:
+      # Mount source and test files
+      - ./src:/app/src
+      - ./vitest.config.ts:/app/vitest.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./tsconfig.node.json:/app/tsconfig.node.json
+    environment:
+      - NODE_ENV=test
+

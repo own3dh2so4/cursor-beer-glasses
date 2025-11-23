@@ -75,6 +75,84 @@ The development server will start at `http://localhost:5173/cursor-beer-glasses/
 
 **Note:** The app uses a pre-generated JSON index of all brands for optimal performance. This index is automatically generated during the build process from all YAML files in `public/data/`.
 
+## Docker Development
+
+You can run the application in Docker without needing to install Node.js locally.
+
+### Docker Prerequisites
+
+- Docker 24.0 or higher
+- Docker Compose 2.20 or higher
+
+### Quick Start with Docker
+
+```bash
+# Build Docker images
+make docker-build
+
+# Start development server (with hot-reload)
+make docker-dev
+# App runs on http://localhost:5173/cursor-beer-glasses/
+
+# Run tests
+make docker-test
+
+# Run tests in watch mode
+make docker-test-watch
+
+# Stop containers
+make docker-down
+```
+
+### Docker Commands
+
+All Docker commands are available via the Makefile:
+
+| Command | Description |
+|---------|-------------|
+| `make docker-build` | Build Docker images from scratch |
+| `make docker-dev` | Start development server with hot-reload |
+| `make docker-dev-bg` | Start dev server in background (detached) |
+| `make docker-test` | Run all tests once |
+| `make docker-test-watch` | Run tests in interactive watch mode |
+| `make docker-test-coverage` | Run tests with coverage report |
+| `make docker-down` | Stop all running containers |
+| `make docker-clean` | Remove containers, volumes, and images |
+| `make docker-logs` | View development server logs |
+| `make docker-shell` | Open interactive shell in dev container |
+| `make docker-rebuild` | Complete rebuild and restart |
+
+### Development Workflow with Docker
+
+1. **Edit files locally** - No need to enter the container
+2. **See changes instantly** - Hot-reload works automatically
+3. **Run tests** - Isolated environment, consistent results
+
+```bash
+# Start development server in background
+make docker-dev-bg
+
+# Edit your files in src/
+# Changes reflect automatically in the browser
+
+# Run tests when ready
+make docker-test
+
+# View logs if needed
+make docker-logs
+
+# Stop when done
+make docker-down
+```
+
+### Benefits of Docker Development
+
+- ✅ **No Node.js installation needed** - Docker provides everything
+- ✅ **Consistent environment** - Same Node.js version for all developers
+- ✅ **Isolated testing** - Tests run in clean environment
+- ✅ **Hot-reload works** - Edit locally, see changes instantly
+- ✅ **CI/CD ready** - Same Docker setup for pipelines
+
 ## Testing
 
 The project includes comprehensive unit tests for all components and utilities. See [TESTING.md](./TESTING.md) for detailed testing documentation.
