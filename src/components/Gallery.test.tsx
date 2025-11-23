@@ -1,21 +1,22 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import Gallery from './Gallery'
 import { mockBrands } from '../test/mocks/mockBrands'
+import type { Brand } from '../types'
 
 vi.mock('../utils/dataLoader', () => ({
   loadAllBrands: vi.fn(),
-  getAssetPath: (path) => `/cursor-beer-glasses/data/${path}`
+  getAssetPath: (path: string) => `/cursor-beer-glasses/data/${path}`
 }))
 
 describe('Gallery', () => {
-  let loadAllBrands
+  let loadAllBrands: Mock<[], Promise<Brand[]>>
 
   beforeEach(async () => {
     vi.clearAllMocks()
     const dataLoader = await import('../utils/dataLoader')
-    loadAllBrands = dataLoader.loadAllBrands
+    loadAllBrands = dataLoader.loadAllBrands as Mock<[], Promise<Brand[]>>
   })
 
   const renderGallery = () => {
@@ -27,7 +28,7 @@ describe('Gallery', () => {
   }
 
   it('should show loading state initially', () => {
-    loadAllBrands.mockImplementation(() => new Promise(() => {}))
+    loadAllBrands.mockImplementation(() => new Promise<Brand[]>(() => {}))
     renderGallery()
     
     expect(screen.getByText('Loading...')).toBeInTheDocument()
@@ -39,7 +40,7 @@ describe('Gallery', () => {
     
     await waitFor(() => {
       expect(screen.getByText('Own3dh2so4 Beer Glasses Collection')).toBeInTheDocument()
-      expect(screen.getByText((content, element) => {
+      expect(screen.getByText((_content, element) => {
         return element?.textContent === 'Showing 2 of 2 brands'
       })).toBeInTheDocument()
     })
@@ -70,7 +71,7 @@ describe('Gallery', () => {
     renderGallery()
     
     await waitFor(() => {
-      expect(screen.getByText((content, element) => {
+      expect(screen.getByText((_content, element) => {
         return element?.textContent === 'Showing 0 of 0 brands'
       })).toBeInTheDocument()
     })

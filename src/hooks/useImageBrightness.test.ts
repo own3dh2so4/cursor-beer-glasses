@@ -1,13 +1,33 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
 import { renderHook, waitFor } from '@testing-library/react'
 import useImageBrightness from './useImageBrightness'
 
+interface MockCanvasContext {
+  drawImage: Mock
+  getImageData: Mock
+}
+
+interface MockCanvas {
+  getContext: Mock
+  width: number
+  height: number
+}
+
+interface MockImageInstance {
+  crossOrigin: string | null
+  onload: (() => void) | null
+  onerror: (() => void) | null
+  src: string | null
+  width: number
+  height: number
+}
+
 describe('useImageBrightness', () => {
-  let mockCanvas
-  let mockContext
-  let mockImage
-  let originalCreateElement
-  let originalImage
+  let mockCanvas: MockCanvas
+  let mockContext: MockCanvasContext
+  let mockImage: MockImageInstance
+  let originalCreateElement: typeof document.createElement
+  let originalImage: typeof Image
 
   beforeEach(() => {
     // Save originals
@@ -27,25 +47,26 @@ describe('useImageBrightness', () => {
     }
 
     // Mock document.createElement for canvas
-    document.createElement = vi.fn((tag) => {
+    document.createElement = vi.fn((tag: string) => {
       if (tag === 'canvas') {
-        return mockCanvas
+        return mockCanvas as unknown as HTMLCanvasElement
       }
       return originalCreateElement.call(document, tag)
-    })
+    }) as typeof document.createElement
 
     // Mock Image constructor
-    global.Image = class {
+    global.Image = class MockImage {
+      crossOrigin: string | null = null
+      onload: (() => void) | null = null
+      onerror: (() => void) | null = null
+      src: string | null = null
+      width = 100
+      height = 100
+      
       constructor() {
         mockImage = this
-        this.crossOrigin = null
-        this.onload = null
-        this.onerror = null
-        this.src = null
-        this.width = 100
-        this.height = 100
       }
-    }
+    } as unknown as typeof Image
 
     // Clear console warnings
     vi.spyOn(console, 'warn').mockImplementation(() => {})
@@ -80,7 +101,7 @@ describe('useImageBrightness', () => {
     const { result } = renderHook(() => useImageBrightness('/bright-image.jpg'))
     
     // Trigger image load
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -103,7 +124,7 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/medium-image.jpg'))
     
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -126,7 +147,7 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/dark-image.jpg'))
     
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -149,7 +170,7 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/transparent-image.png'))
     
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -163,7 +184,7 @@ describe('useImageBrightness', () => {
   it('should handle image load error gracefully', async () => {
     const { result } = renderHook(() => useImageBrightness('/error-image.jpg'))
     
-    mockImage.onerror()
+    if (mockImage.onerror) mockImage.onerror()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -181,7 +202,7 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/test-image.jpg'))
     
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -196,7 +217,7 @@ describe('useImageBrightness', () => {
   })
 
   it('should handle null or undefined image source', () => {
-    const { result } = renderHook(() => useImageBrightness(null))
+    const { result } = renderHook(() => useImageBrightness(null as unknown as string))
     
     expect(result.current.isAnalyzing).toBe(false)
     expect(result.current.backgroundColor).toBe('rgba(255, 255, 255, 0.85)')
@@ -219,7 +240,7 @@ describe('useImageBrightness', () => {
 
     renderHook(() => useImageBrightness('/large-image.jpg'))
     
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(mockCanvas.width).toBeLessThanOrEqual(100)
@@ -229,8 +250,8 @@ describe('useImageBrightness', () => {
 
   it('should handle image source changes to null', async () => {
     const { result, rerender } = renderHook(
-      ({ src }) => useImageBrightness(src),
-      { initialProps: { src: '/image1.jpg' } }
+      ({ src }: { src: string | null }) => useImageBrightness(src as string),
+      { initialProps: { src: '/image1.jpg' as string | null } }
     )
 
     // First render should be analyzing
@@ -240,7 +261,7 @@ describe('useImageBrightness', () => {
     mockContext.getImageData.mockReturnValue({
       data: new Uint8ClampedArray([250, 250, 250, 255, 250, 250, 250, 255])
     })
-    mockImage.onload()
+    if (mockImage.onload) mockImage.onload()
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)

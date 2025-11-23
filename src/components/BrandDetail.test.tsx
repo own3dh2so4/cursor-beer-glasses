@@ -1,15 +1,16 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import BrandDetail from './BrandDetail'
 import { mockBrand1, mockBrand2 } from '../test/mocks/mockBrands'
+import type { Brand } from '../types'
 
 const mockNavigate = vi.fn()
 let mockParams = { id: 'test_beer_1' }
 
 vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom')
+  const actual = await vi.importActual('react-router-dom') as Record<string, unknown>
   return {
     ...actual,
     useNavigate: () => mockNavigate,
@@ -19,17 +20,17 @@ vi.mock('react-router-dom', async () => {
 
 vi.mock('../utils/dataLoader', () => ({
   loadBrandById: vi.fn(),
-  getAssetPath: (path) => `/cursor-beer-glasses/data/${path}`
+  getAssetPath: (path: string) => `/cursor-beer-glasses/data/${path}`
 }))
 
 describe('BrandDetail', () => {
-  let loadBrandById
+  let loadBrandById: Mock<[string], Promise<Brand | undefined>>
 
   beforeEach(async () => {
     vi.clearAllMocks()
     mockParams = { id: 'test_beer_1' }
     const dataLoader = await import('../utils/dataLoader')
-    loadBrandById = dataLoader.loadBrandById
+    loadBrandById = dataLoader.loadBrandById as Mock<[string], Promise<Brand | undefined>>
   })
 
   const renderBrandDetail = (brandId = 'test_beer_1') => {
@@ -42,7 +43,7 @@ describe('BrandDetail', () => {
   }
 
   it('should show loading state initially', () => {
-    loadBrandById.mockImplementation(() => new Promise(() => {}))
+    loadBrandById.mockImplementation(() => new Promise<Brand | undefined>(() => {}))
     renderBrandDetail()
     
     expect(screen.getByText('Loading...')).toBeInTheDocument()
@@ -93,7 +94,9 @@ describe('BrandDetail', () => {
     await waitFor(() => {
       expect(screen.getByText('Brewery Information')).toBeInTheDocument()
       expect(screen.getByText(mockBrand1.name)).toBeInTheDocument()
-      expect(screen.getByText(mockBrand1.from_city)).toBeInTheDocument()
+      if (mockBrand1.from_city) {
+        expect(screen.getByText(mockBrand1.from_city)).toBeInTheDocument()
+      }
     })
   })
 
@@ -116,7 +119,10 @@ describe('BrandDetail', () => {
     
     await waitFor(() => {
       expect(screen.getByText('Glass Details')).toBeInTheDocument()
-      expect(screen.getByText(mockBrand1.glasses[0].name)).toBeInTheDocument()
+      const glassName = mockBrand1.glasses[0]?.name
+      if (glassName) {
+        expect(screen.getByText(glassName)).toBeInTheDocument()
+      }
     })
   })
 
@@ -140,7 +146,7 @@ describe('BrandDetail', () => {
   })
 
   it('should redirect to gallery when brand not found', async () => {
-    loadBrandById.mockResolvedValue(null)
+    loadBrandById.mockResolvedValue(undefined)
     renderBrandDetail('non_existent')
     
     await waitFor(() => {

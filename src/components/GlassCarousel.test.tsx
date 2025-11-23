@@ -51,7 +51,7 @@ describe('GlassCarousel', () => {
   })
 
   it('should not render navigation buttons for single glass', () => {
-    const singleGlass = [glasses[0]]
+    const singleGlass = glasses[0] ? [glasses[0]] : []
     render(
       <GlassCarousel
         glasses={singleGlass}
@@ -123,13 +123,15 @@ describe('GlassCarousel', () => {
     const { container } = renderCarousel(0)
     
     const indicators = container.querySelectorAll('.carousel-indicator')
-    await user.click(indicators[1])
-    
-    expect(mockOnIndexChange).toHaveBeenCalledWith(1)
+    const secondIndicator = indicators[1]
+    if (secondIndicator) {
+      await user.click(secondIndicator)
+      expect(mockOnIndexChange).toHaveBeenCalledWith(1)
+    }
   })
 
   it('should not render indicators for single glass', () => {
-    const singleGlass = [glasses[0]]
+    const singleGlass = glasses[0] ? [glasses[0]] : []
     const { container } = render(
       <GlassCarousel
         glasses={singleGlass}

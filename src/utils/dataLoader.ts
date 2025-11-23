@@ -47,3 +47,10 @@ export function getAssetPath(relativePath: string): string {
   return `${base}data/${relativePath}`
 }
 
+/**
+ * Clears the brands cache (useful for testing)
+ */
+export function clearCache(): void {
+  brandsCache = null
+}
+

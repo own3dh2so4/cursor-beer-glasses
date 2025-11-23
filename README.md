@@ -94,7 +94,12 @@ npm run lint
 
 # Auto-fix linting errors
 npm run lint:fix
+
+# TypeScript type checking
+npm run type-check
 ```
+
+**Note:** ESLint checks code style and basic rules, but **TypeScript type checking** (`npm run type-check`) is what catches missing props, incorrect types, and other type errors. See [TYPE_CHECKING.md](TYPE_CHECKING.md) for details.
 
 Test coverage: **100% passing** (80/80 tests)
 

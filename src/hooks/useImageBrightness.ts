@@ -46,10 +46,10 @@ const useImageBrightness = (imageSrc: string): BrightnessResult => {
           
           // Calculate average brightness
           for (let i = 0; i < data.length; i += 4) {
-            const r = data[i]
-            const g = data[i + 1]
-            const b = data[i + 2]
-            const a = data[i + 3]
+            const r = data[i] ?? 0
+            const g = data[i + 1] ?? 0
+            const b = data[i + 2] ?? 0
+            const a = data[i + 3] ?? 0
             
             // Only count non-transparent pixels
             if (a && a > 50) {

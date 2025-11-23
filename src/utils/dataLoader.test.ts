@@ -1,23 +1,22 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
 import { mockBrands } from '../test/mocks/mockBrands'
+import { loadAllBrands, loadBrandById, getAssetPath, clearCache } from './dataLoader'
 
 describe('dataLoader', () => {
-  beforeEach(async () => {
-    // Clear the cache before each test by resetting the module
-    vi.resetModules()
+  beforeEach(() => {
+    // Clear cache and mocks before each test
+    clearCache()
     vi.clearAllMocks()
-    global.fetch = vi.fn()
+    global.fetch = vi.fn() as Mock
   })
   
   afterEach(() => {
-    vi.resetModules()
+    vi.restoreAllMocks()
   })
 
   describe('loadAllBrands', () => {
     it('should load and return all brands', async () => {
-      const { loadAllBrands } = await import('./dataLoader')
-      
-      global.fetch.mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: true,
         json: async () => mockBrands
       })
@@ -25,14 +24,12 @@ describe('dataLoader', () => {
       const brands = await loadAllBrands()
 
       expect(brands).toHaveLength(2)
-      expect(brands[0].name).toBe('Test Beer 1')
-      expect(brands[1].name).toBe('Test Beer 2')
+      expect(brands[0]?.name).toBe('Test Beer 1')
+      expect(brands[1]?.name).toBe('Test Beer 2')
     })
 
     it('should cache brands after first load', async () => {
-      const { loadAllBrands } = await import('./dataLoader')
-      
-      global.fetch.mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: true,
         json: async () => mockBrands
       })
@@ -45,9 +42,7 @@ describe('dataLoader', () => {
     })
 
     it('should handle fetch errors gracefully', async () => {
-      const { loadAllBrands } = await import('./dataLoader')
-      
-      global.fetch.mockRejectedValueOnce(new Error('Network error'))
+      (global.fetch as Mock).mockRejectedValueOnce(new Error('Network error'))
 
       const brands = await loadAllBrands()
 
@@ -55,9 +50,7 @@ describe('dataLoader', () => {
     })
 
     it('should handle non-ok responses', async () => {
-      const { loadAllBrands } = await import('./dataLoader')
-      
-      global.fetch.mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: false,
         status: 404
       })
@@ -68,18 +61,7 @@ describe('dataLoader', () => {
     })
 
     it('should fetch from correct URL with base path', async () => {
-      // Ensure import.meta.env.BASE_URL is set before importing
-      if (!import.meta.env) {
-        Object.defineProperty(import.meta, 'env', {
-          value: { BASE_URL: '/cursor-beer-glasses/' },
-          writable: true,
-          configurable: true
-        })
-      }
-      
-      const { loadAllBrands } = await import('./dataLoader')
-      
-      global.fetch.mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: true,
         json: async () => mockBrands
       })
@@ -95,25 +77,21 @@ describe('dataLoader', () => {
 
   describe('loadBrandById', () => {
     beforeEach(() => {
-      global.fetch.mockResolvedValue({
+      (global.fetch as Mock).mockResolvedValue({
         ok: true,
         json: async () => mockBrands
       })
     })
 
     it('should load a specific brand by id', async () => {
-      const { loadBrandById } = await import('./dataLoader')
-      
       const brand = await loadBrandById('test_beer_1')
 
       expect(brand).toBeDefined()
-      expect(brand.name).toBe('Test Beer 1')
-      expect(brand.id).toBe('test_beer_1')
+      expect(brand?.name).toBe('Test Beer 1')
+      expect(brand?.id).toBe('test_beer_1')
     })
 
     it('should return undefined for non-existent id', async () => {
-      const { loadBrandById } = await import('./dataLoader')
-      
       const brand = await loadBrandById('non_existent')
 
       expect(brand).toBeUndefined()
@@ -121,25 +99,19 @@ describe('dataLoader', () => {
   })
 
   describe('getAssetPath', () => {
-    it('should generate correct asset path with base URL', async () => {
-      const { getAssetPath } = await import('./dataLoader')
-      
+    it('should generate correct asset path with base URL', () => {
       const path = getAssetPath('test_beer/logo.png')
 
       expect(path).toContain('data/test_beer/logo.png')
     })
 
-    it('should handle paths with leading slash', async () => {
-      const { getAssetPath } = await import('./dataLoader')
-      
+    it('should handle paths with leading slash', () => {
       const path = getAssetPath('/test_beer/logo.png')
 
       expect(path).toContain('data//test_beer/logo.png')
     })
 
-    it('should handle empty path', async () => {
-      const { getAssetPath } = await import('./dataLoader')
-      
+    it('should handle empty path', () => {
       const path = getAssetPath('')
 
       expect(path).toContain('data/')
