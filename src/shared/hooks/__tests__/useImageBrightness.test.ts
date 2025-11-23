@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
 import { renderHook, waitFor } from '@testing-library/react'
-import useImageBrightness from './useImageBrightness'
+import useImageBrightness from '../useImageBrightness'
 
 interface MockCanvasContext {
   drawImage: Mock

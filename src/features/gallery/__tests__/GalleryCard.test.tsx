@@ -2,8 +2,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
-import GalleryCard from './GalleryCard'
-import { mockBrand1 } from '../test/mocks/mockBrands'
+import GalleryCard from '../components/GalleryCard'
+import { mockBrand1 } from '../../../test/mocks/mockBrands'
 
 const mockNavigate = vi.fn()
 

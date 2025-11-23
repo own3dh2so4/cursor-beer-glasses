@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { getAssetPath } from '../utils/dataLoader'
-import type { Brand } from '../types'
+import { getAssetPath } from '../../../shared/utils/dataLoader'
+import type { Brand } from '../../../shared/types'
 
 interface GalleryCardProps {
   brand: Brand

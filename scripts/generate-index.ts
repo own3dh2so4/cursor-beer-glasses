@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
 import { fileURLToPath } from 'url'
-import type { Brand } from '../src/types'
+import type { Brand } from '../src/shared/types'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
-import { mockBrands } from '../test/mocks/mockBrands'
-import { loadAllBrands, loadBrandById, getAssetPath, clearCache } from './dataLoader'
+import { mockBrands } from '../../../test/mocks/mockBrands'
+import { loadAllBrands, loadBrandById, getAssetPath, clearCache } from '../dataLoader'
 
 describe('dataLoader', () => {
   beforeEach(() => {

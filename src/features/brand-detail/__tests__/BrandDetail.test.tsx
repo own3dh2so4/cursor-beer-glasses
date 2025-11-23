@@ -2,9 +2,9 @@ import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
-import BrandDetail from './BrandDetail'
-import { mockBrand1, mockBrand2 } from '../test/mocks/mockBrands'
-import type { Brand } from '../types'
+import BrandDetail from '../components/BrandDetail'
+import { mockBrand1, mockBrand2 } from '../../../test/mocks/mockBrands'
+import type { Brand } from '../../../shared/types'
 
 const mockNavigate = vi.fn()
 let mockParams = { id: 'test_beer_1' }
@@ -18,7 +18,7 @@ vi.mock('react-router-dom', async () => {
   }
 })
 
-vi.mock('../utils/dataLoader', () => ({
+vi.mock('../../../shared/utils/dataLoader', () => ({
   loadBrandById: vi.fn(),
   getAssetPath: (path: string) => `/cursor-beer-glasses/data/${path}`
 }))
@@ -29,7 +29,7 @@ describe('BrandDetail', () => {
   beforeEach(async () => {
     vi.clearAllMocks()
     mockParams = { id: 'test_beer_1' }
-    const dataLoader = await import('../utils/dataLoader')
+    const dataLoader = await import('../../../shared/utils/dataLoader')
     loadBrandById = dataLoader.loadBrandById as Mock
   })
 

@@ -1,5 +1,5 @@
-import { getAssetPath } from '../utils/dataLoader'
-import type { Glass } from '../types'
+import { getAssetPath } from '../../../shared/utils/dataLoader'
+import type { Glass } from '../../../shared/types'
 
 interface GlassCarouselProps {
   glasses: Glass[]

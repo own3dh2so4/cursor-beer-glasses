@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Gallery from './components/Gallery'
-import BrandDetail from './components/BrandDetail'
+import { Gallery } from './features/gallery'
+import { BrandDetail } from './features/brand-detail'
 
 function App() {
   return (

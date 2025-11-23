@@ -8,7 +8,7 @@ const mockLoadAllBrands = vi.fn()
 const mockLoadBrandById = vi.fn()
 const mockGetAssetPath = vi.fn((path: string) => `/cursor-beer-glasses/data/${path}`)
 
-vi.mock('./utils/dataLoader', () => ({
+vi.mock('./shared/utils/dataLoader', () => ({
   loadAllBrands: () => mockLoadAllBrands(),
   loadBrandById: (id: string) => mockLoadBrandById(id),
   getAssetPath: (path: string) => mockGetAssetPath(path)

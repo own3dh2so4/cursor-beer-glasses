@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import GlassCarousel from './GlassCarousel'
-import { mockBrand2 } from '../test/mocks/mockBrands'
+import GlassCarousel from '../components/GlassCarousel'
+import { mockBrand2 } from '../../../test/mocks/mockBrands'
 
 describe('GlassCarousel', () => {
   const glasses = mockBrand2.glasses

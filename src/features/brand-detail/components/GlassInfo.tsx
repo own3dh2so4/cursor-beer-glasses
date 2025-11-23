@@ -1,4 +1,4 @@
-import type { Glass } from '../types'
+import type { Glass } from '../../../shared/types'
 
 interface GlassInfoProps {
   glass: Glass

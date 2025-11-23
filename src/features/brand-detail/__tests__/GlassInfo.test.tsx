@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import GlassInfo from './GlassInfo'
-import { mockBrand1 } from '../test/mocks/mockBrands'
-import type { Glass } from '../types'
+import GlassInfo from '../components/GlassInfo'
+import { mockBrand1 } from '../../../test/mocks/mockBrands'
+import type { Glass } from '../../../shared/types'
 
 describe('GlassInfo', () => {
   const glass = mockBrand1.glasses[0] as Glass

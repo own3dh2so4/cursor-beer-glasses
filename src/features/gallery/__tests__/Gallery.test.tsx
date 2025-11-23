@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import Gallery from './Gallery'
-import { mockBrands } from '../test/mocks/mockBrands'
-import type { Brand } from '../types'
+import Gallery from '../components/Gallery'
+import { mockBrands } from '../../../test/mocks/mockBrands'
+import type { Brand } from '../../../shared/types'
 
-vi.mock('../utils/dataLoader', () => ({
+vi.mock('../../../shared/utils/dataLoader', () => ({
   loadAllBrands: vi.fn(),
   getAssetPath: (path: string) => `/cursor-beer-glasses/data/${path}`
 }))
@@ -15,7 +15,7 @@ describe('Gallery', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks()
-    const dataLoader = await import('../utils/dataLoader')
+    const dataLoader = await import('../../../shared/utils/dataLoader')
     loadAllBrands = dataLoader.loadAllBrands as Mock
   })
 

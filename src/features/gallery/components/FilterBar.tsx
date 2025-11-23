@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import type { Brand, Filters, FilterOptions } from '../types'
+import type { Brand, Filters, FilterOptions } from '../../../shared/types'
 
 interface FilterBarProps {
   brands: Brand[]
@@ -14,23 +14,48 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
   
   // Map countries to flag emojis
   const countryFlags = useMemo<Record<string, string>>(() => ({
+    // Current countries in collection
     'Belgium': '🇧🇪',
-    'Spain': '🇪🇸',
+    'Czech Republic': '🇨🇿',
     'Germany': '🇩🇪',
+    'Greece': '🇬🇷',
+    'Hungary': '🇭🇺',
     'Ireland': '🇮🇪',
+    'Italy': '🇮🇹',
+    'Luxembourg': '🇱🇺',
     'Netherlands': '🇳🇱',
     'Poland': '🇵🇱',
-    'Czech Republic': '🇨🇿',
-    'Russia': '🇷🇺',
-    'Hungary': '🇭🇺',
     'Portugal': '🇵🇹',
-    'UK': '🇬🇧',
-    'Italy': '🇮🇹',
-    'Greece': '🇬🇷',
-    'Luxembourg': '🇱🇺',
+    'Russia': '🇷🇺',
     'South Korea': '🇰🇷',
+    'Spain': '🇪🇸',
+    'UK': '🇬🇧',
+    'USA': '🇺🇸',
+    // Additional countries (for future use)
+    'Austria': '🇦🇹',
+    'Australia': '🇦🇺',
+    'Brazil': '🇧🇷',
+    'Canada': '🇨🇦',
+    'China': '🇨🇳',
+    'Denmark': '🇩🇰',
+    'Estonia': '🇪🇪',
+    'Finland': '🇫🇮',
+    'France': '🇫🇷',
+    'Iceland': '🇮🇸',
     'Japan': '🇯🇵',
-    'USA': '🇺🇸'
+    'Latvia': '🇱🇻',
+    'Lithuania': '🇱🇹',
+    'Mexico': '🇲🇽',
+    'New Zealand': '🇳🇿',
+    'Norway': '🇳🇴',
+    'Romania': '🇷🇴',
+    'Slovakia': '🇸🇰',
+    'Slovenia': '🇸🇮',
+    'Sweden': '🇸🇪',
+    'Switzerland': '🇨🇭',
+    'Thailand': '🇹🇭',
+    'Turkey': '🇹🇷',
+    'Ukraine': '🇺🇦'
   }), [])
 
   // Calculate available options based on current filters

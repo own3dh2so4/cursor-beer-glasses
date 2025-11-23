@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react'
-import { loadAllBrands } from '../utils/dataLoader'
+import { loadAllBrands } from '../../../shared/utils/dataLoader'
 import GalleryCard from './GalleryCard'
 import FilterBar from './FilterBar'
-import type { Brand, Filters } from '../types'
+import type { Brand, Filters } from '../../../shared/types'
 
 function Gallery() {
   const [allBrands, setAllBrands] = useState<Brand[]>([])

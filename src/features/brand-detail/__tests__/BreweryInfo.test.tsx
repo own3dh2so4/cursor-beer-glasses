@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import BreweryInfo from './BreweryInfo'
-import { mockBrand1 } from '../test/mocks/mockBrands'
+import BreweryInfo from '../components/BreweryInfo'
+import { mockBrand1 } from '../../../test/mocks/mockBrands'
 
 describe('BreweryInfo', () => {
   const defaultTextColor = '#1a202c'

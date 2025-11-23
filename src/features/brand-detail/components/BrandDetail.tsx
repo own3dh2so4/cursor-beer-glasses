@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { loadBrandById, getAssetPath } from '../utils/dataLoader'
-import useImageBrightness from '../hooks/useImageBrightness'
+import { loadBrandById, getAssetPath } from '../../../shared/utils/dataLoader'
+import useImageBrightness from '../../../shared/hooks/useImageBrightness'
 import BreweryInfo from './BreweryInfo'
 import GlassCarousel from './GlassCarousel'
 import GlassInfo from './GlassInfo'
-import type { Brand } from '../types'
+import type { Brand } from '../../../shared/types'
 
 function BrandDetail() {
   const { id } = useParams<{ id: string }>()

@@ -2,7 +2,7 @@
  * Mock data for testing
  */
 
-import type { Brand } from '../../types'
+import type { Brand } from '../../shared/types'
 
 export const mockBrand1: Brand = {
   name: 'Test Beer 1',
