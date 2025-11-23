@@ -21,7 +21,12 @@ describe('Gallery', () => {
 
   const renderGallery = () => {
     return render(
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
         <Gallery />
       </BrowserRouter>
     )

@@ -36,7 +36,13 @@ describe('BrandDetail', () => {
   const renderBrandDetail = (brandId = 'test_beer_1') => {
     mockParams = { id: brandId }
     return render(
-      <MemoryRouter initialEntries={[`/${brandId}`]}>
+      <MemoryRouter
+        initialEntries={[`/${brandId}`]}
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
         <BrandDetail />
       </MemoryRouter>
     )

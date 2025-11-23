@@ -18,7 +18,12 @@ vi.mock('react-router-dom', async () => {
 describe('GalleryCard', () => {
   const renderGalleryCard = (brand = mockBrand1) => {
     return render(
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
         <GalleryCard brand={brand} />
       </BrowserRouter>
     )

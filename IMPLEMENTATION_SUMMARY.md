@@ -376,17 +376,6 @@ The project has comprehensive test coverage:
 - ✅ Production build completes
 - ✅ GitHub Actions workflow configured
 
-### Test Coverage by Feature
-- App routing: 2 tests
-- Gallery feature: 2 tests
-- Gallery card: 4 tests
-- Brand detail: 11 tests
-- Brewery info: 5 tests
-- Glass carousel: 13 tests
-- Glass info: 8 tests
-- Image brightness hook: 11 tests
-- Data loader: 7 tests
-- Scripts: 17 tests
 
 ## Support
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
+import { renderHook, waitFor, act } from '@testing-library/react'
 import useImageBrightness from '../useImageBrightness'
 
 interface MockCanvasContext {
@@ -101,7 +101,9 @@ describe('useImageBrightness', () => {
     const { result } = renderHook(() => useImageBrightness('/bright-image.jpg'))
     
     // Trigger image load
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -124,7 +126,9 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/medium-image.jpg'))
     
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -147,7 +151,9 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/dark-image.jpg'))
     
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -170,7 +176,9 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/transparent-image.png'))
     
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -184,7 +192,9 @@ describe('useImageBrightness', () => {
   it('should handle image load error gracefully', async () => {
     const { result } = renderHook(() => useImageBrightness('/error-image.jpg'))
     
-    if (mockImage.onerror) mockImage.onerror()
+    await act(async () => {
+      if (mockImage.onerror) mockImage.onerror()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -202,7 +212,9 @@ describe('useImageBrightness', () => {
 
     const { result } = renderHook(() => useImageBrightness('/test-image.jpg'))
     
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
@@ -240,7 +252,9 @@ describe('useImageBrightness', () => {
 
     renderHook(() => useImageBrightness('/large-image.jpg'))
     
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(mockCanvas.width).toBeLessThanOrEqual(100)
@@ -261,7 +275,9 @@ describe('useImageBrightness', () => {
     mockContext.getImageData.mockReturnValue({
       data: new Uint8ClampedArray([250, 250, 250, 255, 250, 250, 250, 255])
     })
-    if (mockImage.onload) mockImage.onload()
+    await act(async () => {
+      if (mockImage.onload) mockImage.onload()
+    })
 
     await waitFor(() => {
       expect(result.current.isAnalyzing).toBe(false)
