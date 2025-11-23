@@ -26,22 +26,22 @@ A modern, responsive single-page application showcasing a collection of beer gla
 
 ## Tech Stack
 
-- **React 18**: Modern UI library
-- **TypeScript**: Static typing for enhanced code quality and developer experience
-- **Vite**: Lightning-fast build tool
+- **React 19**: Latest version with improved performance and new features
+- **TypeScript 5.9**: Static typing for enhanced code quality and developer experience
+- **Vite 6**: Lightning-fast build tool with enhanced performance
 - **React Router v6**: Client-side routing
 - **js-yaml**: YAML data parsing
 - **CSS3**: Responsive, mobile-first styling
-- **Vitest**: Fast unit test framework
-- **React Testing Library**: Component testing utilities
+- **Vitest 2**: Fast unit test framework with improved API
+- **React Testing Library 16**: Component testing utilities
 - **ESLint 9**: Code linting with TypeScript and React rules
 
 ## Setup and Development
 
 ### Prerequisites
 
-- Node.js 18 or higher (recommended: Node 24 LTS)
-- npm 9 or higher
+- Node.js 22 or higher (recommended: Node 24 LTS)
+- npm 10 or higher
 
 ### Installation
 

@@ -11,12 +11,12 @@ vi.mock('../utils/dataLoader', () => ({
 }))
 
 describe('Gallery', () => {
-  let loadAllBrands: Mock<[], Promise<Brand[]>>
+  let loadAllBrands: Mock
 
   beforeEach(async () => {
     vi.clearAllMocks()
     const dataLoader = await import('../utils/dataLoader')
-    loadAllBrands = dataLoader.loadAllBrands as Mock<[], Promise<Brand[]>>
+    loadAllBrands = dataLoader.loadAllBrands as Mock
   })
 
   const renderGallery = () => {

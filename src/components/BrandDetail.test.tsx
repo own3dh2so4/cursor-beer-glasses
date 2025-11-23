@@ -24,13 +24,13 @@ vi.mock('../utils/dataLoader', () => ({
 }))
 
 describe('BrandDetail', () => {
-  let loadBrandById: Mock<[string], Promise<Brand | undefined>>
+  let loadBrandById: Mock
 
   beforeEach(async () => {
     vi.clearAllMocks()
     mockParams = { id: 'test_beer_1' }
     const dataLoader = await import('../utils/dataLoader')
-    loadBrandById = dataLoader.loadBrandById as Mock<[string], Promise<Brand | undefined>>
+    loadBrandById = dataLoader.loadBrandById as Mock
   })
 
   const renderBrandDetail = (brandId = 'test_beer_1') => {
