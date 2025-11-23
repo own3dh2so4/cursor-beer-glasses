@@ -37,14 +37,13 @@ describe('GalleryCard', () => {
     
     const brandName = screen.getByText('Test Beer 1')
     expect(brandName).toBeInTheDocument()
-    expect(brandName).toHaveClass('gallery-card-name')
   })
 
   it('should navigate to brand detail page on click', async () => {
     const user = userEvent.setup()
     const { container } = renderGalleryCard()
     
-    const card = container.querySelector('.gallery-card')
+    const card = container.firstElementChild
     if (card) {
       await user.click(card)
     }
@@ -52,13 +51,17 @@ describe('GalleryCard', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/test_beer_1')
   })
 
-  it('should have proper CSS classes', () => {
-    const { container } = renderGalleryCard()
+  it('should have proper structure', () => {
+    renderGalleryCard()
     
-    expect(container.querySelector('.gallery-card')).toBeInTheDocument()
-    expect(container.querySelector('.gallery-card-image-container')).toBeInTheDocument()
-    expect(container.querySelector('.gallery-card-image')).toBeInTheDocument()
-    expect(container.querySelector('.gallery-card-overlay')).toBeInTheDocument()
+    // Check for image element
+    const image = screen.getByAltText('Test Beer 1')
+    expect(image).toBeInTheDocument()
+    expect(image).toHaveAttribute('src', expect.stringContaining('test_beer_1'))
+    
+    // Check for brand name
+    const brandName = screen.getByText('Test Beer 1')
+    expect(brandName).toBeInTheDocument()
   })
 })
 

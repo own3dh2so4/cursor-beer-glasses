@@ -30,8 +30,8 @@ A modern, responsive single-page application showcasing a collection of beer gla
 - **TypeScript 5.9**: Static typing for enhanced code quality and developer experience
 - **Vite 6**: Lightning-fast build tool with enhanced performance
 - **React Router v6**: Client-side routing
+- **Tailwind CSS 3**: Utility-first CSS framework for rapid UI development
 - **js-yaml**: YAML data parsing
-- **CSS3**: Responsive, mobile-first styling
 - **Vitest 2**: Fast unit test framework with improved API
 - **React Testing Library 16**: Component testing utilities
 - **ESLint 9**: Code linting with TypeScript and React rules
@@ -103,6 +103,12 @@ npm run type-check
 
 Test coverage: **100% passing** (80/80 tests)
 
+## Architecture
+
+This project uses a **feature-based architecture** for better scalability and maintainability. Each feature (gallery, brand-detail) contains its own components, tests, and logic. See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed documentation.
+
+**Styling:** The project uses **Tailwind CSS** with utility classes for rapid development and optimal performance. Custom theme configuration preserves the original design system.
+
 ## Project Structure
 
 ```
@@ -116,19 +122,28 @@ Test coverage: **100% passing** (80/80 tests)
 │   │       └── *.jpg         # Glass photos
 │   └── .nojekyll             # GitHub Pages configuration
 ├── src/
-│   ├── components/           # React components
-│   │   ├── Gallery.jsx
-│   │   ├── GalleryCard.jsx
-│   │   ├── BrandDetail.jsx
-│   │   ├── BreweryInfo.jsx
-│   │   ├── GlassCarousel.jsx
-│   │   └── GlassInfo.jsx
-│   ├── utils/
-│   │   └── dataLoader.js     # YAML data loading
-│   ├── styles/
-│   │   └── App.css           # Global styles
-│   ├── App.jsx               # Main app component
-│   └── main.jsx              # Entry point
+│   ├── features/             # Feature-based architecture
+│   │   ├── gallery/          # Gallery feature
+│   │   │   ├── components/   # Gallery components
+│   │   │   ├── __tests__/    # Gallery tests
+│   │   │   └── index.ts      # Public exports
+│   │   └── brand-detail/     # Brand detail feature
+│   │       ├── components/   # Detail components
+│   │       ├── __tests__/    # Detail tests
+│   │       └── index.ts      # Public exports
+│   ├── shared/               # Shared code
+│   │   ├── hooks/            # Reusable hooks
+│   │   ├── utils/            # Utilities
+│   │   ├── types/            # TypeScript types
+│   │   └── index.ts          # Public exports
+│   ├── test/                 # Test configuration
+│   │   ├── mocks/            # Mock data
+│   │   └── setup.ts          # Vitest setup
+│   ├── index.css             # Tailwind CSS entry point
+│   ├── App.tsx               # Main app component
+│   └── main.tsx              # Entry point
+├── tailwind.config.js        # Tailwind configuration
+├── postcss.config.cjs        # PostCSS configuration
 └── index.html                # HTML template
 ```
 
@@ -242,6 +257,7 @@ glasses:
 ## Documentation
 
 - [README.md](./README.md) - This file, project overview
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Feature-based architecture guide
 - [TESTING.md](./TESTING.md) - Comprehensive testing guide
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment instructions
 - [QUICKSTART.md](./QUICKSTART.md) - Quick reference guide

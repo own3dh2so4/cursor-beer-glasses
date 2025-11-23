@@ -156,11 +156,14 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
     filters.sort !== 'name-asc'
 
   return (
-    <div className="filter-bar">
-      <div className="filter-header" onClick={toggleFilters}>
-        <h2 className="filter-title">🔍 Filters</h2>
+    <div className="bg-slate-50/85 backdrop-blur-xl rounded-xl p-5 tablet:p-8 desktop:p-10 mx-4 mb-8 shadow-md-card border border-white/30">
+      <div 
+        className="flex justify-between items-center cursor-pointer select-none p-3 rounded-lg transition-default hover:bg-white/40"
+        onClick={toggleFilters}
+      >
+        <h2 className="text-xl font-semibold text-primary m-0 flex-1">🔍 Filters</h2>
         <button 
-          className="toggle-button"
+          className="bg-transparent text-primary border-2 border-primary/20 w-9 h-9 rounded-lg text-sm font-bold cursor-pointer transition-default flex items-center justify-center hover:bg-primary/10 hover:border-primary"
           onClick={(e) => {
             e.stopPropagation()
             toggleFilters()
@@ -171,10 +174,10 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </button>
       </div>
 
-      <div className={`filter-content ${isExpanded ? 'expanded' : 'collapsed'}`}>
-        <div className="filter-actions">
+      <div className={`overflow-hidden transition-all duration-300 ease-out ${isExpanded ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}`}>
+        <div className="flex justify-end mb-4 pb-4 border-b border-primary/10">
           <button 
-            className="reset-button" 
+            className="bg-accent text-white border-none px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer transition-all duration-200 ease-in-out shadow-sm-card hover:bg-accent-dark hover:shadow-lg-card disabled:opacity-40 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:shadow-none" 
             onClick={onReset}
             disabled={!hasActiveFilters}
             title={hasActiveFilters ? "Reset all filters" : "No active filters"}
@@ -183,16 +186,16 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
           </button>
         </div>
 
-        <div className="filter-grid">
+        <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4 tablet:gap-5 desktop:gap-6 mb-6">
         {/* Search */}
-        <div className="filter-group">
-          <label htmlFor="search" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="search" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             Search
           </label>
           <input
             id="search"
             type="text"
-            className="filter-input"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)] placeholder:text-gray-500 placeholder:opacity-70"
             placeholder="Type beer name..."
             value={filters.search}
             onChange={(e) => handleChange('search', e.target.value)}
@@ -200,13 +203,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
 
         {/* Origin Country */}
-        <div className="filter-group">
-          <label htmlFor="country" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="country" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             📍 Origin Country
           </label>
           <select
             id="country"
-            className="filter-select"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)]"
             value={filters.country}
             onChange={(e) => handleChange('country', e.target.value)}
           >
@@ -220,13 +223,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
 
         {/* Number of Glasses */}
-        <div className="filter-group">
-          <label htmlFor="glassCount" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="glassCount" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             🍺 Glasses Count
           </label>
           <select
             id="glassCount"
-            className="filter-select"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)]"
             value={filters.glassCount}
             onChange={(e) => handleChange('glassCount', e.target.value as '' | 'single' | 'multiple')}
           >
@@ -237,13 +240,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
 
         {/* How Got */}
-        <div className="filter-group">
-          <label htmlFor="gotMethod" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="gotMethod" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             🎁 How Acquired
           </label>
           <select
             id="gotMethod"
-            className="filter-select"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)]"
             value={filters.gotMethod}
             onChange={(e) => handleChange('gotMethod', e.target.value)}
           >
@@ -255,13 +258,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
 
         {/* Bought Country */}
-        <div className="filter-group">
-          <label htmlFor="boughtCountry" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="boughtCountry" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             🛍️ Bought In
           </label>
           <select
             id="boughtCountry"
-            className="filter-select"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)]"
             value={filters.boughtCountry}
             onChange={(e) => handleChange('boughtCountry', e.target.value)}
           >
@@ -275,13 +278,13 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
 
         {/* Sort */}
-        <div className="filter-group">
-          <label htmlFor="sort" className="filter-label">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="sort" className="text-sm font-semibold text-primary block uppercase tracking-wide">
             📊 Sort By
           </label>
           <select
             id="sort"
-            className="filter-select"
+            className="w-full px-3 py-3 border border-primary/15 rounded-lg text-base font-[inherit] bg-white/80 text-slate-800 transition-default focus:outline-none focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(44,62,80,0.05)]"
             value={filters.sort}
             onChange={(e) => handleChange('sort', e.target.value as Filters['sort'])}
           >
@@ -294,12 +297,12 @@ function FilterBar({ brands, allBrands, filters, onFilterChange, onReset }: Filt
         </div>
         </div>
 
-        <div className="filter-stats">
-          <span className="stat-badge">
-            <strong>{brands.length}</strong> brands
+        <div className="flex gap-4 justify-center flex-wrap pt-4 border-t-2 border-primary/10">
+          <span className="bg-white/60 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/15 backdrop-blur-sm">
+            <strong className="font-bold text-[1.05rem] text-accent">{brands.length}</strong> brands
           </span>
-          <span className="stat-badge">
-            <strong>{totalGlasses}</strong> glasses
+          <span className="bg-white/60 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/15 backdrop-blur-sm">
+            <strong className="font-bold text-[1.05rem] text-accent">{totalGlasses}</strong> glasses
           </span>
         </div>
       </div>

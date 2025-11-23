@@ -5,7 +5,7 @@ import { BrandDetail } from './features/brand-detail'
 function App() {
   return (
     <BrowserRouter basename="/cursor-beer-glasses">
-      <div className="app">
+      <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<Gallery />} />
           <Route path="/:id" element={<BrandDetail />} />

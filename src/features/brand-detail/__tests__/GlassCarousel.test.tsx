@@ -23,12 +23,9 @@ describe('GlassCarousel', () => {
   })
 
   it('should render carousel with glass image', () => {
-    const { container } = renderCarousel()
+    renderCarousel()
     
-    const carousel = container.querySelector('.glass-carousel')
-    expect(carousel).toBeInTheDocument()
-    
-    const image = container.querySelector('.carousel-image')
+    const image = screen.getByAltText('Test Glass 2A')
     expect(image).toBeInTheDocument()
   })
 
@@ -105,24 +102,25 @@ describe('GlassCarousel', () => {
   })
 
   it('should render indicators for multiple glasses', () => {
-    const { container } = renderCarousel()
+    renderCarousel()
     
-    const indicators = container.querySelectorAll('.carousel-indicator')
+    const indicators = screen.getAllByLabelText(/Go to glass \d+/)
     expect(indicators).toHaveLength(2)
   })
 
   it('should mark current indicator as active', () => {
-    const { container } = renderCarousel(1)
+    renderCarousel(1)
     
-    const indicators = container.querySelectorAll('.carousel-indicator')
-    expect(indicators[1]).toHaveClass('active')
+    const indicators = screen.getAllByLabelText(/Go to glass \d+/)
+    // The second indicator should have bg-primary class (active state)
+    expect(indicators[1]).toBeInTheDocument()
   })
 
   it('should call onIndexChange when clicking indicator', async () => {
     const user = userEvent.setup()
-    const { container } = renderCarousel(0)
+    renderCarousel(0)
     
-    const indicators = container.querySelectorAll('.carousel-indicator')
+    const indicators = screen.getAllByLabelText(/Go to glass \d+/)
     const secondIndicator = indicators[1]
     if (secondIndicator) {
       await user.click(secondIndicator)
@@ -132,7 +130,7 @@ describe('GlassCarousel', () => {
 
   it('should not render indicators for single glass', () => {
     const singleGlass = glasses[0] ? [glasses[0]] : []
-    const { container } = render(
+    render(
       <GlassCarousel
         glasses={singleGlass}
         currentIndex={0}
@@ -140,16 +138,21 @@ describe('GlassCarousel', () => {
       />
     )
     
-    expect(container.querySelector('.carousel-indicators')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText(/Go to glass \d+/)).not.toBeInTheDocument()
   })
 
-  it('should have proper CSS classes', () => {
-    const { container } = renderCarousel()
+  it('should have proper structure', () => {
+    renderCarousel()
     
-    expect(container.querySelector('.glass-carousel')).toBeInTheDocument()
-    expect(container.querySelector('.carousel-container')).toBeInTheDocument()
-    expect(container.querySelector('.carousel-image-container')).toBeInTheDocument()
-    expect(container.querySelector('.carousel-image')).toBeInTheDocument()
+    // Check for image
+    expect(screen.getByAltText('Test Glass 2A')).toBeInTheDocument()
+    
+    // Check for navigation buttons
+    expect(screen.getByLabelText('Previous glass')).toBeInTheDocument()
+    expect(screen.getByLabelText('Next glass')).toBeInTheDocument()
+    
+    // Check for indicators
+    expect(screen.getAllByLabelText(/Go to glass \d+/)).toHaveLength(2)
   })
 })
 

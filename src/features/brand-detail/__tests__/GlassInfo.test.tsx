@@ -70,12 +70,16 @@ describe('GlassInfo', () => {
     expect(container.querySelector('iframe')).not.toBeInTheDocument()
   })
 
-  it('should have proper CSS classes', () => {
-    const { container } = render(<GlassInfo glass={glass} textColor={defaultTextColor} />)
+  it('should have proper structure', () => {
+    render(<GlassInfo glass={glass} textColor={defaultTextColor} />)
     
-    expect(container.querySelector('.glass-info')).toBeInTheDocument()
-    expect(container.querySelector('.section-title')).toBeInTheDocument()
-    expect(container.querySelector('.info-grid')).toBeInTheDocument()
+    // Check for section title
+    expect(screen.getByText('Glass Details')).toBeInTheDocument()
+    
+    // Check for all glass information
+    expect(screen.getByText(glass.name)).toBeInTheDocument()
+    expect(screen.getByText(glass.bought_city)).toBeInTheDocument()
+    expect(screen.getByText(glass.bought_country || '')).toBeInTheDocument()
   })
 })
 

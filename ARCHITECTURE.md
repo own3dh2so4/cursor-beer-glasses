@@ -50,9 +50,7 @@ src/
 │   │   └── mockBrands.ts
 │   └── setup.ts          # Vitest setup
 │
-├── styles/               # Global styles
-│   └── App.css
-│
+├── index.css           # Tailwind CSS entry point
 ├── App.tsx              # Main app component
 ├── App.test.tsx         # App tests
 ├── main.tsx            # Entry point
@@ -195,7 +193,7 @@ import type { Brand, Glass } from './shared'
 - One component per file
 - Tests in `__tests__/` folder at the same level
 - Index files only for re-exports
-- Styles in `styles/` (shared) or inline/CSS modules
+- Styles using Tailwind CSS utility classes inline
 
 ## 🔍 Testing
 

@@ -7,42 +7,42 @@ interface GlassInfoProps {
 
 function GlassInfo({ glass, textColor }: GlassInfoProps) {
   return (
-    <div className="glass-info">
-      <h2 className="section-title" style={{ color: textColor }}>Glass Details</h2>
+    <div>
+      <h2 className="text-xl font-semibold mb-4 pb-2 border-b-2 border-slate-100" style={{ color: textColor }}>Glass Details</h2>
       
-      <div className="info-grid">
-        <div className="info-item">
-          <span className="info-label" style={{ color: textColor }}>Name:</span>
-          <span className="info-value" style={{ color: textColor }}>{glass.name}</span>
+      <div className="grid grid-cols-1 tablet:grid-cols-2 gap-3 tablet:gap-4 desktop:gap-3 mb-4">
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-xs uppercase tracking-wide" style={{ color: textColor }}>Name:</span>
+          <span className="text-sm" style={{ color: textColor }}>{glass.name}</span>
         </div>
         
-        <div className="info-item">
-          <span className="info-label" style={{ color: textColor }}>Bought in:</span>
-          <span className="info-value" style={{ color: textColor }}>{glass.bought_city}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-xs uppercase tracking-wide" style={{ color: textColor }}>Bought in:</span>
+          <span className="text-sm" style={{ color: textColor }}>{glass.bought_city}</span>
         </div>
         
-        <div className="info-item">
-          <span className="info-label" style={{ color: textColor }}>Country:</span>
-          <span className="info-value" style={{ color: textColor }}>{glass.bought_country}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-xs uppercase tracking-wide" style={{ color: textColor }}>Country:</span>
+          <span className="text-sm" style={{ color: textColor }}>{glass.bought_country}</span>
         </div>
         
-        <div className="info-item">
-          <span className="info-label" style={{ color: textColor }}>Acquired:</span>
-          <span className="info-value" style={{ color: textColor }}>{glass.got}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-xs uppercase tracking-wide" style={{ color: textColor }}>Acquired:</span>
+          <span className="text-sm" style={{ color: textColor }}>{glass.got}</span>
         </div>
         
-        <div className="info-item">
-          <span className="info-label" style={{ color: textColor }}>From:</span>
-          <span className="info-value" style={{ color: textColor }}>{glass.got_from}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-xs uppercase tracking-wide" style={{ color: textColor }}>From:</span>
+          <span className="text-sm" style={{ color: textColor }}>{glass.got_from}</span>
         </div>
       </div>
 
       {glass.map && (
-        <div className="map-container">
+        <div className="mt-4 rounded-xl overflow-hidden shadow-card">
           <iframe
             src={glass.map}
             width="100%"
-            style={{ border: 0 }}
+            className="block w-full h-[200px] border-0"
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

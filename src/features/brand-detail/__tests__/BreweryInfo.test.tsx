@@ -59,13 +59,19 @@ describe('BreweryInfo', () => {
     expect(container.querySelector('iframe')).not.toBeInTheDocument()
   })
 
-  it('should have proper CSS classes', () => {
-      const { container } = render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
+  it('should have proper structure', () => {
+    const { container } = render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
     
-    expect(container.querySelector('.brewery-info')).toBeInTheDocument()
-    expect(container.querySelector('.section-title')).toBeInTheDocument()
-    expect(container.querySelector('.info-grid')).toBeInTheDocument()
-    expect(container.querySelector('.map-container')).toBeInTheDocument()
+    // Check for section title
+    expect(screen.getByText('Brewery Information')).toBeInTheDocument()
+    
+    // Check for all brewery information
+    expect(screen.getByText(mockBrand1.name)).toBeInTheDocument()
+    expect(screen.getByText(mockBrand1.from_city)).toBeInTheDocument()
+    expect(screen.getByText(mockBrand1.from_country)).toBeInTheDocument()
+    
+    // Check for map container
+    expect(container.querySelector('iframe')).toBeInTheDocument()
   })
 })
 

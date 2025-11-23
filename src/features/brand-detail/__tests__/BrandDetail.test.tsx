@@ -75,15 +75,16 @@ describe('BrandDetail', () => {
 
   it('should render brand name image as clickable link', async () => {
     loadBrandById.mockResolvedValue(mockBrand1)
-    const { container } = renderBrandDetail()
+    renderBrandDetail()
     
     await waitFor(() => {
-      const link = container.querySelector('.brand-name-link')
-      expect(link).toHaveAttribute('href', mockBrand1.website)
-      expect(link).toHaveAttribute('target', '_blank')
-      
       const image = screen.getByAltText(mockBrand1.name)
       expect(image).toBeInTheDocument()
+      
+      // Check that the link exists and has correct attributes
+      const link = image.closest('a')
+      expect(link).toHaveAttribute('href', mockBrand1.website)
+      expect(link).toHaveAttribute('target', '_blank')
     })
   })
 
@@ -102,14 +103,12 @@ describe('BrandDetail', () => {
 
   it('should render glass carousel section', async () => {
     loadBrandById.mockResolvedValue(mockBrand1)
-    const { container } = renderBrandDetail()
+    renderBrandDetail()
     
     await waitFor(() => {
-      const carousel = container.querySelector('.glass-carousel')
-      expect(carousel).toBeInTheDocument()
-      
-      const carouselImage = container.querySelector('.carousel-image')
-      expect(carouselImage).toBeInTheDocument()
+      // Check for glass image
+      const glassImage = screen.getByAltText('Test Glass 1')
+      expect(glassImage).toBeInTheDocument()
     })
   })
 
@@ -163,18 +162,17 @@ describe('BrandDetail', () => {
     })
   })
 
-  it('should have proper CSS structure with background', async () => {
+  it('should have proper structure with sections', async () => {
     loadBrandById.mockResolvedValue(mockBrand1)
-    const { container } = renderBrandDetail()
+    renderBrandDetail()
     
     await waitFor(() => {
-      expect(container.querySelector('.brand-detail-wrapper')).toBeInTheDocument()
-      expect(container.querySelector('.brand-detail-background')).toBeInTheDocument()
-      expect(container.querySelector('.brand-detail-overlay')).toBeInTheDocument()
-      expect(container.querySelector('.brand-detail')).toBeInTheDocument()
-      expect(container.querySelector('.brand-header')).toBeInTheDocument()
-      expect(container.querySelector('.brand-content')).toBeInTheDocument()
-      expect(container.querySelector('.glass-sections')).toBeInTheDocument()
+      // Check for back button
+      expect(screen.getByText('← Back to Gallery')).toBeInTheDocument()
+      
+      // Check for brand sections
+      expect(screen.getByText('Glass Details')).toBeInTheDocument()
+      expect(screen.getByText('Brewery Information')).toBeInTheDocument()
     })
   })
 })
