@@ -1,6 +1,8 @@
-import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
-import { mockBrands } from '../../../test/mocks/mockBrands'
-import { loadAllBrands, loadBrandById, getAssetPath, clearCache } from '../dataLoader'
+import { describe, it, expect, beforeEach, afterEach, vi, type Mock } from 'vitest'
+import { mockBrand1, mockBrand2 } from '@/test/mocks/mockBrands'
+import { loadAllBrands, loadBrandById, getAssetPath, clearCache } from '@/shared/utils/dataLoader'
+
+const mockBrands = [mockBrand1, mockBrand2]
 
 describe('dataLoader', () => {
   beforeEach(() => {
@@ -9,7 +11,7 @@ describe('dataLoader', () => {
     vi.clearAllMocks()
     global.fetch = vi.fn() as Mock
   })
-  
+
   afterEach(() => {
     vi.restoreAllMocks()
   })
@@ -68,8 +70,8 @@ describe('dataLoader', () => {
 
       await loadAllBrands()
 
-      const expectedUrl = import.meta.env.BASE_URL 
-        ? `${import.meta.env.BASE_URL}brands-index.json` 
+      const expectedUrl = import.meta.env.BASE_URL
+        ? `${import.meta.env.BASE_URL}brands-index.json`
         : '/brands-index.json'
       expect(global.fetch).toHaveBeenCalledWith(expectedUrl)
     })

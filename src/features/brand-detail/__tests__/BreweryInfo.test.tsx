@@ -1,27 +1,27 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import BreweryInfo from '../components/BreweryInfo'
-import { mockBrand1 } from '../../../test/mocks/mockBrands'
+import BreweryInfo from '@/features/brand-detail/components/BreweryInfo'
+import { mockBrand1 } from '@/test/mocks/mockBrands'
 
 describe('BreweryInfo', () => {
   const defaultTextColor = '#1a202c'
 
   it('should render brewery name', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
   })
 
   it('should render brewery location', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     expect(screen.getByText('Madrid')).toBeInTheDocument()
     expect(screen.getByText('Spain')).toBeInTheDocument()
   })
 
   it('should render brewery website link', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     const link = screen.getByText('https://testbeer1.com')
     expect(link).toBeInTheDocument()
     expect(link).toHaveAttribute('href', 'https://testbeer1.com')
@@ -31,13 +31,13 @@ describe('BreweryInfo', () => {
 
   it('should render section title', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     expect(screen.getByText('Brewery Information')).toBeInTheDocument()
   })
 
   it('should render all info labels', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     expect(screen.getByText('Name:')).toBeInTheDocument()
     expect(screen.getByText('City:')).toBeInTheDocument()
     expect(screen.getByText('Country:')).toBeInTheDocument()
@@ -46,7 +46,7 @@ describe('BreweryInfo', () => {
 
   it('should render Google Maps iframe when map is provided', () => {
     render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     const iframe = screen.getByTitle(`Map of ${mockBrand1.name}`)
     expect(iframe).toBeInTheDocument()
     expect(iframe).toHaveAttribute('src', mockBrand1.map)
@@ -54,22 +54,22 @@ describe('BreweryInfo', () => {
 
   it('should not render map when map URL is missing', () => {
     const brandWithoutMap = { ...mockBrand1, map: undefined }
-      const { container } = render(<BreweryInfo brand={brandWithoutMap} textColor={defaultTextColor} />)
-    
+    const { container } = render(<BreweryInfo brand={brandWithoutMap} textColor={defaultTextColor} />)
+
     expect(container.querySelector('iframe')).not.toBeInTheDocument()
   })
 
   it('should have proper structure', () => {
     const { container } = render(<BreweryInfo brand={mockBrand1} textColor={defaultTextColor} />)
-    
+
     // Check for section title
     expect(screen.getByText('Brewery Information')).toBeInTheDocument()
-    
+
     // Check for all brewery information
     expect(screen.getByText(mockBrand1.name)).toBeInTheDocument()
-    expect(screen.getByText(mockBrand1.from_city)).toBeInTheDocument()
+    expect(screen.getByText(mockBrand1.from_city ?? '')).toBeInTheDocument()
     expect(screen.getByText(mockBrand1.from_country)).toBeInTheDocument()
-    
+
     // Check for map container
     expect(container.querySelector('iframe')).toBeInTheDocument()
   })

@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeEach, vi, afterEach, type Mock } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi, type Mock } from 'vitest'
 import { renderHook, waitFor, act } from '@testing-library/react'
-import useImageBrightness from '../useImageBrightness'
+import useImageBrightness from '@/shared/hooks/useImageBrightness'
 
 interface MockCanvasContext {
   drawImage: Mock
@@ -62,14 +62,14 @@ describe('useImageBrightness', () => {
       src: string | null = null
       width = 100
       height = 100
-      
+
       constructor() {
         mockImage = this
       }
     } as unknown as typeof Image
 
     // Clear console warnings
-    vi.spyOn(console, 'warn').mockImplementation(() => {})
+    vi.spyOn(console, 'warn').mockImplementation(() => { })
   })
 
   afterEach(() => {
@@ -81,7 +81,7 @@ describe('useImageBrightness', () => {
 
   it('should return default white background and dark text while analyzing', () => {
     const { result } = renderHook(() => useImageBrightness('/test-image.jpg'))
-    
+
     expect(result.current.isAnalyzing).toBe(true)
     expect(result.current.backgroundColor).toBe('rgba(255, 255, 255, 0.85)')
     expect(result.current.textColor).toBe('#1a202c')
@@ -99,7 +99,7 @@ describe('useImageBrightness', () => {
     })
 
     const { result } = renderHook(() => useImageBrightness('/bright-image.jpg'))
-    
+
     // Trigger image load
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
@@ -125,7 +125,7 @@ describe('useImageBrightness', () => {
     })
 
     const { result } = renderHook(() => useImageBrightness('/medium-image.jpg'))
-    
+
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
     })
@@ -150,7 +150,7 @@ describe('useImageBrightness', () => {
     })
 
     const { result } = renderHook(() => useImageBrightness('/dark-image.jpg'))
-    
+
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
     })
@@ -175,7 +175,7 @@ describe('useImageBrightness', () => {
     })
 
     const { result } = renderHook(() => useImageBrightness('/transparent-image.png'))
-    
+
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
     })
@@ -191,7 +191,7 @@ describe('useImageBrightness', () => {
 
   it('should handle image load error gracefully', async () => {
     const { result } = renderHook(() => useImageBrightness('/error-image.jpg'))
-    
+
     await act(async () => {
       if (mockImage.onerror) mockImage.onerror()
     })
@@ -211,7 +211,7 @@ describe('useImageBrightness', () => {
     })
 
     const { result } = renderHook(() => useImageBrightness('/test-image.jpg'))
-    
+
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
     })
@@ -230,7 +230,7 @@ describe('useImageBrightness', () => {
 
   it('should handle null or undefined image source', () => {
     const { result } = renderHook(() => useImageBrightness(null as unknown as string))
-    
+
     expect(result.current.isAnalyzing).toBe(false)
     expect(result.current.backgroundColor).toBe('rgba(255, 255, 255, 0.85)')
     expect(result.current.textColor).toBe('#1a202c')
@@ -238,7 +238,7 @@ describe('useImageBrightness', () => {
 
   it('should set crossOrigin attribute for CORS support', () => {
     renderHook(() => useImageBrightness('/test-image.jpg'))
-    
+
     expect(mockImage.crossOrigin).toBe('Anonymous')
   })
 
@@ -251,7 +251,7 @@ describe('useImageBrightness', () => {
     })
 
     renderHook(() => useImageBrightness('/large-image.jpg'))
-    
+
     await act(async () => {
       if (mockImage.onload) mockImage.onload()
     })

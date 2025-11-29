@@ -1,4 +1,4 @@
-import type { Brand } from '../types'
+import type { Brand } from '@/shared/types'
 
 // This will hold all the brand data loaded from the JSON index
 let brandsCache: Brand[] | null = null
@@ -15,15 +15,14 @@ export async function loadAllBrands(): Promise<Brand[]> {
   try {
     const base = import.meta.env.BASE_URL || '/'
     const response = await fetch(`${base}brands-index.json`)
-    
+
     if (!response.ok) {
       throw new Error(`Failed to load brands index: ${response.status}`)
     }
-    
+
     const brands = await response.json() as Brand[]
-    
+
     brandsCache = brands
-    console.error(`✓ Loaded ${brands.length} brands`)
     return brands
   } catch (error) {
     console.error('Error loading brand data:', error)

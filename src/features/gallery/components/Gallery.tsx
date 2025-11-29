@@ -1,12 +1,11 @@
-import { useState, useEffect, useMemo } from 'react'
-import { loadAllBrands } from '../../../shared/utils/dataLoader'
+import { useState, useMemo } from 'react'
+import { useBrands } from '@/shared/hooks/useBrands'
 import GalleryCard from './GalleryCard'
 import FilterBar from './FilterBar'
-import type { Brand, Filters } from '../../../shared/types'
+import type { Filters } from '@/shared/types'
 
 function Gallery() {
-  const [allBrands, setAllBrands] = useState<Brand[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
+  const { data: allBrands = [], isLoading, error } = useBrands()
   const [filters, setFilters] = useState<Filters>({
     search: '',
     country: '',
@@ -16,16 +15,6 @@ function Gallery() {
     sort: 'name-asc'
   })
 
-  useEffect(() => {
-    async function fetchBrands() {
-      setLoading(true)
-      const data = await loadAllBrands()
-      setAllBrands(data)
-      setLoading(false)
-    }
-    fetchBrands()
-  }, [])
-
   // Apply all filters
   const filteredAndSortedBrands = useMemo(() => {
     let result = [...allBrands]
@@ -33,7 +22,7 @@ function Gallery() {
     // Filter by search
     if (filters.search) {
       const searchLower = filters.search.toLowerCase()
-      result = result.filter(brand => 
+      result = result.filter(brand =>
         brand.name.toLowerCase().includes(searchLower)
       )
     }
@@ -52,7 +41,7 @@ function Gallery() {
 
     // Filter by got method
     if (filters.gotMethod) {
-      result = result.filter(brand => 
+      result = result.filter(brand =>
         brand.glasses.some(glass => glass.got === filters.gotMethod)
       )
     }
@@ -103,10 +92,18 @@ function Gallery() {
     })
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen text-2xl text-gray-500">
         <div className="animate-pulse-slow">Loading...</div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen text-2xl text-red-500">
+        Error loading brands
       </div>
     )
   }
@@ -122,8 +119,8 @@ function Gallery() {
             Showing <strong>{filteredAndSortedBrands.length}</strong> of <strong>{allBrands.length}</strong> brands
           </p>
         </header>
-        
-        <FilterBar 
+
+        <FilterBar
           brands={filteredAndSortedBrands}
           allBrands={allBrands}
           filters={filters}
@@ -134,8 +131,8 @@ function Gallery() {
         {filteredAndSortedBrands.length === 0 ? (
           <div className="text-center py-16 px-8 bg-slate-50/85 backdrop-blur-lg rounded-xl mx-4 my-8 shadow-md-card border border-white/30">
             <p className="text-2xl text-gray-500 mb-6">😔 No beers match your filters</p>
-            <button 
-              className="bg-primary/10 text-primary border border-primary/20 px-8 py-3 rounded-xl text-base font-semibold cursor-pointer transition-default hover:bg-primary/15 hover:border-primary"
+            <button
+              className="bg-primary/10 text-primary border border-primary/20 px-8 py-3 rounded-xl text-base font-semibold cursor-pointer trion-default hover:bg-primary/15 hover:border-primary"
               onClick={handleReset}
             >
               Reset Filters

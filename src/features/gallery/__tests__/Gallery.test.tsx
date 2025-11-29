@@ -1,102 +1,82 @@
-import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import Gallery from '../components/Gallery'
-import { mockBrands } from '../../../test/mocks/mockBrands'
-import type { Brand } from '../../../shared/types'
+import userEvent from '@testing-library/user-event'
+import Gallery from '@/features/gallery/components/Gallery'
+import { mockBrands } from '@/test/mocks/mockBrands'
 
-vi.mock('../../../shared/utils/dataLoader', () => ({
-  loadAllBrands: vi.fn(),
+// Mock useBrands hook
+const mockUseBrands = vi.fn()
+vi.mock('@/shared/hooks/useBrands', () => ({
+  useBrands: () => mockUseBrands()
+}))
+
+vi.mock('@/shared/utils/dataLoader', () => ({
   getAssetPath: (path: string) => `/cursor-beer-glasses/data/${path}`
 }))
 
 describe('Gallery', () => {
-  let loadAllBrands: Mock
-
-  beforeEach(async () => {
+  beforeEach(() => {
     vi.clearAllMocks()
-    const dataLoader = await import('../../../shared/utils/dataLoader')
-    loadAllBrands = dataLoader.loadAllBrands as Mock
+    mockUseBrands.mockReturnValue({
+      data: mockBrands,
+      isLoading: false,
+      error: null
+    })
   })
 
   const renderGallery = () => {
-    return render(
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true
-        }}
-      >
+    render(
+      <BrowserRouter>
         <Gallery />
       </BrowserRouter>
     )
   }
 
-  it('should show loading state initially', () => {
-    loadAllBrands.mockImplementation(() => new Promise<Brand[]>(() => {}))
+  it('renders loading state initially', () => {
+    mockUseBrands.mockReturnValue({
+      data: [],
+      isLoading: true,
+      error: null
+    })
     renderGallery()
-    
-    expect(screen.getByText('Loading...')).toBeInTheDocument()
+    expect(screen.getByText(/loading/i)).toBeInTheDocument()
   })
 
-  it('should display gallery title and subtitle', async () => {
-    loadAllBrands.mockResolvedValue(mockBrands)
+  it('renders brands when loaded', () => {
     renderGallery()
-    
-    await waitFor(() => {
-      expect(screen.getByText('Own3dh2so4 Beer Glasses Collection')).toBeInTheDocument()
-      expect(screen.getByText((_content, element) => {
-        return element?.textContent === 'Showing 2 of 2 brands'
-      })).toBeInTheDocument()
-    })
+    expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
+    expect(screen.getByText('Test Beer 2')).toBeInTheDocument()
   })
 
-  it('should render all brands from data loader', async () => {
-    loadAllBrands.mockResolvedValue(mockBrands)
+  it('filters brands by search', async () => {
+    const user = userEvent.setup()
     renderGallery()
-    
-    await waitFor(() => {
-      expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
-      expect(screen.getByText('Test Beer 2')).toBeInTheDocument()
-    })
+
+    const searchInput = screen.getByLabelText(/search/i)
+    await user.type(searchInput, 'Test Beer 1')
+
+    expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
+    expect(screen.queryByText('Test Beer 2')).not.toBeInTheDocument()
   })
 
-  it('should render correct number of gallery cards', async () => {
-    loadAllBrands.mockResolvedValue(mockBrands)
+  it('filters brands by country', () => {
     renderGallery()
-    
-    await waitFor(() => {
-      const brandImages = screen.getAllByRole('img')
-      expect(brandImages.length).toBeGreaterThanOrEqual(2)
-    })
+
+    const countrySelect = screen.getByRole('combobox', { name: /origin country/i })
+    fireEvent.change(countrySelect, { target: { value: 'Spain' } })
+
+    expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
+    expect(screen.queryByText('Test Beer 2')).not.toBeInTheDocument()
   })
 
-  it('should handle empty brand list', async () => {
-    loadAllBrands.mockResolvedValue([])
+  it('filters brands by glass count', () => {
     renderGallery()
-    
-    await waitFor(() => {
-      expect(screen.getByText((_content, element) => {
-        return element?.textContent === 'Showing 0 of 0 brands'
-      })).toBeInTheDocument()
-    })
-  })
 
-  it('should have proper structure with background', async () => {
-    loadAllBrands.mockResolvedValue(mockBrands)
-    renderGallery()
-    
-    await waitFor(() => {
-      // Check for header title
-      expect(screen.getByText('Own3dh2so4 Beer Glasses Collection')).toBeInTheDocument()
-      
-      // Check for filter title
-      expect(screen.getByText('🔍 Filters')).toBeInTheDocument()
-      
-      // Check that brands are rendered
-      expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
-      expect(screen.getByText('Test Beer 2')).toBeInTheDocument()
-    })
+    const glassCountSelect = screen.getByRole('combobox', { name: /glasses count/i })
+    fireEvent.change(glassCountSelect, { target: { value: 'single' } })
+
+    expect(screen.getByText('Test Beer 1')).toBeInTheDocument()
+    expect(screen.queryByText('Test Beer 2')).not.toBeInTheDocument()
   })
 })
-

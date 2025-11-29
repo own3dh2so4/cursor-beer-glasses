@@ -2,8 +2,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
-import GalleryCard from '../components/GalleryCard'
-import { mockBrand1 } from '../../../test/mocks/mockBrands'
+import GalleryCard from '@/features/gallery/components/GalleryCard'
+import { mockBrand1 } from '@/test/mocks/mockBrands'
 
 const mockNavigate = vi.fn()
 
@@ -31,7 +31,7 @@ describe('GalleryCard', () => {
 
   it('should render brand logo', () => {
     renderGalleryCard()
-    
+
     const logo = screen.getByAltText('Test Beer 1')
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('src', expect.stringContaining('test_beer_1/logo200x200.png'))
@@ -39,7 +39,7 @@ describe('GalleryCard', () => {
 
   it('should show brand name on hover', () => {
     renderGalleryCard()
-    
+
     const brandName = screen.getByText('Test Beer 1')
     expect(brandName).toBeInTheDocument()
   })
@@ -47,23 +47,23 @@ describe('GalleryCard', () => {
   it('should navigate to brand detail page on click', async () => {
     const user = userEvent.setup()
     const { container } = renderGalleryCard()
-    
+
     const card = container.firstElementChild
     if (card) {
       await user.click(card)
     }
-    
+
     expect(mockNavigate).toHaveBeenCalledWith('/test_beer_1')
   })
 
   it('should have proper structure', () => {
     renderGalleryCard()
-    
+
     // Check for image element
     const image = screen.getByAltText('Test Beer 1')
     expect(image).toBeInTheDocument()
     expect(image).toHaveAttribute('src', expect.stringContaining('test_beer_1'))
-    
+
     // Check for brand name
     const brandName = screen.getByText('Test Beer 1')
     expect(brandName).toBeInTheDocument()

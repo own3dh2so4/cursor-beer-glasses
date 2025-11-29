@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { BrightnessResult } from '../types'
+import type { BrightnessResult } from '@/shared/types'
 
 /**
  * Custom hook to analyze image brightness and determine appropriate background and text colors
@@ -20,37 +20,37 @@ const useImageBrightness = (imageSrc: string): BrightnessResult => {
     const analyzeImage = () => {
       const img = new Image()
       img.crossOrigin = 'Anonymous'
-      
+
       img.onload = () => {
         try {
           const canvas = document.createElement('canvas')
           const ctx = canvas.getContext('2d')
-          
+
           if (!ctx) {
             throw new Error('Could not get canvas context')
           }
-          
+
           // Reduce image size for faster analysis
           const maxSize = 100
           const scale = Math.min(maxSize / img.width, maxSize / img.height)
           canvas.width = img.width * scale
           canvas.height = img.height * scale
-          
+
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-          
+
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
           const data = imageData.data
-          
+
           let totalBrightness = 0
           let pixelCount = 0
-          
+
           // Calculate average brightness
           for (let i = 0; i < data.length; i += 4) {
             const r = data[i] ?? 0
             const g = data[i + 1] ?? 0
             const b = data[i + 2] ?? 0
             const a = data[i + 3] ?? 0
-            
+
             // Only count non-transparent pixels
             if (a && a > 50) {
               // Calculate perceived brightness (using luminance formula)
@@ -59,9 +59,9 @@ const useImageBrightness = (imageSrc: string): BrightnessResult => {
               pixelCount++
             }
           }
-          
+
           const avgBrightness = totalBrightness / pixelCount
-          
+
           // If image is very bright (threshold: 200 out of 255), use darker background
           // If image is dark, use white background
           // Using more transparency (0.85 instead of 0.95) for a lighter effect
@@ -75,7 +75,7 @@ const useImageBrightness = (imageSrc: string): BrightnessResult => {
             setBackgroundColor('rgba(255, 255, 255, 0.85)') // White with more transparency
             setTextColor('#1a202c') // Dark text for light background
           }
-          
+
           setIsAnalyzing(false)
         } catch (error) {
           console.warn('Error analyzing image brightness:', error)
@@ -84,14 +84,14 @@ const useImageBrightness = (imageSrc: string): BrightnessResult => {
           setIsAnalyzing(false)
         }
       }
-      
+
       img.onerror = () => {
         console.warn('Error loading image for brightness analysis')
         setBackgroundColor('rgba(255, 255, 255, 0.85)')
         setTextColor('#1a202c')
         setIsAnalyzing(false)
       }
-      
+
       img.src = imageSrc
     }
 
