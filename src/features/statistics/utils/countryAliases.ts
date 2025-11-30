@@ -71,6 +71,7 @@ export const COUNTRY_CODES: Record<string, string> = {
     'estonia': 'ee',
     'latvia': 'lv',
     'lithuania': 'lt',
+    'luxembourg': 'lu',
     'iceland': 'is',
     'scotland': 'gb-sct', // Special case for Scotland if needed, though usually mapped to UK
     'wales': 'gb-wls',    // Special case
@@ -95,4 +96,45 @@ export function getCountryCode(name: string): string | undefined {
 export function normalizeCountryName(name: string): string {
     const lower = name.toLowerCase().trim()
     return COUNTRY_ALIASES[lower] || lower
+}
+
+/**
+ * Convert ISO 2-letter country code to flag emoji
+ * @param code - ISO 2-letter country code (e.g., 'es', 'us', 'gb')
+ * @returns Flag emoji or empty string if code is invalid
+ */
+export function getCountryFlagEmoji(code: string | undefined): string {
+    if (!code || code.length !== 2) {
+        return ''
+    }
+
+    const upperCode = code.toUpperCase()
+    const codePointA = 0x1f1e6 // Regional Indicator Symbol Letter A
+
+    const firstChar = upperCode.charCodeAt(0)
+    const secondChar = upperCode.charCodeAt(1)
+
+    // Validate that both characters are letters A-Z
+    if (
+        firstChar < 65 || firstChar > 90 ||
+        secondChar < 65 || secondChar > 90
+    ) {
+        return ''
+    }
+
+    // Convert to regional indicator symbols
+    const firstSymbol = codePointA + (firstChar - 65)
+    const secondSymbol = codePointA + (secondChar - 65)
+
+    return String.fromCodePoint(firstSymbol, secondSymbol)
+}
+
+/**
+ * Get flag emoji for a country name
+ * @param countryName - Country name (will be normalized and converted to code)
+ * @returns Flag emoji or empty string if country not found
+ */
+export function getCountryFlag(countryName: string): string {
+    const code = getCountryCode(countryName)
+    return getCountryFlagEmoji(code)
 }

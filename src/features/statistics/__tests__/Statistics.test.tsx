@@ -59,7 +59,7 @@ describe('Statistics', () => {
             </BrowserRouter>
         )
 
-        expect(screen.getByText(/Collection Statistics/i)).toBeInTheDocument()
+        expect(screen.getByText(/Own3dh2so4 Beer Glass Statistics/i)).toBeInTheDocument()
     })
 
     it('should display view mode toggle', () => {
