@@ -19,23 +19,36 @@ src/
 │   │   │   └── GalleryCard.test.tsx
 │   │   └── index.ts           # Public exports
 │   │
-│   └── brand-detail/          # Feature: Brand detail
-│       ├── components/        # Detail-specific components
-│       │   ├── BrandDetail.tsx    # Detail page
-│       │   ├── BreweryInfo.tsx    # Brewery info
-│       │   ├── GlassCarousel.tsx  # Glass carousel
-│       │   └── GlassInfo.tsx      # Glass info
-│       ├── __tests__/         # Detail tests
-│       │   ├── BrandDetail.test.tsx
-│       │   ├── BreweryInfo.test.tsx
-│       │   ├── GlassCarousel.test.tsx
-│       │   └── GlassInfo.test.tsx
+│   ├── brand-detail/          # Feature: Brand detail
+│   │   ├── components/        # Detail-specific components
+│   │   │   ├── BrandDetail.tsx    # Detail page
+│   │   │   ├── BreweryInfo.tsx    # Brewery info
+│   │   │   ├── GlassCarousel.tsx  # Glass carousel
+│   │   │   └── GlassInfo.tsx      # Glass info
+│   │   ├── __tests__/         # Detail tests
+│   │   │   ├── BrandDetail.test.tsx
+│   │   │   ├── BreweryInfo.test.tsx
+│   │   │   ├── GlassCarousel.test.tsx
+│   │   │   └── GlassInfo.test.tsx
+│   │   └── index.ts           # Public exports
+│   │
+│   └── statistics/            # Feature: Statistics & Analytics
+│       ├── components/        # Statistics-specific components
+│       │   ├── Statistics.tsx     # Main statistics page
+│       │   ├── WorldMap.tsx       # Interactive world map
+│       │   ├── ViewModeToggle.tsx # View mode switcher
+│       │   └── StatsCard.tsx      # Statistics card
+│       ├── __tests__/         # Statistics tests
+│       │   └── Statistics.test.tsx
 │       └── index.ts           # Public exports
 │
 ├── shared/                    # Shared code between features
 │   ├── hooks/                # Reusable hooks
+│   │   ├── useBrands.ts
+│   │   ├── useStatistics.ts
 │   │   ├── useImageBrightness.ts
 │   │   └── __tests__/
+│   │       ├── useStatistics.test.ts
 │   │       └── useImageBrightness.test.ts
 │   ├── utils/               # Shared utilities
 │   │   ├── dataLoader.ts
@@ -114,9 +127,27 @@ import Gallery from './features/gallery/components/Gallery'
 - `shared/hooks/useImageBrightness`: For brightness analysis
 - `shared/types`: For TypeScript types
 
+### Statistics Feature
+**Responsibility**: Display collection statistics and analytics
+
+**Components**:
+- `Statistics`: Main statistics page component
+- `WorldMap`: Interactive world map using d3-geo
+- `ViewModeToggle`: Toggle between purchase and origin views
+- `StatsCard`: Reusable statistics card
+
+**Dependencies**:
+- `shared/hooks/useBrands`: For data loading (TanStack Query)
+- `shared/hooks/useStatistics`: For statistics calculations
+- `shared/types`: For TypeScript types
+- `d3-geo`: For map projections
+- `topojson-client`: For TopoJSON processing
+
 ## 🔧 Shared Module
 
 ### Hooks
+- `useBrands`: Fetches all brands using TanStack Query
+- `useStatistics`: Calculates collection statistics from brand data
 - `useImageBrightness`: Analyzes image brightness to adjust colors
 
 ### Utils

@@ -1,19 +1,36 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useBrands } from '@/shared/hooks/useBrands'
 import GalleryCard from './GalleryCard'
 import FilterBar from './FilterBar'
 import type { Filters } from '@/shared/types'
 
 function Gallery() {
+  const [searchParams] = useSearchParams()
   const { data: allBrands = [], isLoading, error } = useBrands()
+
   const [filters, setFilters] = useState<Filters>({
     search: '',
-    country: '',
+    country: searchParams.get('country') || '',
     glassCount: '',
     gotMethod: '',
-    boughtCountry: '',
+    boughtCountry: searchParams.get('boughtCountry') || '',
     sort: 'name-asc'
   })
+
+  // Update filters when URL params change
+  useEffect(() => {
+    const country = searchParams.get('country')
+    const boughtCountry = searchParams.get('boughtCountry')
+
+    if (country || boughtCountry) {
+      setFilters(prev => ({
+        ...prev,
+        country: country || prev.country,
+        boughtCountry: boughtCountry || prev.boughtCountry
+      }))
+    }
+  }, [searchParams])
 
   // Apply all filters
   const filteredAndSortedBrands = useMemo(() => {

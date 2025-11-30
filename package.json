@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run generate-index && vite build",
+    "prebuild": "npm run download-world-atlas",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "generate-index": "node --loader ts-node/esm scripts/generate-index.ts",
+    "download-world-atlas": "mkdir -p public/data && curl -o public/data/world-atlas-countries-110m.json https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
@@ -31,19 +33,23 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.11",
+    "d3-geo": "^3.1.1",
     "js-yaml": "^4.1.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-router-dom": "^6.28.0"
+    "react-router-dom": "^6.28.0",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/d3-geo": "^3.1.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.10.1",
     "@types/react": "19.2.6",
     "@types/react-dom": "19.2.3",
+    "@types/topojson-client": "^3.1.5",
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
     "@vitejs/plugin-react": "^4.3.4",

@@ -62,3 +62,25 @@ export interface BrightnessResult {
   isAnalyzing: boolean
 }
 
+/**
+ * Statistics view mode
+ */
+export type StatisticsViewMode = 'purchase' | 'origin'
+
+/**
+ * Country statistic with count
+ */
+export interface CountryStatistic {
+  country: string
+  count: number
+}
+
+/**
+ * Overall statistics data
+ */
+export interface Statistics {
+  totalGlasses: number
+  totalBrands: number
+  uniqueCountries: number
+  countryData: CountryStatistic[]
+}
