@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { TestMemoryRouter } from '@/test/router-helpers'
 import userEvent from '@testing-library/user-event'
 import BrandDetail from '@/features/brand-detail/components/BrandDetail'
 import { mockBrand1, mockBrand2 } from '@/test/mocks/mockBrands'
@@ -41,15 +41,9 @@ describe('BrandDetail', () => {
   const renderBrandDetail = (brandId = 'test_beer_1') => {
     mockParams = { id: brandId }
     return render(
-      <MemoryRouter
-        initialEntries={[`/${brandId}`]}
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true
-        }}
-      >
+      <TestMemoryRouter initialEntries={[`/${brandId}`]}>
         <BrandDetail />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
   }
 

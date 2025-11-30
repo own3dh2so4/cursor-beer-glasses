@@ -13,11 +13,19 @@ export async function loadAllBrands(): Promise<Brand[]> {
   }
 
   try {
+    // Use import.meta.env.BASE_URL which Vite sets correctly for both dev and prod
     const base = import.meta.env.BASE_URL || '/'
-    const response = await fetch(`${base}brands-index.json`)
+    // Ensure base ends with / for proper path construction
+    const baseUrl = base.endsWith('/') ? base : `${base}/`
+    // Construct URL - Vite handles the base path correctly
+    const url = `${baseUrl}brands-index.json`
+    
+    const response = await fetch(url, {
+      cache: 'no-cache' // Force fresh fetch in development
+    })
 
     if (!response.ok) {
-      throw new Error(`Failed to load brands index: ${response.status}`)
+      throw new Error(`Failed to load brands index: ${response.status} ${response.statusText}`)
     }
 
     const brands = await response.json() as Brand[]

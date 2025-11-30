@@ -9,14 +9,29 @@
     <meta name="theme-color" content="#e67e22" />
     <meta name="description" content="A personal collection of beer glasses from around the world" />
     <link rel="apple-touch-icon" href="/cursor-beer-glasses/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Beer Glasses" />
     
     <title>Own3dh2so4 Beer Glass Collection</title>
     <script>
-      // GitHub Pages SPA redirect solution - restore the original URL
+      // Redirect to base path if accessing root in development
       (function() {
+        const basePath = '/cursor-beer-glasses/';
+        const currentPath = window.location.pathname;
+        
+        // Only redirect if we're at root (development scenario)
+        // This prevents the Vite warning about base URL mismatch
+        if (currentPath === '/' && !currentPath.startsWith(basePath)) {
+          // Check if we're in development (localhost)
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            window.location.replace(basePath);
+            return;
+          }
+        }
+        
+        // GitHub Pages SPA redirect solution - restore the original URL
         var redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
         if (redirect && redirect !== location.href) {

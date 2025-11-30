@@ -90,6 +90,14 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
+  },
+  server: {
+    // Automatically open the correct path
+    open: '/cursor-beer-glasses/',
+  },
+  preview: {
+    // Also handle base path in preview mode
+    open: '/cursor-beer-glasses/',
   }
 })
 

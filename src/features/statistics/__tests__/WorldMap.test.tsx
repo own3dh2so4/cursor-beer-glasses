@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { TestBrowserRouter } from '@/test/router-helpers'
 import WorldMap from '../components/WorldMap'
 
 // Define mock function before vi.mock calls (hoisting requirement)
@@ -60,9 +60,9 @@ describe('WorldMap Integration', () => {
 
     it('should render map and handle country aliases correctly', async () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={mockCountryData} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText(/Loading map.../i)).toBeInTheDocument()
@@ -83,9 +83,9 @@ describe('WorldMap Integration', () => {
 
     it('should show tooltip on hover', async () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={mockCountryData} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         const ukPath = await screen.findByRole('button', { name: /United Kingdom: 5 glasses/i })
@@ -113,9 +113,9 @@ describe('WorldMap Integration', () => {
 
     it('should use zoom buttons', async () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={mockCountryData} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         await screen.findByRole('button', { name: /United Kingdom: 5 glasses/i })
@@ -132,9 +132,9 @@ describe('WorldMap Integration', () => {
 
     it('should NOT show warning when all countries are mapped', async () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={mockCountryData} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         await screen.findByRole('button', { name: /United Kingdom: 5 glasses/i })
@@ -150,9 +150,9 @@ describe('WorldMap Integration', () => {
         ]
 
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={dataWithUnmapped} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         await waitFor(() => {
@@ -171,9 +171,9 @@ describe('WorldMap Integration', () => {
         ]
 
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <WorldMap countryData={dataWithOneUnmapped} viewMode="purchase" />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         await waitFor(() => {

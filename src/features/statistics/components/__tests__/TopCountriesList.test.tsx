@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router-dom'
+import { TestMemoryRouter } from '@/test/router-helpers'
 import { TopCountriesList } from '../TopCountriesList'
 import type { CountryStatistic } from '@/shared/types'
 
@@ -35,9 +35,9 @@ describe('TopCountriesList', () => {
             ...props
         }
         return render(
-            <MemoryRouter>
+            <TestMemoryRouter>
                 <TopCountriesList {...defaultProps} />
-            </MemoryRouter>
+            </TestMemoryRouter>
         )
     }
 

@@ -6,6 +6,8 @@ export const useBrands = (): UseQueryResult<Brand[], Error> => {
     return useQuery({
         queryKey: ['brands'],
         queryFn: loadAllBrands,
+        retry: 1,
+        retryDelay: 1000,
     })
 }
 

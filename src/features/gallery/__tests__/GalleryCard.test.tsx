@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { TestBrowserRouter } from '@/test/router-helpers'
 import userEvent from '@testing-library/user-event'
 import GalleryCard from '@/features/gallery/components/GalleryCard'
 import { mockBrand1 } from '@/test/mocks/mockBrands'
@@ -18,14 +18,9 @@ vi.mock('react-router-dom', async () => {
 describe('GalleryCard', () => {
   const renderGalleryCard = (brand = mockBrand1) => {
     return render(
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true
-        }}
-      >
+      <TestBrowserRouter>
         <GalleryCard brand={brand} />
-      </BrowserRouter>
+      </TestBrowserRouter>
     )
   }
 

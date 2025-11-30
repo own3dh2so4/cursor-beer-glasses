@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { render, screen, act, waitFor } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { TestMemoryRouter } from '@/test/router-helpers'
 import { Navbar } from '../Navbar'
 
 describe('Navbar', () => {
@@ -46,9 +46,9 @@ describe('Navbar', () => {
 
   const renderNavbar = (props = {}, initialEntries = ['/']) => {
     return render(
-      <MemoryRouter initialEntries={initialEntries}>
+      <TestMemoryRouter initialEntries={initialEntries}>
         <Navbar title="Test Title" {...props} />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
   }
 
@@ -176,21 +176,21 @@ describe('Navbar', () => {
 
   it('renders with ReactNode title', () => {
     render(
-      <MemoryRouter>
+      <TestMemoryRouter>
         <Navbar title={<span data-testid="custom-title">Custom Node</span>} />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(screen.getByTestId('custom-title')).toBeInTheDocument()
   })
 
   it('renders with ReactNode subtitle', () => {
     render(
-      <MemoryRouter>
+      <TestMemoryRouter>
         <Navbar
           title="Test Title"
           subtitle={<span data-testid="custom-subtitle">Custom Subtitle Node</span>}
         />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(screen.getByTestId('custom-subtitle')).toBeInTheDocument()
   })

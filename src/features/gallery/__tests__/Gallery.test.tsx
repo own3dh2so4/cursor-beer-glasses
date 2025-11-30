@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { TestBrowserRouter } from '@/test/router-helpers'
 import userEvent from '@testing-library/user-event'
 import Gallery from '@/features/gallery/components/Gallery'
 import { mockBrands } from '@/test/mocks/mockBrands'
@@ -27,9 +27,9 @@ describe('Gallery', () => {
 
   const renderGallery = () => {
     render(
-      <BrowserRouter>
+      <TestBrowserRouter>
         <Gallery />
-      </BrowserRouter>
+      </TestBrowserRouter>
     )
   }
 

@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { render, act } from '@testing-library/react'
-import { MemoryRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { TestMemoryRouter } from '@/test/router-helpers'
 import { ScrollToTop } from '../ScrollToTop'
 
 describe('ScrollToTop', () => {
@@ -16,9 +17,9 @@ describe('ScrollToTop', () => {
 
   it('scrolls to top on mount', () => {
     render(
-      <MemoryRouter>
+      <TestMemoryRouter>
         <ScrollToTop />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
   })
@@ -39,9 +40,9 @@ describe('ScrollToTop', () => {
     }
 
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
+      <TestMemoryRouter initialEntries={['/']}>
         <NavigationTest />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
 
     // Clear the initial mount call
@@ -64,9 +65,9 @@ describe('ScrollToTop', () => {
 
   it('returns null', () => {
     const { container } = render(
-      <MemoryRouter>
+      <TestMemoryRouter>
         <ScrollToTop />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(container.firstChild).toBeNull()
   })
@@ -74,9 +75,9 @@ describe('ScrollToTop', () => {
   it('scrolls on initial render for different routes', () => {
     // Test with home route
     const { unmount } = render(
-      <MemoryRouter initialEntries={['/']}>
+      <TestMemoryRouter initialEntries={['/']}>
         <ScrollToTop />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
     unmount()
@@ -84,9 +85,9 @@ describe('ScrollToTop', () => {
     // Clear and test with stats route
     vi.clearAllMocks()
     render(
-      <MemoryRouter initialEntries={['/stats']}>
+      <TestMemoryRouter initialEntries={['/stats']}>
         <ScrollToTop />
-      </MemoryRouter>
+      </TestMemoryRouter>
     )
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
   })

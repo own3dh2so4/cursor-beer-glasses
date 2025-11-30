@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { TestBrowserRouter } from '@/test/router-helpers'
 import Statistics from '@/features/statistics/components/Statistics'
 
 // Mock the hooks
@@ -54,9 +54,9 @@ describe('Statistics', () => {
 
     it('should render statistics page', () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <Statistics />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText(/Own3dh2so4 Beer Glass Statistics/i)).toBeInTheDocument()
@@ -64,9 +64,9 @@ describe('Statistics', () => {
 
     it('should display view mode toggle', () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <Statistics />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText(/🛍️ Where I Bought/i)).toBeInTheDocument()
@@ -75,9 +75,9 @@ describe('Statistics', () => {
 
     it('should display statistics cards', () => {
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <Statistics />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText('Total Glasses')).toBeInTheDocument()
@@ -95,9 +95,9 @@ describe('Statistics', () => {
         } as unknown as ReturnType<typeof useBrands>)
 
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <Statistics />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText(/Loading statistics/i)).toBeInTheDocument()
@@ -114,9 +114,9 @@ describe('Statistics', () => {
         } as unknown as ReturnType<typeof useBrands>)
 
         render(
-            <BrowserRouter>
+            <TestBrowserRouter>
                 <Statistics />
-            </BrowserRouter>
+            </TestBrowserRouter>
         )
 
         expect(screen.getByText(/Error loading statistics/i)).toBeInTheDocument()
