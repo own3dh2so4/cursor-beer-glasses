@@ -33,9 +33,11 @@ A modern, responsive single-page application showcasing a collection of beer gla
 - **React Router v6**: Client-side routing
 - **Tailwind CSS 3**: Utility-first CSS framework for rapid UI development
 - **js-yaml**: YAML data parsing
+- **TanStack React Query 5**: Data fetching and caching
 - **Vitest 2**: Fast unit test framework with improved API
 - **React Testing Library 16**: Component testing utilities
 - **ESLint 9**: Code linting with TypeScript and React rules
+- **tsx**: TypeScript execution for scripts
 
 ## Setup and Development
 
@@ -74,7 +76,9 @@ npm run test:coverage
 
 The development server will start at `http://localhost:5173/cursor-beer-glasses/`
 
-**Note:** The app uses a pre-generated JSON index of all brands for optimal performance. This index is automatically generated during the build process from all YAML files in `public/data/`.
+**Note:** The app uses a pre-generated JSON index of all brands for optimal performance. This index is automatically generated during the build process from all YAML files in `public/data/` using `tsx`.
+
+**Development Note:** The dev server automatically redirects from `/` to `/cursor-beer-glasses/` to avoid Vite base path warnings.
 
 ## Docker Development
 
@@ -227,13 +231,13 @@ npm run lint:fix
 npm run type-check
 ```
 
-**Note:** ESLint checks code style and basic rules, but **TypeScript type checking** (`npm run type-check`) is what catches missing props, incorrect types, and other type errors. See [TYPE_CHECKING.md](TYPE_CHECKING.md) for details.
+**Note:** ESLint checks code style and basic rules, but **TypeScript type checking** (`npm run type-check`) is what catches missing props, incorrect types, and other type errors.
 
-Test coverage: **100% passing** (80/80 tests)
+Test coverage: **173 tests passing** with comprehensive coverage across all features
 
 ## Architecture
 
-This project uses a **feature-based architecture** for better scalability and maintainability. Each feature (gallery, brand-detail) contains its own components, tests, and logic. See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed documentation.
+This project uses a **feature-based architecture** for better scalability and maintainability. Each feature (gallery, brand-detail, statistics) contains its own components, tests, and logic. See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed documentation.
 
 **Styling:** The project uses **Tailwind CSS** with utility classes for rapid development and optimal performance. Custom theme configuration preserves the original design system.
 
@@ -255,17 +259,25 @@ This project uses a **feature-based architecture** for better scalability and ma
 │   │   │   ├── components/   # Gallery components
 │   │   │   ├── __tests__/    # Gallery tests
 │   │   │   └── index.ts      # Public exports
-│   │   └── brand-detail/     # Brand detail feature
-│   │       ├── components/   # Detail components
-│   │       ├── __tests__/    # Detail tests
+│   │   ├── brand-detail/     # Brand detail feature
+│   │   │   ├── components/   # Detail components
+│   │   │   ├── __tests__/    # Detail tests
+│   │   │   └── index.ts      # Public exports
+│   │   └── statistics/       # Statistics feature
+│   │       ├── components/   # Statistics components
+│   │       ├── hooks/        # Statistics hooks
+│   │       ├── utils/        # Statistics utilities
+│   │       ├── __tests__/    # Statistics tests
 │   │       └── index.ts      # Public exports
 │   ├── shared/               # Shared code
+│   │   ├── components/       # Shared components (Navbar, ScrollToTop)
 │   │   ├── hooks/            # Reusable hooks
 │   │   ├── utils/            # Utilities
 │   │   ├── types/            # TypeScript types
 │   │   └── index.ts          # Public exports
 │   ├── test/                 # Test configuration
 │   │   ├── mocks/            # Mock data
+│   │   ├── router-helpers.tsx # Router test helpers
 │   │   └── setup.ts          # Vitest setup
 │   ├── index.css             # Tailwind CSS entry point
 │   ├── App.tsx               # Main app component

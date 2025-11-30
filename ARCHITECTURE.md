@@ -34,26 +34,44 @@ src/
 │   │
 │   └── statistics/            # Feature: Statistics & Analytics
 │       ├── components/        # Statistics-specific components
-│       │   ├── Statistics.tsx     # Main statistics page
-│       │   ├── WorldMap.tsx       # Interactive world map
-│       │   ├── ViewModeToggle.tsx # View mode switcher
-│       │   └── StatsCard.tsx      # Statistics card
+│       │   ├── Statistics.tsx            # Main statistics page
+│       │   ├── WorldMap.tsx              # Interactive world map
+│       │   ├── TopCountriesList.tsx      # Top countries list with flags
+│       │   ├── ViewModeToggle.tsx       # View mode switcher
+│       │   ├── StatsCard.tsx            # Statistics card
+│       │   ├── MapControls.tsx         # Map zoom/pan controls
+│       │   └── UnmappedCountriesWarning.tsx # Warning for unmapped countries
+│       ├── hooks/             # Statistics-specific hooks
+│       │   ├── useWorldMap.ts          # World map data and rendering
+│       │   └── useMapInteractions.ts   # Map interaction handlers
+│       ├── utils/             # Statistics utilities
+│       │   └── countryAliases.ts       # Country name normalization and flag emojis
 │       ├── __tests__/         # Statistics tests
-│       │   └── Statistics.test.tsx
+│       │   ├── Statistics.test.tsx
+│       │   ├── WorldMap.test.tsx
+│       │   └── components/
+│       │       ├── TopCountriesList.test.tsx
+│       │       ├── MapControls.test.tsx
+│       │       └── UnmappedCountriesWarning.test.tsx
 │       └── index.ts           # Public exports
 │
 ├── shared/                    # Shared code between features
+│   ├── components/           # Shared UI components
+│   │   ├── Navbar.tsx       # Navigation bar with scroll effects
+│   │   ├── ScrollToTop.tsx  # Scroll to top on route change
+│   │   └── __tests__/
+│   │       ├── Navbar.test.tsx
+│   │       └── ScrollToTop.test.tsx
 │   ├── hooks/                # Reusable hooks
 │   │   ├── useBrands.ts
+│   │   ├── useBrand.ts
 │   │   ├── useStatistics.ts
 │   │   ├── useImageBrightness.ts
 │   │   └── __tests__/
 │   │       ├── useStatistics.test.ts
 │   │       └── useImageBrightness.test.ts
 │   ├── utils/               # Shared utilities
-│   │   ├── dataLoader.ts
-│   │   └── __tests__/
-│   │       └── dataLoader.test.ts
+│   │   └── dataLoader.ts
 │   ├── types/               # Shared TypeScript types
 │   │   └── index.ts
 │   └── index.ts            # Public exports from shared
@@ -61,6 +79,7 @@ src/
 ├── test/                   # Test configuration
 │   ├── mocks/             # Mock data for tests
 │   │   └── mockBrands.ts
+│   ├── router-helpers.tsx # Router test helpers with future flags
 │   └── setup.ts          # Vitest setup
 │
 ├── index.css           # Tailwind CSS entry point
@@ -133,8 +152,18 @@ import Gallery from './features/gallery/components/Gallery'
 **Components**:
 - `Statistics`: Main statistics page component
 - `WorldMap`: Interactive world map using d3-geo
+- `TopCountriesList`: Top countries list with flag emojis and rankings
 - `ViewModeToggle`: Toggle between purchase and origin views
 - `StatsCard`: Reusable statistics card
+- `MapControls`: Zoom and pan controls for the map
+- `UnmappedCountriesWarning`: Warning for countries not found in map data
+
+**Hooks**:
+- `useWorldMap`: Handles world map data loading and rendering
+- `useMapInteractions`: Manages map interactions (hover, click, tooltip)
+
+**Utils**:
+- `countryAliases`: Country name normalization, ISO code mapping, and flag emoji generation
 
 **Dependencies**:
 - `shared/hooks/useBrands`: For data loading (TanStack Query)
@@ -145,13 +174,18 @@ import Gallery from './features/gallery/components/Gallery'
 
 ## 🔧 Shared Module
 
+### Components
+- `Navbar`: Fixed navigation bar with scroll-based collapse and active route highlighting
+- `ScrollToTop`: Automatically scrolls to top on route changes
+
 ### Hooks
 - `useBrands`: Fetches all brands using TanStack Query
+- `useBrand`: Fetches a single brand by ID using TanStack Query
 - `useStatistics`: Calculates collection statistics from brand data
 - `useImageBrightness`: Analyzes image brightness to adjust colors
 
 ### Utils
-- `dataLoader`: Functions to load and cache brand data
+- `dataLoader`: Functions to load and cache brand data from JSON index
 
 ### Types
 All shared TypeScript types:
@@ -160,6 +194,9 @@ All shared TypeScript types:
 - `Filters`: Filters type
 - `FilterOptions`: Available filter options
 - `BrightnessResult`: Brightness analysis result
+- `Statistics`: Statistics data type
+- `CountryStatistic`: Country with count
+- `StatisticsViewMode`: 'purchase' | 'origin'
 
 ## 🚀 Adding New Features
 

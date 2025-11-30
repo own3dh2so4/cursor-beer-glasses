@@ -46,15 +46,35 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 - `GlassCarousel.tsx` - Image carousel with indicators
 - `GlassInfo.tsx` - Glass acquisition details
 
+**Statistics Feature** (`src/features/statistics/`)
+- `Statistics.tsx` - Main statistics page
+- `WorldMap.tsx` - Interactive world map with d3-geo
+- `TopCountriesList.tsx` - Top countries list with flag emojis
+- `ViewModeToggle.tsx` - Toggle between purchase/origin views
+- `StatsCard.tsx` - Statistics card component
+- `MapControls.tsx` - Map zoom/pan controls
+- `UnmappedCountriesWarning.tsx` - Warning for unmapped countries
+- `hooks/useWorldMap.ts` - World map data and rendering
+- `hooks/useMapInteractions.ts` - Map interaction handlers
+- `utils/countryAliases.ts` - Country normalization and flag emojis
+
 **Shared Code** (`src/shared/`)
+- `components/Navbar.tsx` - Navigation bar with scroll effects
+- `components/ScrollToTop.tsx` - Auto-scroll on route change
+- `hooks/useBrands.ts` - Brand data fetching (TanStack Query)
+- `hooks/useBrand.ts` - Single brand fetching (TanStack Query)
+- `hooks/useStatistics.ts` - Statistics calculations
 - `hooks/useImageBrightness.ts` - Image brightness analysis hook
-- `utils/dataLoader.ts` - YAML parsing and caching
+- `utils/dataLoader.ts` - JSON index loading and caching
 - `types/index.ts` - TypeScript type definitions
 
-**Testing** (`80 tests - 100% passing`)
-- Component tests for all features
+**Testing** (`173 tests passing`)
+- Component tests for all features (Gallery, Brand Detail, Statistics)
+- Shared component tests (Navbar, ScrollToTop)
 - Integration tests for routing
 - Utility and hook tests
+- Statistics utilities tests (country aliases, flag emojis)
+- Router test helpers with React Router v7 future flags
 - Mock data and test setup
 
 ### Styling with Tailwind CSS
@@ -82,13 +102,14 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 7. **postcss.config.cjs** - PostCSS for Tailwind
 8. **eslint.config.js** - ESLint 9 with TypeScript rules
 9. **.nvmrc** - Node version specification (24.11.1)
-10. **index.html** - HTML entry point with SPA routing script and PWA meta tags
+10. **index.html** - HTML entry point with SPA routing script, PWA meta tags, and development redirect
 11. **Dockerfile** - Multi-stage Docker build (development & test)
 12. **docker-compose.yaml** - Docker services configuration
 13. **.dockerignore** - Docker build exclusions
 14. **Makefile** - Task automation including Docker commands
 15. **public/pwa-*.png** - PWA icons (192x192, 512x512)
 16. **public/apple-touch-icon.png** - iOS home screen icon
+17. **src/test/router-helpers.tsx** - Router test helpers with React Router v7 future flags
 
 ### Deployment
 
@@ -124,7 +145,7 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 - **TypeScript 5.9** - Static typing with strict mode
 - **Vite 6.4** - Next-generation build tool
 - **Tailwind CSS 3.4** - Utility-first CSS framework
-- **React Router 6.28** - Client-side routing
+- **React Router 6.28** - Client-side routing with v7 future flags enabled
 - **Vitest 2.1** - Fast unit test framework
 - **React Testing Library 16** - Component testing
 - **ESLint 9** - Linting with TypeScript rules
@@ -133,6 +154,7 @@ Successfully created a modern, responsive, and fully tested Single Page Applicat
 - **Docker & Docker Compose** - Containerized development environment
 - **Makefile** - Task automation for Docker and local workflows
 - **PWA (vite-plugin-pwa 1.1.0)** - Progressive Web App with offline support
+- **tsx 4.20** - TypeScript execution for scripts (replaces deprecated ts-node loader)
 
 ## Key Features
 
@@ -248,16 +270,39 @@ cursor-beer-glasses/
 │   │   │   │   └── FilterBar.tsx
 │   │   │   ├── __tests__/
 │   │   │   └── index.ts
-│   │   └── brand-detail/
+│   │   ├── brand-detail/
+│   │   │   ├── components/
+│   │   │   │   ├── BrandDetail.tsx
+│   │   │   │   ├── BreweryInfo.tsx
+│   │   │   │   ├── GlassCarousel.tsx
+│   │   │   │   └── GlassInfo.tsx
+│   │   │   ├── __tests__/
+│   │   │   └── index.ts
+│   │   └── statistics/
 │   │       ├── components/
-│   │       │   ├── BrandDetail.tsx
-│   │       │   ├── BreweryInfo.tsx
-│   │       │   ├── GlassCarousel.tsx
-│   │       │   └── GlassInfo.tsx
+│   │       │   ├── Statistics.tsx
+│   │       │   ├── WorldMap.tsx
+│   │       │   ├── TopCountriesList.tsx
+│   │       │   ├── ViewModeToggle.tsx
+│   │       │   ├── StatsCard.tsx
+│   │       │   ├── MapControls.tsx
+│   │       │   └── UnmappedCountriesWarning.tsx
+│   │       ├── hooks/
+│   │       │   ├── useWorldMap.ts
+│   │       │   └── useMapInteractions.ts
+│   │       ├── utils/
+│   │       │   └── countryAliases.ts
 │   │       ├── __tests__/
 │   │       └── index.ts
 │   ├── shared/                     # Shared code
+│   │   ├── components/
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── ScrollToTop.tsx
+│   │   │   └── __tests__/
 │   │   ├── hooks/
+│   │   │   ├── useBrands.ts
+│   │   │   ├── useBrand.ts
+│   │   │   ├── useStatistics.ts
 │   │   │   ├── useImageBrightness.ts
 │   │   │   └── __tests__/
 │   │   ├── utils/
@@ -269,6 +314,7 @@ cursor-beer-glasses/
 │   ├── test/                       # Test configuration
 │   │   ├── mocks/
 │   │   │   └── mockBrands.ts
+│   │   ├── router-helpers.tsx
 │   │   └── setup.ts
 │   ├── index.css                   # Tailwind CSS entry
 │   ├── App.tsx                     # Main app component
@@ -368,7 +414,7 @@ glasses:
 - ✅ Responsive design
 - ✅ SPA routing with deep linking
 - ✅ Adaptive backgrounds
-- ✅ Comprehensive testing
+- ✅ Comprehensive testing (173 tests)
 - ✅ TypeScript migration
 - ✅ Feature-based architecture
 - ✅ Tailwind CSS migration
@@ -376,11 +422,27 @@ glasses:
 - ✅ Docker testing environment
 - ✅ Makefile task automation
 - ✅ PWA support (installable, offline capable)
+- ✅ Statistics feature with interactive world map
+- ✅ Top countries list with flag emojis
+- ✅ Shared navigation components (Navbar, ScrollToTop)
+- ✅ React Router v7 future flags enabled
+- ✅ Router test helpers for consistent testing
+- ✅ Automatic development redirect for base path
+
+## Recent Enhancements
+
+- ✅ Statistics dashboard with interactive world map
+- ✅ Collection statistics (total glasses, brands, countries)
+- ✅ Top countries list with flag emojis (no external dependencies)
+- ✅ Purchase vs. origin view modes
+- ✅ Shared navigation components
+- ✅ React Router v7 preparation (future flags)
+- ✅ Comprehensive test coverage (173 tests)
+- ✅ Router test helpers
+- ✅ Development base path redirect
 
 ## Future Enhancements (Optional)
 
-- [ ] Statistics dashboard
-- [ ] Collection map view
 - [ ] Export to PDF
 - [ ] Print-friendly styles
 - [ ] Dark mode toggle
@@ -390,14 +452,15 @@ glasses:
 ## Testing & Quality
 
 The project has comprehensive test coverage:
-- ✅ **80 tests passing** (100% success rate)
-- ✅ Unit tests for all components
-- ✅ Integration tests for features
+- ✅ **173 tests passing** across all features
+- ✅ Unit tests for all components (Gallery, Brand Detail, Statistics, Shared)
+- ✅ Integration tests for features and routing
 - ✅ Hook tests with proper mocking
-- ✅ Utility function tests
+- ✅ Utility function tests (dataLoader, countryAliases)
+- ✅ Router test helpers with React Router v7 future flags
 - ✅ Type checking with TypeScript strict mode
 - ✅ ESLint with zero errors
-- ✅ Development server runs
+- ✅ Development server runs with automatic base path redirect
 - ✅ Production build completes
 - ✅ GitHub Actions workflow configured
 

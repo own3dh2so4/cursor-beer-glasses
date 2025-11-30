@@ -6,7 +6,7 @@ This guide explains how to deploy your Beer Glass Collection SPA to GitHub Pages
 
 - GitHub account
 - Git installed locally
-- Node.js 16+ and npm installed
+- Node.js 22+ and npm 10+ installed
 
 ## Initial Setup
 
@@ -138,7 +138,7 @@ The site will automatically rebuild and update with the new beer.
 
 **Check Node version:**
 ```bash
-node --version  # Should be 16.0.0 or higher
+node --version  # Should be 22.0.0 or higher (24 LTS recommended)
 ```
 
 **Clear and reinstall dependencies:**

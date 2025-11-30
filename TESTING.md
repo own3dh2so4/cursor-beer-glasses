@@ -4,11 +4,16 @@ This project uses [Vitest](https://vitest.dev/) and [React Testing Library](http
 
 ## Test Coverage
 
-The application has comprehensive test coverage for:
+The application has comprehensive test coverage with **173 tests** covering:
 
-- ✅ **Utils** (`src/utils/dataLoader.js`) - Data loading and asset path utilities
-- ✅ **Components** - All React components (Gallery, GalleryCard, BrandDetail, BreweryInfo, GlassCarousel, GlassInfo)
-- ✅ **Scripts** (`scripts/generate-index.js`) - Index generation logic
+- ✅ **Shared Components** - Navbar, ScrollToTop
+- ✅ **Gallery Feature** - Gallery, GalleryCard, FilterBar
+- ✅ **Brand Detail Feature** - BrandDetail, BreweryInfo, GlassCarousel, GlassInfo
+- ✅ **Statistics Feature** - Statistics, WorldMap, TopCountriesList, MapControls, UnmappedCountriesWarning
+- ✅ **Shared Hooks** - useBrands, useStatistics, useImageBrightness
+- ✅ **Shared Utils** - dataLoader
+- ✅ **Statistics Utils** - countryAliases (normalization, flag emojis)
+- ✅ **Scripts** (`scripts/generate-index.ts`) - Index generation logic
 - ✅ **App** - Main application routing
 
 ## Running Tests
@@ -51,34 +56,67 @@ Coverage reports are generated in the `coverage/` directory.
 
 ```
 src/
-├── components/
-│   ├── Gallery.jsx
-│   ├── Gallery.test.jsx          ← Component tests
-│   ├── GalleryCard.jsx
-│   ├── GalleryCard.test.jsx
-│   └── ...
-├── utils/
-│   ├── dataLoader.js
-│   └── dataLoader.test.js         ← Utility tests
+├── features/
+│   ├── gallery/
+│   │   ├── components/
+│   │   │   ├── Gallery.tsx
+│   │   │   └── GalleryCard.tsx
+│   │   └── __tests__/
+│   │       ├── Gallery.test.tsx
+│   │       └── GalleryCard.test.tsx
+│   ├── brand-detail/
+│   │   ├── components/
+│   │   └── __tests__/
+│   │       ├── BrandDetail.test.tsx
+│   │       ├── BreweryInfo.test.tsx
+│   │       ├── GlassCarousel.test.tsx
+│   │       └── GlassInfo.test.tsx
+│   └── statistics/
+│       ├── components/
+│       │   └── __tests__/
+│       │       ├── TopCountriesList.test.tsx
+│       │       ├── MapControls.test.tsx
+│       │       └── UnmappedCountriesWarning.test.tsx
+│       ├── __tests__/
+│       │   ├── Statistics.test.tsx
+│       │   └── WorldMap.test.tsx
+│       └── utils/
+│           └── __tests__/
+│               ├── countryAliases.test.ts
+│               └── countryAliases-flag.test.ts
+├── shared/
+│   ├── components/
+│   │   └── __tests__/
+│   │       ├── Navbar.test.tsx
+│   │       └── ScrollToTop.test.tsx
+│   ├── hooks/
+│   │   └── __tests__/
+│   │       ├── useStatistics.test.ts
+│   │       └── useImageBrightness.test.ts
+│   └── utils/
+│       └── __tests__/
+│           └── dataLoader.test.ts
 ├── test/
-│   ├── setup.js                   ← Test configuration
+│   ├── setup.ts                   ← Test configuration
+│   ├── router-helpers.tsx         ← Router test helpers
 │   └── mocks/
-│       └── mockBrands.js          ← Mock data
-└── App.test.jsx
+│       └── mockBrands.ts          ← Mock data
+└── App.test.tsx
 
 scripts/
-└── generate-index.test.js         ← Script tests
+└── generate-index.test.ts         ← Script tests
 ```
 
 ## Writing Tests
 
 ### Component Tests
 
-Example from `GalleryCard.test.jsx`:
+Example from `GalleryCard.test.tsx`:
 
-```javascript
+```typescript
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { TestBrowserRouter } from '@/test/router-helpers'
 import userEvent from '@testing-library/user-event'
 import GalleryCard from './GalleryCard'
 
@@ -86,9 +124,9 @@ describe('GalleryCard', () => {
   it('should render brand logo', () => {
     const brand = { name: 'Test Beer', logo: 'test.png' }
     render(
-      <BrowserRouter>
+      <TestBrowserRouter>
         <GalleryCard brand={brand} />
-      </BrowserRouter>
+      </TestBrowserRouter>
     )
     
     expect(screen.getByAltText('Test Beer')).toBeInTheDocument()
@@ -96,11 +134,13 @@ describe('GalleryCard', () => {
 })
 ```
 
+**Note:** All tests use `TestBrowserRouter` or `TestMemoryRouter` from `@/test/router-helpers` which include React Router v7 future flags to avoid warnings.
+
 ### Utility Tests
 
-Example from `dataLoader.test.js`:
+Example from `dataLoader.test.ts`:
 
-```javascript
+```typescript
 import { describe, it, expect, vi } from 'vitest'
 import { loadAllBrands } from './dataLoader'
 
@@ -116,6 +156,23 @@ describe('loadAllBrands', () => {
   })
 })
 ```
+
+### Router Test Helpers
+
+The project includes router test helpers in `src/test/router-helpers.tsx`:
+
+```typescript
+import { TestBrowserRouter, TestMemoryRouter } from '@/test/router-helpers'
+
+// Use in tests instead of BrowserRouter/MemoryRouter
+render(
+  <TestBrowserRouter>
+    <YourComponent />
+  </TestBrowserRouter>
+)
+```
+
+These helpers automatically include React Router v7 future flags (`v7_startTransition`, `v7_relativeSplatPath`) to prepare for React Router v7 and eliminate warnings.
 
 ## Test Configuration
 
@@ -136,11 +193,12 @@ export default defineConfig({
 })
 ```
 
-### Setup File (`src/test/setup.js`)
+### Setup File (`src/test/setup.ts`)
 
 - Configures React Testing Library
 - Sets up global mocks (fetch, import.meta.env)
 - Cleanup after each test
+- Suppresses benign happy-dom errors
 
 ## Mock Data
 
@@ -234,6 +292,8 @@ test: {
 - **Components**: 80%+ coverage
 - **Overall**: 80%+ coverage
 
+**Current Status**: 173 tests passing across all features
+
 View current coverage:
 
 ```bash
@@ -256,17 +316,17 @@ Example workflow:
 
 ```bash
 # 1. Create component and test file
-touch src/components/NewFeature.jsx
-touch src/components/NewFeature.test.jsx
+touch src/features/new-feature/components/NewFeature.tsx
+touch src/features/new-feature/components/__tests__/NewFeature.test.tsx
 
 # 2. Write tests
-# ... edit NewFeature.test.jsx
+# ... edit NewFeature.test.tsx
 
 # 3. Run tests in watch mode
 npm run test:watch
 
 # 4. Implement feature
-# ... edit NewFeature.jsx
+# ... edit NewFeature.tsx
 
 # 5. Verify all tests pass
 npm test

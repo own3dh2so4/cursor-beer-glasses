@@ -18,6 +18,8 @@ npm run dev
 
 Visit: `http://localhost:5173/cursor-beer-glasses/`
 
+**Note:** The dev server automatically redirects from `/` to `/cursor-beer-glasses/` to avoid base path warnings.
+
 ## Build for Production
 
 ```bash
