@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react'
-import { normalizeCountryName } from '../utils/countryAliases'
+import { normalizeCountryName, getCountryCode } from '../utils/countryAliases'
 
 export function useMapInteractions(countryMap: Map<string, { count: number; originalName: string }>) {
     const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
-    const [tooltip, setTooltip] = useState<{ x: number; y: number; country: string; count: number } | null>(null)
+    const [tooltip, setTooltip] = useState<{ x: number; y: number; country: string; count: number; code?: string } | null>(null)
     const [zoom, setZoom] = useState(1)
     const [pan, setPan] = useState({ x: 0, y: 0 })
     const [isPanning, setIsPanning] = useState(false)
@@ -14,6 +14,7 @@ export function useMapInteractions(countryMap: Map<string, { count: number; orig
     const handleMouseEnter = (event: React.MouseEvent<SVGPathElement>, countryName: string) => {
         const normalized = normalizeCountryName(countryName)
         const data = countryMap.get(normalized)
+        const code = getCountryCode(countryName)
 
         setHoveredCountry(countryName)
 
@@ -23,7 +24,8 @@ export function useMapInteractions(countryMap: Map<string, { count: number; orig
                 x: event.clientX - rect.left,
                 y: event.clientY - rect.top,
                 country: data.originalName,
-                count: data.count
+                count: data.count,
+                code
             })
         } else {
             setTooltip(null)

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { normalizeCountryName, COUNTRY_ALIASES } from '../countryAliases'
+import { normalizeCountryName, COUNTRY_ALIASES, getCountryCode } from '../countryAliases'
 
 describe('countryAliases', () => {
     describe('normalizeCountryName', () => {
@@ -61,6 +61,24 @@ describe('countryAliases', () => {
         it('should map to correct values', () => {
             expect(COUNTRY_ALIASES['usa']).toBe('united states of america')
             expect(COUNTRY_ALIASES['uk']).toBe('united kingdom')
+        })
+    })
+
+    describe('getCountryCode', () => {
+        it('should return correct code for known countries', () => {
+            expect(getCountryCode('Spain')).toBe('es')
+            expect(getCountryCode('Germany')).toBe('de')
+            expect(getCountryCode('United States of America')).toBe('us')
+        })
+
+        it('should handle aliases correctly', () => {
+            expect(getCountryCode('USA')).toBe('us')
+            expect(getCountryCode('UK')).toBe('gb')
+            expect(getCountryCode('Czech Republic')).toBe('cz')
+        })
+
+        it('should return undefined for unknown countries', () => {
+            expect(getCountryCode('Atlantis')).toBeUndefined()
         })
     })
 })

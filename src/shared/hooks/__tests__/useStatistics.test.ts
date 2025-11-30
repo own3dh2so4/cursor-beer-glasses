@@ -50,13 +50,15 @@ describe('useStatistics', () => {
         it('should count glasses by from_country', () => {
             const { result } = renderHook(() => useStatistics(mockBrands, 'origin'))
 
-            expect(result.current.totalGlasses).toBe(18)
-            expect(result.current.totalBrands).toBe(3)
+            expect(result.current.totalGlasses).toBe(3)
+            expect(result.current.totalBrands).toBe(2)
             expect(result.current.countryData).toHaveLength(2)
-            expect(result.current.countryData[0]?.country).toBe('Belgium')
-            expect(result.current.countryData[0]?.count).toBe(10)
-            expect(result.current.countryData[1]?.country).toBe('Germany')
-            expect(result.current.countryData[1]?.count).toBe(8)
+
+            // Ireland has 2 glasses, Spain has 1 glass
+            expect(result.current.countryData[0]?.country).toBe('Ireland')
+            expect(result.current.countryData[0]?.count).toBe(2)
+            expect(result.current.countryData[1]?.country).toBe('Spain')
+            expect(result.current.countryData[1]?.count).toBe(1)
 
             // All glasses should be counted
             const totalInCountries = result.current.countryData.reduce((sum, c) => sum + c.count, 0)

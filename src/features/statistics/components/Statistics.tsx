@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useBrands } from '@/shared/hooks/useBrands'
 import { useStatistics } from '@/shared/hooks/useStatistics'
+import { getCountryCode } from '../utils/countryAliases'
 import StatsCard from './StatsCard'
 import ViewModeToggle from './ViewModeToggle'
 import WorldMap from './WorldMap'
 import type { StatisticsViewMode } from '@/shared/types'
 
 function Statistics() {
+    const navigate = useNavigate()
     const [viewMode, setViewMode] = useState<StatisticsViewMode>('purchase')
     const { data: brands = [], isLoading, error } = useBrands()
     const statistics = useStatistics(brands, viewMode)
@@ -88,15 +91,37 @@ function Statistics() {
                         Top Countries
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {statistics.countryData.slice(0, 12).map(({ country, count }) => (
-                            <div
-                                key={country}
-                                className="flex justify-between items-center p-3 bg-slate-50/60 rounded-lg hover:bg-slate-50/80 transition-default"
-                            >
-                                <span className="font-semibold text-slate-700">{country}</span>
-                                <span className="text-primary font-bold">{count}</span>
-                            </div>
-                        ))}
+                        {statistics.countryData.slice(0, 12).map(({ country, count }) => {
+                            const code = getCountryCode(country)
+                            return (
+                                <button
+                                    key={country}
+                                    onClick={() => {
+                                        const param = viewMode === 'purchase' ? 'boughtCountry' : 'country'
+                                        navigate(`/?${param}=${encodeURIComponent(country)}`)
+                                    }}
+                                    className="flex justify-between items-center p-3 bg-slate-50/60 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200 group text-left w-full"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        {code && (
+                                            <img
+                                                src={`https://flagcdn.com/w40/${code}.png`}
+                                                srcSet={`https://flagcdn.com/w80/${code}.png 2x`}
+                                                width="24"
+                                                alt=""
+                                                className="rounded-sm shadow-sm"
+                                            />
+                                        )}
+                                        <span className="font-semibold text-slate-700 group-hover:text-primary transition-colors">
+                                            {country}
+                                        </span>
+                                    </div>
+                                    <span className="text-primary font-bold bg-white/50 px-2 py-0.5 rounded-md group-hover:bg-primary/10 transition-colors">
+                                        {count}
+                                    </span>
+                                </button>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

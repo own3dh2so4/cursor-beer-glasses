@@ -113,14 +113,25 @@ function WorldMap({ countryData, viewMode }: WorldMapProps) {
             {/* Tooltip */}
             {tooltip && (
                 <div
-                    className="absolute pointer-events-none bg-slate-800 text-white px-3 py-2 rounded-lg shadow-lg text-sm z-50"
+                    className="absolute pointer-events-none bg-slate-800 text-white px-3 py-2 rounded-lg shadow-lg text-sm z-50 flex items-center gap-2"
                     style={{
                         left: tooltip.x + 15,
                         top: tooltip.y + 10
                     }}
                 >
-                    <p className="font-semibold whitespace-nowrap">{tooltip.country}</p>
-                    <p className="text-xs whitespace-nowrap">{tooltip.count} {tooltip.count === 1 ? 'glass' : 'glasses'}</p>
+                    {tooltip.code && (
+                        <img
+                            src={`https://flagcdn.com/w40/${tooltip.code}.png`}
+                            srcSet={`https://flagcdn.com/w80/${tooltip.code}.png 2x`}
+                            width="24"
+                            alt=""
+                            className="rounded-sm"
+                        />
+                    )}
+                    <div>
+                        <p className="font-semibold whitespace-nowrap">{tooltip.country}</p>
+                        <p className="text-xs whitespace-nowrap text-gray-300">{tooltip.count} {tooltip.count === 1 ? 'glass' : 'glasses'}</p>
+                    </div>
                 </div>
             )}
 
