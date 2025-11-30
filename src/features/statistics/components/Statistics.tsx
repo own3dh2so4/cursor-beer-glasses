@@ -88,11 +88,19 @@ function Statistics() {
                 {/* Top Countries List */}
                 <div className="bg-white/85 backdrop-blur-lg rounded-xl p-6 shadow-card">
                     <h3 className="text-xl tablet:text-2xl font-bold text-primary mb-4 drop-shadow-sm">
-                        Top Countries
+                        🏆 Top Countries
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {statistics.countryData.slice(0, 12).map(({ country, count }) => {
+                        {statistics.countryData.slice(0, 12).map(({ country, count }, index) => {
                             const code = getCountryCode(country)
+                            const rank = index + 1
+
+                            let rankDisplay
+                            if (rank === 1) rankDisplay = <span className="text-2xl" role="img" aria-label="Gold Medal">🥇</span>
+                            else if (rank === 2) rankDisplay = <span className="text-2xl" role="img" aria-label="Silver Medal">🥈</span>
+                            else if (rank === 3) rankDisplay = <span className="text-2xl" role="img" aria-label="Bronze Medal">🥉</span>
+                            else rankDisplay = <span className="text-gray-400 font-mono font-bold w-8 text-center">#{rank}</span>
+
                             return (
                                 <button
                                     key={country}
@@ -103,6 +111,9 @@ function Statistics() {
                                     className="flex justify-between items-center p-3 bg-slate-50/60 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200 group text-left w-full"
                                 >
                                     <div className="flex items-center gap-3">
+                                        <div className="flex items-center justify-center w-8">
+                                            {rankDisplay}
+                                        </div>
                                         {code && (
                                             <img
                                                 src={`https://flagcdn.com/w40/${code}.png`}
