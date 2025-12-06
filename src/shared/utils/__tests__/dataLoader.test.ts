@@ -73,7 +73,7 @@ describe('dataLoader', () => {
       const expectedUrl = import.meta.env.BASE_URL
         ? `${import.meta.env.BASE_URL}brands-index.json`
         : '/brands-index.json'
-      expect(global.fetch).toHaveBeenCalledWith(expectedUrl)
+      expect(global.fetch).toHaveBeenCalledWith(expectedUrl, { cache: 'no-cache' })
     })
   })
 

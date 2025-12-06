@@ -14,6 +14,20 @@ vi.mock('./shared/utils/dataLoader', () => ({
   getAssetPath: (path: string) => mockGetAssetPath(path)
 }))
 
+// Mock useBrands for Layout
+vi.mock('./shared/hooks/useBrands', () => ({
+  useBrands: vi.fn(() => ({
+    data: mockBrands,
+    isLoading: false,
+    error: null
+  })),
+  useBrand: vi.fn(() => ({
+    data: mockBrands[0],
+    isLoading: false,
+    error: null
+  }))
+}))
+
 describe('App', () => {
   beforeEach(() => {
     vi.clearAllMocks()

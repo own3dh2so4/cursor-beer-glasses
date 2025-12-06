@@ -1,5 +1,7 @@
 import { useState, useEffect, ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useIsMobile } from '../hooks/useIsMobile'
+import { HamburgerMenu } from './HamburgerMenu'
 
 interface NavbarProps {
     title: ReactNode
@@ -10,6 +12,7 @@ interface NavbarProps {
 export function Navbar({ title, subtitle, collapsedTitle = '🍺 Beer Glasses' }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false)
     const location = useLocation()
+    const isMobile = useIsMobile()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,17 +25,20 @@ export function Navbar({ title, subtitle, collapsedTitle = '🍺 Beer Glasses' }
 
     const isActive = (path: string) => location.pathname === path
 
+    // In mobile, always use collapsed version
+    const shouldShowCollapsed = isMobile || isScrolled
+
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/30 shadow-sm backdrop-blur-xl ${
-                isScrolled ? 'bg-slate-50/90 py-4' : 'bg-slate-50/85 py-8 tablet:py-12'
+                shouldShowCollapsed ? 'bg-slate-50/90 py-4' : 'bg-slate-50/85 py-8 tablet:py-12'
             }`}
         >
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex items-center justify-between">
                     <div className="flex-1">
-                        <div className={`transition-all duration-300 origin-left ${isScrolled ? 'scale-100' : 'scale-100'}`}>
-                            {isScrolled ? (
+                        <div className={`transition-all duration-300 origin-left ${shouldShowCollapsed ? 'scale-100' : 'scale-100'}`}>
+                            {shouldShowCollapsed ? (
                                 <Link to="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-default">
                                     {collapsedTitle}
                                 </Link>
@@ -52,26 +58,32 @@ export function Navbar({ title, subtitle, collapsedTitle = '🍺 Beer Glasses' }
                     </div>
 
                     <div className="flex gap-4 ml-4">
-                        <Link
-                            to="/"
-                            className={`px-4 py-2 rounded-lg font-semibold transition-default ${
-                                isActive('/')
-                                    ? 'bg-primary text-white shadow-md'
-                                    : 'text-slate-700 hover:bg-white/60'
-                            }`}
-                        >
-                            Gallery
-                        </Link>
-                        <Link
-                            to="/stats"
-                            className={`px-4 py-2 rounded-lg font-semibold transition-default ${
-                                isActive('/stats')
-                                    ? 'bg-primary text-white shadow-md'
-                                    : 'text-slate-700 hover:bg-white/60'
-                            }`}
-                        >
-                            Statistics
-                        </Link>
+                        {isMobile ? (
+                            <HamburgerMenu />
+                        ) : (
+                            <>
+                                <Link
+                                    to="/"
+                                    className={`px-4 py-2 rounded-lg font-semibold transition-default ${
+                                        isActive('/')
+                                            ? 'bg-primary text-white shadow-md'
+                                            : 'text-slate-700 hover:bg-white/60'
+                                    }`}
+                                >
+                                    Gallery
+                                </Link>
+                                <Link
+                                    to="/stats"
+                                    className={`px-4 py-2 rounded-lg font-semibold transition-default ${
+                                        isActive('/stats')
+                                            ? 'bg-primary text-white shadow-md'
+                                            : 'text-slate-700 hover:bg-white/60'
+                                    }`}
+                                >
+                                    Statistics
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

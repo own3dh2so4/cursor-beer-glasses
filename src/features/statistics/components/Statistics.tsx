@@ -5,7 +5,6 @@ import StatsCard from './StatsCard'
 import ViewModeToggle from './ViewModeToggle'
 import WorldMap from './WorldMap'
 import { TopCountriesList } from './TopCountriesList'
-import { Navbar } from '@/shared/components/Navbar'
 import type { StatisticsViewMode } from '@/shared/types'
 
 function Statistics() {
@@ -36,12 +35,6 @@ function Statistics() {
             <div className="fixed top-0 left-0 w-full h-full bg-black/40 -z-10" />
 
             <div className="relative max-w-[1400px] mx-auto px-4 py-8 tablet:px-8 tablet:py-12 z-10">
-                <Navbar
-                    title="📊 Own3dh2so4 Beer Glass Statistics"
-                    subtitle="Explore your beer glass collection through interactive visualizations"
-                    collapsedTitle="🍺 Own3dh2so4 Beer Glasses Statistics"
-                />
-
                 <div className="pt-32 tablet:pt-40">
                     {/* View Mode Toggle */}
                     <div className="flex justify-center mb-8">

@@ -3,12 +3,25 @@ import { render, screen, act, waitFor } from '@testing-library/react'
 import { TestMemoryRouter } from '@/test/router-helpers'
 import { Navbar } from '../Navbar'
 
+// Mock useIsMobile hook
+vi.mock('../../hooks/useIsMobile', () => ({
+  useIsMobile: vi.fn(() => false)
+}))
+
 describe('Navbar', () => {
   const originalScrollY = Object.getOwnPropertyDescriptor(window, 'scrollY')
   const originalAddEventListener = window.addEventListener
   const originalRemoveEventListener = window.removeEventListener
+  const originalInnerWidth = Object.getOwnPropertyDescriptor(window, 'innerWidth')
 
   beforeEach(() => {
+    // Mock window.innerWidth for mobile detection
+    Object.defineProperty(window, 'innerWidth', {
+      writable: true,
+      configurable: true,
+      value: 1024 // Desktop width
+    })
+
     // Mock window.scrollY
     Object.defineProperty(window, 'scrollY', {
       writable: true,
@@ -40,8 +53,12 @@ describe('Navbar', () => {
     if (originalScrollY) {
       Object.defineProperty(window, 'scrollY', originalScrollY)
     }
+    if (originalInnerWidth) {
+      Object.defineProperty(window, 'innerWidth', originalInnerWidth)
+    }
     window.addEventListener = originalAddEventListener
     window.removeEventListener = originalRemoveEventListener
+    vi.clearAllMocks()
   })
 
   const renderNavbar = (props = {}, initialEntries = ['/']) => {
@@ -193,6 +210,57 @@ describe('Navbar', () => {
       </TestMemoryRouter>
     )
     expect(screen.getByTestId('custom-subtitle')).toBeInTheDocument()
+  })
+
+  it('shows collapsed version on mobile and tablet', async () => {
+    const { useIsMobile } = await import('../../hooks/useIsMobile')
+    vi.mocked(useIsMobile).mockReturnValue(true)
+
+    render(
+      <TestMemoryRouter>
+        <Navbar title="Test Title" collapsedTitle="Mobile Title" />
+      </TestMemoryRouter>
+    )
+
+    // On mobile/tablet, should show collapsed version immediately
+    expect(screen.getByText('Mobile Title')).toBeInTheDocument()
+    expect(screen.queryByText('Test Title')).not.toBeInTheDocument()
+  })
+
+  it('shows hamburger menu on mobile and tablet instead of navigation links', async () => {
+    const { useIsMobile } = await import('../../hooks/useIsMobile')
+    vi.mocked(useIsMobile).mockReturnValue(true)
+
+    render(
+      <TestMemoryRouter>
+        <Navbar title="Test Title" />
+      </TestMemoryRouter>
+    )
+
+    // Should show hamburger button
+    expect(screen.getByRole('button', { name: /toggle menu/i })).toBeInTheDocument()
+    
+    // Should not show direct navigation links
+    expect(screen.queryByRole('link', { name: /gallery/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /statistics/i })).not.toBeInTheDocument()
+  })
+
+  it('shows navigation links on desktop (>= 1024px)', async () => {
+    const { useIsMobile } = await import('../../hooks/useIsMobile')
+    vi.mocked(useIsMobile).mockReturnValue(false)
+
+    render(
+      <TestMemoryRouter>
+        <Navbar title="Test Title" />
+      </TestMemoryRouter>
+    )
+
+    // Should show direct navigation links
+    expect(screen.getByRole('link', { name: /gallery/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /statistics/i })).toBeInTheDocument()
+    
+    // Should not show hamburger button
+    expect(screen.queryByRole('button', { name: /toggle menu/i })).not.toBeInTheDocument()
   })
 })
 

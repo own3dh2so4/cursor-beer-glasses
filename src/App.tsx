@@ -4,6 +4,7 @@ import { BrandDetail } from './features/brand-detail'
 import { Statistics } from './features/statistics'
 
 import { ScrollToTop } from './shared/components/ScrollToTop'
+import { Layout } from './shared/components/Layout'
 
 function App() {
   return (
@@ -15,15 +16,13 @@ function App() {
       }}
     >
       <ScrollToTop />
-      <div className="min-h-screen">
-
-
+      <Layout>
         <Routes>
           <Route path="/" element={<Gallery />} />
           <Route path="/stats" element={<Statistics />} />
           <Route path="/:id" element={<BrandDetail />} />
         </Routes>
-      </div>
+      </Layout>
     </BrowserRouter>
   )
 }

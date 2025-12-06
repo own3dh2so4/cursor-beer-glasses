@@ -59,7 +59,9 @@ describe('Statistics', () => {
             </TestBrowserRouter>
         )
 
-        expect(screen.getByText(/Own3dh2so4 Beer Glass Statistics/i)).toBeInTheDocument()
+        // Navbar is now in Layout, not in Statistics component
+        // Check for statistics content instead
+        expect(screen.getByText(/🛍️ Where I Bought/i)).toBeInTheDocument()
     })
 
     it('should display view mode toggle', () => {

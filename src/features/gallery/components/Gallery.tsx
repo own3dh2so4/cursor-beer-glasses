@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useBrands } from '@/shared/hooks/useBrands'
-import { Navbar } from '@/shared/components/Navbar'
 import GalleryCard from './GalleryCard'
 import FilterBar from './FilterBar'
 import type { Filters } from '@/shared/types'
@@ -131,16 +130,6 @@ function Gallery() {
       <div className="fixed top-0 left-0 w-full h-full bg-[url('/data/background.png')] bg-cover bg-center bg-no-repeat bg-fixed -z-20" />
       <div className="fixed top-0 left-0 w-full h-full bg-black/40 -z-10" />
       <div className="relative max-w-[1400px] mx-auto px-4 py-8 tablet:px-8 tablet:py-12 z-10">
-        <Navbar
-          title="Own3dh2so4 Beer Glasses Collection"
-          subtitle={
-            <span>
-              Showing <strong>{filteredAndSortedBrands.length}</strong> of <strong>{allBrands.length}</strong> brands
-            </span>
-          }
-          collapsedTitle="🍺 Own3dh2so4 Beer Glasses"
-        />
-
         <div className="max-w-7xl mx-auto px-4 py-8 pt-32 tablet:pt-40">
           {/* Filters */}
 
